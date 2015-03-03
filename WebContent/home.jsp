@@ -64,11 +64,13 @@
       <div class="page-header">
         <h1>Iso kysely</h1>
       </div>
-
-<form class="well" method="post" action="email">
-  <h3>Ketä oot?</h3>
-		<a href="#">Vastaaja</a><br>
-		<a href="#">Admin</a>
+      
+<form class="well" method="post">
+<img alt="multikulttuuri" src="img/masthead_generic.png" width=100%>
+  <h3>Mitä teet?</h3>
+		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="survey.jsp">Vastaa kyselyyn</a><br>
+		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="summary.jsp">Vastaukset</a><br>
+		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="create.jsp">Luo lomake</a>
   
 </form>
     <footer class="footer">
