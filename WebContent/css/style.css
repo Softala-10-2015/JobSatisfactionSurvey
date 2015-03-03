@@ -80,3 +80,15 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+/* Home. */
+
+.homeButton {
+    width: 200px !important;
+}
+
+/* Create. */
+
+.createInput{
+	width: 300px !important;
+}
