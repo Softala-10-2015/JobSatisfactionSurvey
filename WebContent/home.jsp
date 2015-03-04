@@ -37,29 +37,19 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="survey.jsp">Softala</a>
+          <a class="navbar-brand" href="home.jsp">Kysely</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="survey.jsp">Home</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Valita opelle</a></li>
-                <li><a href="#">Valita rehtorille</a></li>
-                <li><a href="#">Soita poliisille</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Miss‰ Auringon Pizza Kebab?</li>
-              </ul>
-            </li>
+            <li class="active"><a href="home.jsp">Home</a></li>
+            <li><a href="summary.jsp">Tulokset</a></li>
+            <li><a href="login.jsp">Kirjaudu</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <!-- Begin page content -->
-	<div class="container">
     <div class="container">
       <div class="page-header">
         <h1>Iso kysely</h1>
@@ -67,9 +57,9 @@
       
 <form class="well" method="post">
 <img alt="multikulttuuri" src="img/masthead_generic.png" width=100%>
-  <h3>Mit‰ teet?</h3>
+  <h3>Mit√§ teet?</h3>
 		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="survey.jsp">Vastaa kyselyyn</a><br>
-		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="summary.jsp">Vastaukset</a><br>
+		<a class="btn btn-lg btn-block homeButton2" role="button" href="summary.jsp">Vastaukset</a><br>
 		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="create.jsp">Luo lomake</a>
   
 </form>
