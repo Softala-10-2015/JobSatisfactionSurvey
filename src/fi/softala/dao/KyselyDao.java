@@ -35,7 +35,7 @@ public class KyselyDao {
 	}
 	
 	
-	
+//	
 
 	public List<Survey> HaeKysely(Int i) {
 	
