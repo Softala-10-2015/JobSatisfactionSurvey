@@ -15,6 +15,8 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import fi.softala.bean.Survey;
+
 /*
 import Surveybean;
 */
