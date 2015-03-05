@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="img/kisutopi.ico">
+    <link rel="icon" href="resources/img/kisutopi.ico">
 
     <title>Summary</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
+    <link href="resources/css/bootstrap.css" rel="stylesheet">
+	<link href="resources/css/style.css" rel="stylesheet">
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
@@ -67,7 +67,7 @@
       
 <form class="well" method="post" action="email">
   <h3>Ootko Make? -kysely</h3>
-  		<img alt="make" src="img/make.PNG">
+  		<img alt="make" src="resources/img/make.PNG">
 		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="home.jsp">Himaan</a><br>
   
 </form>
@@ -82,8 +82,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/angular.min.js"></script>
+    <script src="resources/js/bootstrap.min.js"></script>
+    <script src="resources/js/angular.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
