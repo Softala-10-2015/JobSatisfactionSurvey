@@ -21,7 +21,7 @@ import fi.softala.bean.Survey;
 import Surveybean;
 */
 
-public class KyselyDao {
+public class SurveyDao {
 	
 	@Inject
 	private JdbcTemplate jdbcTemplate;
@@ -37,7 +37,7 @@ public class KyselyDao {
 	
 //	
 
-	public List<Survey> HaeKysely(Int i) {
+	public List<Survey> HaeKysely(Integer i) {
 	
 		//Bean import puuttuu atm
 		
