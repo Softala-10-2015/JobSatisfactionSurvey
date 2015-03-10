@@ -32,7 +32,7 @@ public Survey mapRow(ResultSet rs, int rowNum) throws SQLException {
 	//end of mock
 	*/
 		
-		
+		//kommentti
 	return s;
 }
 	
