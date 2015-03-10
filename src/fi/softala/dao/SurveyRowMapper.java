@@ -14,7 +14,7 @@ public class SurveyRowMapper implements RowMapper<Survey> {
 public Survey mapRow(ResultSet rs, int rowNum) throws SQLException {
 	Survey s = new Survey();
 	
-	//Tänne tavareita
+	//Tähän listankäynti tietokannansta, lisäys yhteen Survey olioon!W
 	
 	//mock
 	s.setSurvey_id(1);
