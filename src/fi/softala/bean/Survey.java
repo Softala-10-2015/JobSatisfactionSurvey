@@ -6,10 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Survey {
-	int survey_id; //nopeesti
-	int owner_id; //vähä kommenttii
-	String survey_name; //holy shit
+	
+	//DAO ATRIBUUTIT
+	int survey_id; 
+	int owner_id; 
+	String survey_name; 
 	String email;
+	
+	//JAVA ATRIBUUTTEJA
 	boolean isComplete;
 	int nextFree;
 	List questions;
