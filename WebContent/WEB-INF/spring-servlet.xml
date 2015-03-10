@@ -13,7 +13,7 @@
 		directory -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="prefix" value="/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 
@@ -25,7 +25,7 @@
 	<mvc:view-controller path="/" view-name="home" />
 
 	<!-- location of static content (images, js and css files) -->
-	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/views/resources/**" location="/views/resources/" />
 
 
 

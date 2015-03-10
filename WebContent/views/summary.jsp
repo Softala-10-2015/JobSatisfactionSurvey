@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="img/kisutopi.ico">
+    <link rel="icon" href="resources/img/kisutopi.ico">
 
-    <title>Home</title>
+    <title>Summary</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
+    <link href="resources/css/bootstrap.css" rel="stylesheet">
+	<link href="resources/css/style.css" rel="stylesheet">
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
@@ -37,30 +37,38 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="home.jsp">Kysely</a>
+          <a class="navbar-brand" href="survey.jsp">Softala</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="home.jsp">Home</a></li>
-            <li><a href="summary.jsp">Tulokset</a></li>
-            <li><a href="login.jsp">Kirjaudu</a></li>
+            <li class="active"><a href="survey.jsp">Home</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Valita opelle</a></li>
+                <li><a href="#">Valita rehtorille</a></li>
+                <li><a href="#">Soita poliisille</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Miss‰ Auringon Pizza Kebab?</li>
+              </ul>
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <!-- Begin page content -->
+	<div class="container">
     <div class="container">
       <div class="page-header">
         <h1>Iso kysely</h1>
       </div>
       
-<form class="well" method="post">
-<img alt="multikulttuuri" src="img/masthead_generic.png" width=100%>
-  <h3>Mit√§ teet?</h3>
-		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="survey.jsp">Vastaa kyselyyn</a><br>
-		<a class="btn btn-lg btn-block homeButton2" role="button" href="summary.jsp">Vastaukset</a><br>
-		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="create.jsp">Luo lomake</a>
+<form class="well" method="post" action="email">
+  <h3>Ootko Make? -kysely</h3>
+  		<img alt="make" src="resources/img/make.PNG">
+		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="home.jsp">Himaan</a><br>
   
 </form>
     <footer class="footer">
@@ -74,8 +82,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/angular.min.js"></script>
+    <script src="resources/js/bootstrap.min.js"></script>
+    <script src="resources/js/angular.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>

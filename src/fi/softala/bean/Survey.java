@@ -2,9 +2,6 @@ package fi.softala.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-import fi.haagahelia.proto154.carlo.model.Iterator;
-import fi.haagahelia.proto154.carlo.model.Pizza;
-
 /**
  * @author Pasi Lehmusvuori, Samuli Kytömäki
  * 
@@ -29,11 +26,13 @@ public class Survey{
 	List<Question> questions;
 	
 	public Survey() {
+		questions = new ArrayList<Question>();
 	}
 
 	public Survey(int id, String name) {
 		this.id = id;
 		this.name = name;
+		questions = new ArrayList<Question>();
 	}
 	
 	public Survey(int id, int owner_id, String name, List<Question> questions) {
