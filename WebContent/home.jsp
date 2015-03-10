@@ -57,7 +57,7 @@
       
 <form class="well" method="post">
 <img alt="multikulttuuri" src="resources/img/masthead_generic.png" width=100%>
-  <h3>MitÃ¤ teet?</h3>
+  <h3>Mitä teet?</h3>
 		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="survey.jsp">Vastaa kyselyyn</a><br>
 		<a class="btn btn-lg btn-block homeButton2" role="button" href="summary.jsp">Vastaukset</a><br>
 		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="create.jsp">Luo lomake</a>
