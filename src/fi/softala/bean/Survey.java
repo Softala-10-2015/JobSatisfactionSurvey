@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Survey {
-	int survey_id;
-	int owner_id;
-	String survey_name;
+	int survey_id; //nopeesti
+	int owner_id; //vähä kommenttii
+	String survey_name; //holy shit
 	String email;
 	boolean isComplete;
 	int nextFree;
