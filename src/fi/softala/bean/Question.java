@@ -1,68 +1,76 @@
-/**
-* @author Pasi, Samuli
-*/
-
 package fi.softala.bean;
 
-public class Question{
-	int survey_id;
-	int question_id; // id
-	int question_order; // question sequence number 
-	/* int total; // total option ? */
-	String question_text; // question
-	/* List options; // question options - answer choices- value pair */
-	int question_type;
+/**
+ * 
+ * @author Pasi Lehmusvuori, Samuli Kytömäki
+ *
+ * Corresponding db fields
+ * 	question_id
+	question_order - question sequence number 
+	question_type  - question type 1=open, 2= radiobutton list
+	question_text  - question itself
+ */
 
+public class Question {
+	int id; // id
+	int seqNum; // question sequence number 
+	int type;  // Question type 1=open, 2=radiobutton list
+	String question; // question
+	
+	/* int total; // total options ? */
+	
 	public Question() {
+		this.id = 0;
+		this.seqNum = 0;
+		this.type = 0;
+		this.question = "";
 	}
 
-	public Question(int survey_id, int question_id,
-			int question_order, String question_text, int question_type) {
-		this.survey_id = survey_id;
-		this.question_id = question_id;
-		this.question_order = question_order;
-		this.question_text = question_text;
-		this.question_type = question_type;
+	public Question(int id, int sequenceNum, int type, String question) {
+		super();
+		this.id = id;
+		this.seqNum = sequenceNum;
+		this.type = type;
+		this.question = question;
 	}
 
-	public int getSurvey_id() {
-		return survey_id;
+
+	public int getId() {
+		return id;
 	}
 
-	public void setSurvey_id(int survey_id) {
-		this.survey_id = survey_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public int getQuestion_id() {
-		return question_id;
+	public int getSeqNum() {
+		return seqNum;
 	}
 
-	public void setQuestion_id(int question_id) {
-		this.question_id = question_id;
+	public void setSeqNum(int seqNum) {
+		this.seqNum = seqNum;
 	}
 
-	public int getQuestion_order() {
-		return question_order;
+	public int getType() {
+		return type;
 	}
 
-	public void setQuestion_order(int question_order) {
-		this.question_order = question_order;
+	public void setType(int type) {
+		this.type = type;
 	}
 
-	public String getQuestion_text() {
-		return question_text;
+	public String getQuestion() {
+		return question;
 	}
 
-	public void setQuestion_text(String question_text) {
-		this.question_text = question_text;
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+	
+	@Override
+	public String toString() {
+		return "Question [id=" + id + ", seqNum=" + seqNum + ", type=" + type
+				+ ", question=" + question + "]";
 	}
 
-	public int getQuestion_type() {
-		return question_type;
-	}
-
-	public void setQuestion_type(int question_type) {
-		this.question_type = question_type;
-	}	
 }
-
