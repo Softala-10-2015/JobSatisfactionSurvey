@@ -28,7 +28,7 @@ import fi.softala.bean.Question;
  *
  */
 
-public abstract class SurveyJdbcDao implements SurveyDAO {
+public abstract class SurveyJdbcDao implements SurveyDAO2 {
   private JdbcTemplate jdbcTemplate;
    private String sql;
    

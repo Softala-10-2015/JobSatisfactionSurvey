@@ -23,7 +23,7 @@
 		@author Pasi Lehmusvuori 	
 		datasource config
 	-->
-	<bean id="SurveyDao"
+	<bean id="SurveyDAO2"
       class="fi.softala.dao.SurveyJdbcDao">
   		<property name="dataSource" ref="dataSource" />
 	</bean>
