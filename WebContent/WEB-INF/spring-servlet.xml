@@ -25,7 +25,7 @@
 	<mvc:view-controller path="/" view-name="home" />
 
 	<!-- location of static content (images, js and css files) -->
-	<mvc:resources mapping="/views/resources/**" location="/views/resources/" />
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 
 
