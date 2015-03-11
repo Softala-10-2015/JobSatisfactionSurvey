@@ -18,14 +18,5 @@
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 			<property name="dataSource" ref="dataSource"/>
 	</bean>
-	
-	<!-- 
-		@author Pasi Lehmusvuori 	
-		datasource config
-	-->
-	<bean id="SurveyDAO2"
-      class="fi.softala.dao.SurveyJdbcDao">
-  		<property name="dataSource" ref="dataSource" />
-	</bean>
 
 </beans>
