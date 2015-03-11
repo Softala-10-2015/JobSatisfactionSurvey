@@ -8,10 +8,10 @@ public interface SurveyDao {
 	
 	//interface suunnittelua ja toteutusta vaille valmis
 
-	public abstract Survey HaeKysely(int i);
+	public abstract Survey FindSurvey(int i);
 
 
-	public abstract List<Survey> HaeKyselyt(int i);
+	public abstract List<Survey> FindSurveys(int i);
 	
 	
 }

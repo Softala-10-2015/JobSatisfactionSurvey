@@ -17,6 +17,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import fi.softala.bean.Answer;
+import fi.softala.bean.Question;
 import fi.softala.bean.Survey;
 
 @Repository
@@ -36,7 +37,7 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 	
 	
 	
-	public Survey HaeKysely(int i) {
+	public Survey FindSurvey(int i) {
 		//RAW metodi, siistimistä vailla
 		
 		String sql = "SELECT *  FROM Survey WHERE survey_id = '?';";
@@ -48,7 +49,7 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 	return survey;
 	}
 	
-	public List<Survey> HaeKyselyt(int i) {
+	public List<Survey> FindSurveys(int i) {
 		//kaikki kyselyt, vois varmaan siisitiä
 		
 		String sql = "SELECT * FROM Survey;";
