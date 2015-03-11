@@ -73,4 +73,8 @@ public class Survey {
 		questions.remove(q);
 	}
 	
+	public void setQuestions(List<Question> q){
+		this.questions = q;
+	}
+	
 }
