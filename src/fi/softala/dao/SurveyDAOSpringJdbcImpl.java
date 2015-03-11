@@ -32,14 +32,30 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	public List<Survey> HaeKyselyt(int i) {
-		//RAW metodi, ei valttamatta tarpeellinen
+	
+	
+	
+	
+	public Survey HaeKysely(int i) {
+		//RAW metodi, siistimistä vailla
 		
 		String sql = "SELECT *  FROM Survey WHERE survey_id = '?';";
 		Object[] param = new Object[] { i };
 		RowMapper<Survey> mapper = new SurveyRowMapper();
 		List<Survey> Surveys = jdbcTemplate.query(sql,param, mapper);
+		Survey survey = Surveys.get(0);
 
-	return Surveys;
+	return survey;
+	}
+	
+	public List<Survey> HaeKyselyt(int i) {
+		//kaikki kyselyt, vois varmaan siisitiä
+		
+		String sql = "SELECT * FROM Survey;";
+		Object[] param = new Object[] { i };
+		RowMapper<Survey> mapper = new SurveyRowMapper();
+		List<Survey> Surveys = jdbcTemplate.query(sql,param, mapper);
+		
+		return Surveys;
 	}
 }
