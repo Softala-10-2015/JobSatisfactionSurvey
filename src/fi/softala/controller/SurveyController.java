@@ -98,6 +98,6 @@ public class SurveyController {
 	public String getAllAnswers(Model model) {
 		List<Answer> answers = aDao.getAllAnswers();
 		model.addAttribute("answers", answers);
-		return "confirmation";
+		return "summary";
 	}
 }

@@ -51,7 +51,7 @@ public class AnswerDAOSpringJdbcImpl implements AnswerDAO{
 	}
 	
 	public Answer getOneAnswer(int answerId) {
-		String sql = "select question_id, answer_text from answer where answer_id=?";
+		String sql = "select question_id, answer_text from Answer where answer_id=?";
 		Object[] parameters = new Object[] { answerId };
 		RowMapper<Answer> mapper = new AnswerRowMapper();
 		Answer wanted = new Answer();
@@ -64,7 +64,7 @@ public class AnswerDAOSpringJdbcImpl implements AnswerDAO{
 	}
 	
 	public List<Answer> getAllAnswers() {
-		String sql = "select answer_id, question_id, answer_text from answer";
+		String sql = "select answer_id, question_id, answer_text from Answer";
 		RowMapper<Answer> mapper = new AnswerRowMapper();
 		List<Answer> allAnswers = jdbcTemplate.query(sql, mapper);
 		return allAnswers;
