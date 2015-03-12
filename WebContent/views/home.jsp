@@ -42,8 +42,8 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="home.jsp">Home</a></li>
-            <li><a href="summary.jsp">Tulokset</a></li>
-            <li><a href="login.jsp">Kirjaudu</a></li>
+            <li><a href="views/summary.jsp">Tulokset</a></li>
+            <li><a href="views/login.jsp">Kirjaudu</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -58,9 +58,9 @@
 <form class="well" method="post">
 <img alt="multikulttuuri" src="resources/img/masthead_generic.png" width=100%>
   <h3>Mitä teet?</h3>
-		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="survey.jsp">Vastaa kyselyyn</a><br>
-		<a class="btn btn-lg btn-block homeButton2" role="button" href="summary.jsp">Vastaukset</a><br>
-		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="create.jsp">Luo lomake</a>
+		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="views/survey.jsp">Vastaa kyselyyn</a><br>
+		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="views/summary.jsp">Vastaukset</a><br>
+		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="views/create.jsp">Luo lomake</a>
   
 </form>
     <footer class="footer">
