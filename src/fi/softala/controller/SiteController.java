@@ -19,7 +19,7 @@ import fi.softala.dao.SurveyDao;
  *
  */
 @Controller
-@RequestMapping(value="*")
+@RequestMapping(value="/")
 public class SiteController {
 	@Inject
 	private SurveyDao dao;
@@ -38,7 +38,7 @@ public class SiteController {
 //		model.addAttribute("survey", surveyList);
 		
 		//testikoodia
-		ArrayList<Survey> surveyList = new ArrayList();
+		ArrayList<Survey> surveyList = new ArrayList<Survey>();
 		Survey survey1 = new Survey();
 		survey1.setSurvey_id(1);
 		survey1.setEmail("asd@asd.asd");
@@ -46,15 +46,15 @@ public class SiteController {
 		survey1.setSurvey_name("Testi kysely1");
 		
 		Survey survey2 = new Survey();
-		survey1.setSurvey_id(2);
-		survey1.setEmail("asd@asd.asd");
-		survey1.setOwner_id(1);
-		survey1.setSurvey_name("Testi kysely1");
+		survey2.setSurvey_id(2);
+		survey2.setEmail("asd@asd.asd");
+		survey2.setOwner_id(1);
+		survey2.setSurvey_name("Testi kysely2");
 		
 		surveyList.add(survey1);
 		surveyList.add(survey2);
 		
-		model.addAttribute(surveyList);
+		model.addAttribute("surveyList", surveyList);
 		System.out.println("SiteController");
 		return "home";
 	}
