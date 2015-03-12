@@ -42,8 +42,8 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="home.jsp">Home</a></li>
-            <li><a href="views/summary.jsp">Tulokset</a></li>
-            <li><a href="views/login.jsp">Kirjaudu</a></li>
+            <li><a href="summary.jsp">Tulokset</a></li>
+            <li><a href="login.jsp">Kirjaudu</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -57,7 +57,7 @@
 
 			<form class="well" method="post" action="email">
 				<h3>Mitä haluut tehät?</h3>
-				<a href="#">Luo lomake</a><br> <a href="#">Yhteenveto</a>
+				<a href="create.jsp">Luo lomake</a><br> <a href="summary.jsp">Yhteenveto</a>
 
 			</form>
 			<footer class="footer">

@@ -43,8 +43,8 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="home.jsp">Home</a></li>
-            <li><a href="views/summary.jsp">Tulokset</a></li>
-            <li><a href="views/login.jsp">Kirjaudu</a></li>
+            <li><a href="summary.jsp">Tulokset</a></li>
+            <li><a href="login.jsp">Kirjaudu</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -61,7 +61,7 @@
 		<div class="container">
 			<h3>Kiitti hei</h3>
 			<p>oli kiva ku vastasit</p>
-			<a class="btn btn-primary btn-lg" role="button" href="survey.jsp">Palaa</a>
+			<a class="btn btn-primary btn-lg" role="button" href="home.jsp">Palaa</a>
 		</div>
 
 

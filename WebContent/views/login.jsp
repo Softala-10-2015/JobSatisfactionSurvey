@@ -42,8 +42,8 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="home.jsp">Home</a></li>
-            <li><a href="views/summary.jsp">Tulokset</a></li>
-            <li class="active"><a href="views/login.jsp">Kirjaudu</a></li>
+            <li><a href="summary.jsp">Tulokset</a></li>
+            <li class="active"><a href="login.jsp">Kirjaudu</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

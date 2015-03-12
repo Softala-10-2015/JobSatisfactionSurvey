@@ -27,27 +27,41 @@
 
   <body>
 
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="home.jsp">Kysely</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="home.jsp">Home</a></li>
-            <li><a href="views/summary.jsp">Tulokset</a></li>
-            <li><a href="views/login.jsp">Kirjaudu</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+	<!-- Fixed navbar & login -->
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="home.jsp">Home</a></li> <!-- home tab active -->
+				<li><a href="summary.jsp">Tulokset</a></li>
+			</ul>
+			<form class="navbar-form navbar-right" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" name="username"
+						placeholder="Käyttäjätunnus">
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" name="password"
+						placeholder="Salasana">
+				</div>
+				<button type="submit" class="btn btn-primary">Kirjaudu</button>
+			</form>
+		</div>
+		<!--/.nav-collapse -->
+
+	</div>
+	</nav> <!-- end of navbar -->
+
 
     <!-- Begin page content -->
     <div class="container">
@@ -58,13 +72,6 @@
 <form class="well" method="post">
 <img alt="multikulttuuri" src="resources/img/masthead_generic.png" width=100%>
   <h3>Mitä teet?</h3>
-  
-  		<h3>Avoimet kyselyt</h2>
-      	<c:forEach var="survey" items="${surveyList}">
-      		<a href="survey/get-survey/${survey.getSurvey_id()}">${survey.getSurvey_name()}</a>
-      		</br>
-      	</c:forEach>
-  		
 		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="views/survey.jsp">Vastaa kyselyyn</a><br>
 		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="views/summary.jsp">Vastaukset</a><br>
 		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="views/create.jsp">Luo lomake</a>
