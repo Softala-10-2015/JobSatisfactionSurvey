@@ -62,6 +62,16 @@
 		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="home.jsp">Himaan</a><br>
   
 </form>
+<form method="post">
+<c:forEach items="${questions}" var="question">
+		<c:set var="question_text" scope="session" value="${question.question_text}"  />
+		<label id="question_text"><c:out value="${question_text}"></c:out></label>
+	</c:forEach>
+	<c:forEach items="${answers}" var="answer">
+		<c:set var="answerText" scope="session" value="${answer.answerText}"  />
+		<label id="answer_text"><c:out value="${answerText}"></c:out></label>
+	</c:forEach>
+</form>
     <footer class="footer">
       <div class="container">
         <p class="text-muted">Copiright Make 2015</p>

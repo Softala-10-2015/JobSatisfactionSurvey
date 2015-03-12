@@ -18,6 +18,7 @@ import fi.softala.bean.Answer;
 import fi.softala.bean.Question;
 import fi.softala.bean.Survey;
 import fi.softala.dao.AnswerDAO;
+import fi.softala.dao.QuestionDAO;
 import fi.softala.dao.SurveyDao;
 
 
@@ -30,6 +31,8 @@ import fi.softala.dao.SurveyDao;
 public class SurveyController {
 	@Inject
 	private AnswerDAO aDao;
+	@Inject
+	private QuestionDAO qDao;
 	/*@Inject
 	private SurveyDao sDao;
 	
@@ -98,6 +101,13 @@ public class SurveyController {
 	public String getAllAnswers(Model model) {
 		List<Answer> answers = aDao.getAllAnswers();
 		model.addAttribute("answers", answers);
+		return "summary";
+	}
+	
+	@RequestMapping(value="get-all-questions", method=RequestMethod.GET)
+	public String getAllQuestions(Model model) {
+		List<Question> questions = qDao.getAllQuestions();
+		model.addAttribute("questions", questions);
 		return "summary";
 	}
 }
