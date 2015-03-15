@@ -20,6 +20,8 @@ public class QuestionRowMapper implements RowMapper<Question> {
 		question.setQuestion_text(rs.getString("question_text"));
 		question.setQuestion_order(rs.getInt("question_order"));
 		
+		//System.out.println("Question: "+question.getQuestion_id()+"survey: "+question.getSurvey_id());
+		
 		return question;
 	}
 

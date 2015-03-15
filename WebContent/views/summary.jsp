@@ -65,11 +65,18 @@
 <form method="post">
 <c:forEach items="${questions}" var="question">
 		<c:set var="question_text" scope="session" value="${question.question_text}"  />
+		
 		<label id="question_text"><c:out value="${question_text}"></c:out></label>
+		
+		<br/>
 	</c:forEach>
+	
+	<br/>
+	
 	<c:forEach items="${answers}" var="answer">
 		<c:set var="answerText" scope="session" value="${answer.answerText}"  />
 		<label id="answer_text"><c:out value="${answerText}"></c:out></label>
+	<br/>
 	</c:forEach>
 </form>
     <footer class="footer">

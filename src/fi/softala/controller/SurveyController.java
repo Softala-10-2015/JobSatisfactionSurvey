@@ -84,8 +84,6 @@ public class SurveyController {
 	public void saveAnswer(@ModelAttribute(value="answer") Answer answer) {
 		aDao.saveAnswer(answer);
 	}
-
-
 	
 	//Yksittäisen vastauksen hakeminen id:n perusteella
 	@RequestMapping (value="get-single/{id}", method=RequestMethod.GET)
@@ -103,11 +101,49 @@ public class SurveyController {
 		model.addAttribute("answers", answers);
 		return "summary";
 	}
-	
+
 	@RequestMapping(value="get-all-questions", method=RequestMethod.GET)
 	public String getAllQuestions(Model model) {
 		List<Question> questions = qDao.getAllQuestions();
 		model.addAttribute("questions", questions);
 		return "summary";
 	}
+
+	// yksittäisen kysymyksen luonti(petellä on tylsää)
+	@RequestMapping(value = "insertQuestion", method = RequestMethod.GET)
+	public String getCreateFormQ(Model model) {
+		Question q = new Question();
+		q.setSurvey_id(1);
+
+		model.addAttribute("question", q);
+		return "insertQuestion/createForm";
+	}
+
+	// yksittäisen kysymyksen käsittely(petellä on tylsää)
+	@RequestMapping(value = "insertQuestion", method = RequestMethod.POST)
+	public String createQ(@ModelAttribute(value = "question") Question q) {
+		qDao.saveQuestion(q);
+		return "insertQuestion/vahvistus";
+	}
+
+	// yksittäisen vastauksen luonti(petellä on tylsää)
+	// kyssäri teksti bugaa jo dao tasolla -> etsi syylliset
+	@RequestMapping(value = "insertAnswer/{id}", method = RequestMethod.GET)
+	public String getCreateForma(@PathVariable Integer id, Model model) {
+		Question question = qDao.getOneQuestion(id);
+		Answer answer = new Answer();
+		answer.setQuestionId(question.getQuestion_id());
+		
+		model.addAttribute("question",question);
+		model.addAttribute("answer",answer);
+		return "insertAnswer/createForm";
+	}
+
+	// yksittäisen vastauksen käsittely(petellä on tylsää)
+	@RequestMapping(value = "insertAnswer/{id}", method = RequestMethod.POST)
+	public String createA(@ModelAttribute(value = "answer") Answer a) {
+		//aDao.saveAnswer(a);
+		return "insertAnswer/vahvistus";
+	}
+
 }

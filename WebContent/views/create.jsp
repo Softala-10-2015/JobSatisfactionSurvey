@@ -69,7 +69,7 @@
         <h1>Iso kysely</h1>
       </div>
 
-<form class="well" method="post" action="email">
+<form class="well" method="post" action="newSurvey">
   <h3>Kurssin tiedot</h3>
   <!--  optionit jsp loopilla? --> 
   <div class="form-group">

@@ -59,7 +59,7 @@ public class QuestionDAOSpringJdbcImpl implements QuestionDAO{
 	}
 	
 	public Question getOneQuestion(int question_id) { //Metodi, jolla haetaan yksi kysymys kerrallaan tietokantataulusta
-		String sql = "select survey_id, question_type, question_text, question_order from Question where question_id=?";
+		String sql = "select question_id, survey_id, question_type, question_text, question_order from Question where question_id=?";
 		Object[] parameters = new Object[] { question_id };
 		RowMapper<Question> mapper = new QuestionRowMapper();
 		Question wanted = new Question();
