@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page session="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,8 +16,8 @@
 <title>Kysely</title>
 
 <!-- Bootstrap core CSS -->
-<link href="resources/css/bootstrap.css" rel="stylesheet">
-<link href="resources/css/style.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
@@ -65,10 +68,32 @@
 	<!-- Begin page content -->
 	<div class="container">
 		<div class="container">
+
 			<div class="page-header">
+				<h1> <c:out value="${survey.getSurvey_name()}" default="Hyvinvointikysely"/> </h1>
+			</div>
+			<br>
+			
+			<form:form  class="well" modelAttribute="answers" method="post">
+				<c:forEach var="question" items="${questions}" varStatus="i">
+					<p class="well">
+						<form:label path="answerList[${i.index}].answerText">
+							Kysymys <c:out value="${question.getQuestion_order()}"/>:&nbsp;
+							<c:out value="${question.getQuestion_text()}"/>
+						</form:label>
+						<form:input class="form-control" rows="5" path="answerList[${i.index}].answerText"/>
+						
+						<form:hidden path="answerList[${i.index}].questionId" value="${question.getQuestion_id()}"/>
+					</p>
+				</c:forEach>
+				<button class="btn btn-primary" type="submit" value="submit">Submit</button>
+			</form:form>
+			
+			
+			<%-- <div class="page-header">
 				<h1>Iso kysely</h1>
 			</div>
-
+			
 			<form class="well" method="post" action="email">
 				<h3>Kurssin tiedot</h3>
 				<!--  optionit jsp loopilla? -->
@@ -118,8 +143,6 @@
 
 			<form action="email" method="post">
 				<div class="well">
-					<h3>Hyvinvointikysely</h3>
-					<br>
 
 					<!-- Tekstikenttä -->
 					<div class="form-group">
@@ -174,7 +197,7 @@
 					<br>
 					<br>
 				</div>
-			</form>
+			  </form> --%>
 			<footer class="footer">
 			<div class="container">
 				<p class="text-muted">Copiright Make 2015</p>

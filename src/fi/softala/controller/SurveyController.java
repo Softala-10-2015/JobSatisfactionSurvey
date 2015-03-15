@@ -1,7 +1,6 @@
 package fi.softala.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,9 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import fi.softala.bean.Answer;
+import fi.softala.bean.AnswerListWrapper;
 import fi.softala.bean.Question;
 import fi.softala.bean.Survey;
 import fi.softala.dao.AnswerDAO;
@@ -33,14 +32,14 @@ public class SurveyController {
 	private AnswerDAO aDao;
 	@Inject
 	private QuestionDAO qDao;
-	/*@Inject
+	@Inject
 	private SurveyDao sDao;
 	
 	public AnswerDAO getAnswerDAO() {
 		return this.aDao;
 	}
 	
-	public void setSurveyDAO(AnswerDAO dao) {
+	public void setAnswerDAO(AnswerDAO dao) {
 		this.aDao = dao;
 	}
 	
@@ -48,41 +47,52 @@ public class SurveyController {
 		return this.sDao;
 	}
 	
-	public void setDao(SurveyDao dao) {
+	public void setSurveyDao(SurveyDao dao) {
 		this.sDao = dao;
 	}
 	
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String getCreateForm(Model model) {
+		System.out.println("SurveyController test");
 		return "survey";
 	}
 	
 
-	//Hakee kyselyn kannasta ja tallentaa sen sessioon.
+	//Hakee parametrina saadun kyselyn id:n perusteella kysymykset kannasta.
 	@RequestMapping(value="get-survey/{id}", method=RequestMethod.GET)
-	public String getSurvey(@PathVariable Integer id, Model model, RedirectAttributes redirectAttrs) {
-		Survey survey = sDao.HaeKysely(id);
-		redirectAttrs.addFlashAttribute("survey", survey);
+	public String getSurvey(@PathVariable Integer id, Model model) {
+		System.out.println("get-survey/" + id);
+		//haetaan kysely, jonka perusteella voidaan tuoda otsikko, tekijä jne.
+			//Survey survey = sDao.FindSurvey(id);
+			//model.addAttribute("survey", survey);
+		//käyttöön kun prepared statemtit toimivat
+			//List<Question> questions = qDao.getQuestionsForSurvey(id);
+		//testikysymysiä
+		Question q1 = new Question(id, 1, 1, "Miltä sinusta tuntuu?", 1);
+		Question q2 = new Question(id, 2, 2, "Kerro vähän lisää itsestäsi", 1);
+		Question q3 = new Question(id, 3, 3, "Millainen on työilmapiiri?", 1);
+		List<Question> questions= new ArrayList<Question>();
+		questions.add(q1);
+		questions.add(q2);
+		questions.add(q3);
+		model.addAttribute("questions", questions);
 		
-		return "redirect:/survey/get-questions/" + id;
-	}
-	
-	//Kyselyn kysymysten hakeminen kyselyn id:n perusteella
-	@RequestMapping (value="get-questions/{id}", method=RequestMethod.GET)
-	public String getQuestions(Model model) {
-		Survey survey = (Survey)model.asMap().get("survey");
-		List<Question> questions = sDao.getQuestions(survey);
+		//lisätään tyhjä lista vastauksille
+		model.addAttribute("answers", new AnswerListWrapper());
 		
-		model.addAttribute(questions);
-		//Tähän path oikeaan jsp-sivuun
 		return "survey";
-	}*/
+	}
 
 	
-	//vastauksen tallentaminen
-	@RequestMapping (value="send-answer", method=RequestMethod.GET)
-	public void saveAnswer(@ModelAttribute(value="answer") Answer answer) {
-		aDao.saveAnswer(answer);
+	//vastausten tallentaminen
+	@RequestMapping (value="get-survey/{id}", method=RequestMethod.POST)
+	public String saveAnswer(@ModelAttribute(value="answers") /*List<Answer> answers*/ AnswerListWrapper answers) {
+		System.out.println("get-survey/{id} POST");
+		for(Answer answer : answers.getAnswerList()) {
+			System.out.println(answer.getAnswerText() + " " + answer.getQuestionId());
+			aDao.saveAnswer(answer);
+		}
+		return "redirect:/";
 	}
 
 

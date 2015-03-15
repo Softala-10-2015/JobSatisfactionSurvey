@@ -77,4 +77,32 @@ public class QuestionDAOSpringJdbcImpl implements QuestionDAO{
 		List<Question> allQuestions = jdbcTemplate.query(sql, mapper);
 		return allQuestions;
 	}
+	
+	public List<Question> getQuestionsForSurvey(int surveyId) {
+		String sql = "SELECT question_id, survey_id, question_type, "
+				+ "question_text, question_order "
+				+ "FROM Question "
+				+ "WHERE survey_id = '?' "
+				+ "ORDER BY question_order;";
+		
+		Object[] params = new Object[] { surveyId };
+		System.out.println(params[0].toString());
+		RowMapper<Question> mapper = new QuestionRowMapper();
+		
+		//List<Question> questions = new ArrayList<Question>();
+		//Question question;
+		List<Question> questions= jdbcTemplate.query(sql, params, mapper);
+//		List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql, new Object[] {1});
+//		for(Map row : rows) {
+//			Question q = new Question();
+//			q.setQuestion_id((Integer)row.get("question_id"));
+//			q.setQuestion_order((Integer)row.get("question_order"));
+//			q.setQuestion_text((String)row.get("question_text"));
+//			q.setQuestion_type((Integer)row.get("question_type"));
+//			q.setSurvey_id((Integer)row.get("survey_id"));
+//			questions.add(q);
+//		}
+		//questions.add(question);
+		return questions;
+	}
 }
