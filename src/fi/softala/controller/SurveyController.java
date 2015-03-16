@@ -132,7 +132,7 @@ public class SurveyController {
 	public String getCreateForma(@PathVariable Integer id, Model model) {
 		Question question = qDao.getOneQuestion(id);
 		Answer answer = new Answer();
-		answer.setQuestionId(question.getQuestion_id());
+		answer.setQuestionId(id);
 		
 		model.addAttribute("question",question);
 		model.addAttribute("answer",answer);
@@ -141,8 +141,10 @@ public class SurveyController {
 
 	// yksittäisen vastauksen käsittely(petellä on tylsää)
 	@RequestMapping(value = "insertAnswer/{id}", method = RequestMethod.POST)
-	public String createA(@ModelAttribute(value = "answer") Answer a) {
-		//aDao.saveAnswer(a);
+	public String createA(@PathVariable Integer id, @ModelAttribute(value = "answer") Answer a) {
+		
+		a.setQuestionId(id);
+		aDao.saveAnswer(a);
 		return "insertAnswer/vahvistus";
 	}
 
