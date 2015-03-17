@@ -14,6 +14,13 @@ public interface QuestionDAO{
 	
 	public abstract Question getOneQuestion(int questionId);
 	
-	public abstract List<Question> getAllQuestions();	
+	public abstract List<Question> getAllQuestions();
+	
+	/**
+	 * Hakee kysymykset kyselyn id:n perusteella.
+	 * @param surveyId
+	 * @return
+	 */
+	public abstract List<Question> getQuestionsForSurvey(int surveyId);
 
 }

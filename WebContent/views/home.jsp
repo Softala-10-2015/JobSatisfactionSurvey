@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -137,6 +139,13 @@
           <p><a class="btn btn-default" href="views/create.jsp" role="button">Luontiin &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
+      
+      <!-- Displays a list of available surveys. -->
+      <h3>Vastattavat kyselyt</h3>
+      <c:forEach var="survey" items="${surveys}">
+      	<a href="survey/get-survey/${survey.survey_id}"><c:out value="${survey.getSurvey_name()}"/></a>
+      	<br>
+      </c:forEach>
       
     <!-- Begin page content -->
     <div class="container">

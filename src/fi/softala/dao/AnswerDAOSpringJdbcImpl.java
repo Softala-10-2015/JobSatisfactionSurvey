@@ -41,7 +41,7 @@ public class AnswerDAOSpringJdbcImpl implements AnswerDAO{
 			public PreparedStatement createPreparedStatement(
 					Connection connection) throws SQLException {
 				PreparedStatement ps = connection.prepareStatement(sql,
-						new String[] { "answerId" });
+						new String[] { "answer_id" });
 				ps.setInt(1, questionId);
 				ps.setString(2, answerText);
 				return ps;
