@@ -66,15 +66,15 @@ public class SurveyController {
 			//Survey survey = sDao.FindSurvey(id);
 			//model.addAttribute("survey", survey);
 		//käyttöön kun prepared statemtit toimivat
-			//List<Question> questions = qDao.getQuestionsForSurvey(id);
+			List<Question> questions = qDao.getQuestionsForSurvey(id);
 		//testikysymysiä
-		Question q1 = new Question(id, 1, 1, "Miltä sinusta tuntuu?", 1);
-		Question q2 = new Question(id, 2, 2, "Kerro vähän lisää itsestäsi", 1);
-		Question q3 = new Question(id, 3, 3, "Millainen on työilmapiiri?", 1);
-		List<Question> questions= new ArrayList<Question>();
-		questions.add(q1);
-		questions.add(q2);
-		questions.add(q3);
+//		Question q1 = new Question(id, 1, 1, "Miltä sinusta tuntuu?", 1);
+//		Question q2 = new Question(id, 2, 2, "Kerro vähän lisää itsestäsi", 1);
+//		Question q3 = new Question(id, 3, 3, "Millainen on työilmapiiri?", 1);
+//		List<Question> questions= new ArrayList<Question>();
+//		questions.add(q1);
+//		questions.add(q2);
+//		questions.add(q3);
 		model.addAttribute("questions", questions);
 		
 		//lisätään tyhjä lista vastauksille

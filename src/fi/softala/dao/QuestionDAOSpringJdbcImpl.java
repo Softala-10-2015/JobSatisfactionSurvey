@@ -82,11 +82,11 @@ public class QuestionDAOSpringJdbcImpl implements QuestionDAO{
 		String sql = "SELECT question_id, survey_id, question_type, "
 				+ "question_text, question_order "
 				+ "FROM Question "
-				+ "WHERE survey_id = '?' "
+				+ "WHERE survey_id = ? "
 				+ "ORDER BY question_order;";
 		
 		Object[] params = new Object[] { surveyId };
-		System.out.println(params[0].toString());
+		System.out.println(params[0]);
 		RowMapper<Question> mapper = new QuestionRowMapper();
 		
 		//List<Question> questions = new ArrayList<Question>();

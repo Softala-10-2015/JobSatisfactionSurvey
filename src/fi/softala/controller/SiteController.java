@@ -39,31 +39,7 @@ public class SiteController {
 		System.out.println("surveys:" + surveyList);
 		model.addAttribute("surveys", surveyList);
 		
-//		//testikoodia
-//		ArrayList<Survey> surveyList = new ArrayList<Survey>();
-//		Survey survey1 = new Survey();
-//		survey1.setSurvey_id(1);
-//		survey1.setEmail("asd@asd.asd");
-//		survey1.setOwner_id(1);
-//		survey1.setSurvey_name("Testi kysely1");
-//		
-//		Survey survey2 = new Survey();
-//		survey2.setSurvey_id(2);
-//		survey2.setEmail("asd@asd.asd");
-//		survey2.setOwner_id(1);
-//		survey2.setSurvey_name("Testi kysely2");
-//		
-//		surveyList.add(survey1);
-//		surveyList.add(survey2);
-//		
-//		model.addAttribute("surveyList", surveyList);
-		
 		return "home";
-	}
-	
-	@RequestMapping(value="", method=RequestMethod.POST)
-	public String selectSurvey(@ModelAttribute(value="survey") Survey survey) {		
-		return "redirect:/survey/" + survey.getSurvey_id();
 	}
 	
 }
