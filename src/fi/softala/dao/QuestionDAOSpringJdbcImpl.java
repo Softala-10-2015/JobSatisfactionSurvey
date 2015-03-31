@@ -66,7 +66,7 @@ public class QuestionDAOSpringJdbcImpl implements QuestionDAO{
 		try {
 			wanted=jdbcTemplate.queryForObject(sql, parameters, mapper);
 		} catch (IncorrectResultSizeDataAccessException e) {
-			
+			throw new NotFoundException(e);
 		}
 		return wanted;
 	}
