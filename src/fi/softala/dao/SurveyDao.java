@@ -10,8 +10,9 @@ public interface SurveyDao {
 
 	public abstract Survey FindSurvey(int i);
 
-
 	public abstract List<Survey> FindSurveys(int i);
+	
+	public abstract void addSurvey(Survey newSurvey);
 	
 	
 }
