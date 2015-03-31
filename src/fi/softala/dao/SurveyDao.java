@@ -14,5 +14,4 @@ public interface SurveyDao {
 	
 	public abstract void addSurvey(Survey newSurvey);
 	
-	
 }

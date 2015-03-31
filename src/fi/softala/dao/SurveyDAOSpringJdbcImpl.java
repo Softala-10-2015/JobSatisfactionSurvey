@@ -55,6 +55,7 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 				return ps;
 			}
 		}, idHolder);
+		
 		newSurvey.setSurvey_id(idHolder.getKey().intValue());
 	}
 	
