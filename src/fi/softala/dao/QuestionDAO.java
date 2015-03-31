@@ -6,6 +6,7 @@ package fi.softala.dao;
 
 import java.util.List;
 
+import fi.softala.bean.AChoice;
 import fi.softala.bean.Question;
 
 public interface QuestionDAO{
@@ -22,5 +23,7 @@ public interface QuestionDAO{
 	 * @return
 	 */
 	public abstract List<Question> getQuestionsForSurvey(int surveyId);
+	
+	public abstract void addAnswerChoice(AChoice answeChoice);
 
 }

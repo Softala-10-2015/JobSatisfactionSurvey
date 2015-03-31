@@ -20,6 +20,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import fi.softala.bean.AChoice;
 import fi.softala.bean.Question;
 
 @Repository
@@ -33,6 +34,28 @@ public class QuestionDAOSpringJdbcImpl implements QuestionDAO{
 
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	public void addAnswerChoice(AChoice answerChoice) {
+		final String sql = "insert into AnswerChoice(achoice_id, question_id, achoice_text) values(?, ?, ?)";
+		final int achoiceId=answerChoice.getaChoiceId();
+		final int questionId=answerChoice.getQuestionId();
+		final String answerText=answerChoice.getaChoiceText();
+		
+		KeyHolder idHolder = new GeneratedKeyHolder();
+		jdbcTemplate.update(new PreparedStatementCreator() {
+			public PreparedStatement createPreparedStatement(
+					Connection connection) throws SQLException {
+				PreparedStatement ps = connection.prepareStatement(sql,
+						new String[] { "question_id" }); //Luo uudelle kysymykselle oman id:n
+				ps.setInt(1, achoiceId); //tallennetaan kysymykseen liittyv�t attribuutit
+				ps.setInt(2, questionId);
+				ps.setString(3, answerText);
+				return ps;
+			}
+		}, idHolder);
+		answerChoice.setaChoiceId(idHolder.getKey().intValue());
+		
 	}
 	
 	public void saveQuestion(Question question) {
