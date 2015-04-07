@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import fi.softala.bean.Question;
 import fi.softala.bean.Survey;
 import fi.softala.dao.SurveyDao;
 
@@ -41,5 +42,36 @@ public class SiteController {
 		
 		return "home";
 	}
+	
+	/**
+	 * @author Mikko Mattila
+	 *
+	 */
+	
+	@RequestMapping(value = "home", method = RequestMethod.GET)
+	public String home(Model model) {	
+		//etusivu
+		return "home";
+	}
+	
+	@RequestMapping(value = "survey", method = RequestMethod.GET)
+	public String surveyInit(Model model) {	
+		//vastaamisen initialisointi
+		return "survey";
+	}
+	
+	@RequestMapping(value = "summary", method = RequestMethod.GET)
+	public String summaryInit(Model model) {	
+		//vastaukset
+		return "summary";
+	}
+	
+	@RequestMapping(value = "create", method = RequestMethod.GET)
+	public String createInit(Model model) {	
+		//kyselyluonnin initialisointi
+		return "create";
+	}
+	
+	
 	
 }
