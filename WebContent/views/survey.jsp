@@ -45,9 +45,8 @@
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="home.jsp">Home</a></li>
-				<li class="active"><a href="survey.jsp">Kysely</a></li><!-- survey tab active -->
-				<li><a href="summary.jsp">Tulokset</a></li>
+				<li class="active"><a href="home">Home</a></li> <!-- home tab active -->
+				<li><a href="summary">Tulokset</a></li>
 			</ul>
 			<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">
@@ -61,9 +60,9 @@
 				<button type="submit" class="btn btn-primary">Kirjaudu</button>
 			</form>
 		</div>
-		<!--/.nav-collapse -->
+
 	</div>
-	</nav> <!-- End of navbar -->
+	</nav> <!-- end of navbar -->   
 	
 	<!-- Begin page content -->
 	<div class="container">
