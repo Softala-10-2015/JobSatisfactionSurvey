@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -60,26 +61,35 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 	}
 	
 	
-	public Survey FindSurvey(int i) {
+	public Survey findSurvey(int i) {
 		//RAW metodi, siistimistä vailla
 		
-		String sql = "SELECT *  FROM Survey WHERE survey_id = '?';";
+		String sql = "SELECT *  FROM Survey WHERE survey_id = ?";
 		Object[] param = new Object[] { i };
 		RowMapper<Survey> mapper = new SurveyRowMapper();
-		List<Survey> Surveys = jdbcTemplate.query(sql,param, mapper);
-		Survey survey = Surveys.get(0);
-
-	return survey;
+		try {
+			Survey survey = jdbcTemplate.queryForObject(sql,param, mapper);
+			return survey;
+		} catch (IncorrectResultSizeDataAccessException e) {
+			throw new NotFoundException(e);
+		}
+	
 	}
 	
-	public List<Survey> FindSurveys(int i) {
+	public List<Survey> findSurveys() throws DataAccessException, RuntimeException {
 		//kaikki kyselyt, vois varmaan siisitiä
 		
 		String sql = "SELECT * FROM Survey;";
 		//Object[] param = new Object[] { i };
 		RowMapper<Survey> mapper = new SurveyRowMapper();
-		List<Survey> Surveys = jdbcTemplate.query(sql, mapper);
 		
-		return Surveys;
+		try {
+			List<Survey> surveys = jdbcTemplate.query(sql, mapper);
+			return surveys;
+		} catch (DataAccessException e) {
+			throw e;
+		} catch (RuntimeException e) {
+			throw new DaoConnectionException("virhe", e);
+		}
 	}
 }

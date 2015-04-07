@@ -8,9 +8,9 @@ public interface SurveyDao {
 	
 	//interface suunnittelua ja toteutusta vaille valmis
 
-	public abstract Survey FindSurvey(int i);
+	public abstract Survey findSurvey(int i);
 
-	public abstract List<Survey> FindSurveys(int i);
+	public abstract List<Survey> findSurveys();
 	
 	public abstract void addSurvey(Survey newSurvey);
 	
