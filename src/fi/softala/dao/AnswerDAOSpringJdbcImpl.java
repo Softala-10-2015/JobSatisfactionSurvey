@@ -17,6 +17,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import fi.softala.bean.Answer;
+import fi.softala.bean.Question;
 
 @Repository
 public class AnswerDAOSpringJdbcImpl implements AnswerDAO{
@@ -68,5 +69,24 @@ public class AnswerDAOSpringJdbcImpl implements AnswerDAO{
 		RowMapper<Answer> mapper = new AnswerRowMapper();
 		List<Answer> allAnswers = jdbcTemplate.query(sql, mapper);
 		return allAnswers;
+	}
+	
+	public List<Answer> getAnswersForQuestion(int questionId) {
+		String sql = "SELECT Answer.achoice_id, Answer.answer_id, Answer.answer_text, "
+				+ "AnswerChoice.achoice_text"
+				+ "FROM Answer"
+				+ "LEFT JOIN AnswerChoice "
+				+ "ON Answer.achoice_id=AnswerChoice.achoice_id "
+				+ "LEFT JOIN Question ON AnswerChoice.question_id = Question.question_id "
+				+ "WHERE question_id = ? "
+				+ "ORDER BY answer_id;";
+		
+		Object[] params = new Object[] { questionId };
+		System.out.println(params[0]);
+		RowMapper<Answer> mapper = new AnswerRowMapper();
+		
+		List<Answer> answers= jdbcTemplate.query(sql, params, mapper);
+
+		return answers;
 	}
 }
