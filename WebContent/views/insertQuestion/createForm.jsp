@@ -8,8 +8,8 @@
 <html>
 <head>
 <title>Kysymyksen lisääminen kantaan</title>
-<link rel="stylesheet" type="text/css" href="../resources/styles/common.css">
-<link rel="stylesheet" type="text/css" href="../resources/styles/form.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/form.css">
 </head>	
 
 <!-- turhaa toiminallisuutta deomusta varten by pete-->
