@@ -69,7 +69,7 @@
 		<div class="container">
 
 			<div class="page-header">
-				<h1> <c:out value="${survey.getSurvey_name()}" default="Hyvinvointikysely"/> </h1>
+				<h1> <c:out value="${survey.getSurveyName()}" default="Hyvinvointikysely"/> </h1>
 			</div>
 			<br>
 			
@@ -77,12 +77,12 @@
 				<c:forEach var="question" items="${questions}" varStatus="i">
 					<p class="well">
 						<form:label path="answerList[${i.index}].answerText">
-							Kysymys <c:out value="${question.getQuestion_order()}"/>:&nbsp;
-							<c:out value="${question.getQuestion_text()}"/>
+							Kysymys <c:out value="${question.getQuestionOrder()}"/>:&nbsp;
+							<c:out value="${question.getQuestionText()}"/>
 						</form:label>
 						<form:input class="form-control" rows="5" path="answerList[${i.index}].answerText"/>
 						
-						<form:hidden path="answerList[${i.index}].questionId" value="${question.getQuestion_id()}"/>
+						<form:hidden path="answerList[${i.index}].questionId" value="${question.getQuestionId()}"/>
 					</p>
 				</c:forEach>
 				<button class="btn btn-primary" type="submit" value="submit">Submit</button>

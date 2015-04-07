@@ -37,9 +37,9 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 	public void addSurvey(Survey newSurvey) {
 		
 		final String sql="INSERT INTO Survey(survey_id, owner_id, survey_name, email) values (?, ?, ?, ?)";
-		final int surveyId=newSurvey.getSurvey_id();
-		final int ownerId=newSurvey.getOwner_id();
-		final String surveyName=newSurvey.getSurvey_name();
+		final int surveyId=newSurvey.getSurveyId();
+		final int ownerId=newSurvey.getOwnerId();
+		final String surveyName=newSurvey.getSurveyName();
 		final String email=newSurvey.getEmail();
 		
 		KeyHolder idHolder = new GeneratedKeyHolder();
@@ -56,7 +56,7 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 			}
 		}, idHolder);
 	
-		newSurvey.setSurvey_id(idHolder.getKey().intValue());
+		newSurvey.setSurveyId(idHolder.getKey().intValue());
 	}
 	
 	

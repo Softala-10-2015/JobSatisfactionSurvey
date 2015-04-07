@@ -14,11 +14,11 @@ import fi.softala.bean.Question;
 public class QuestionRowMapper implements RowMapper<Question> {
 	public Question mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Question question = new Question();
-		question.setQuestion_id(rs.getInt("question_id"));
-		question.setSurvey_id(rs.getInt("survey_id"));
-		question.setQuestion_type(rs.getInt("question_type"));
-		question.setQuestion_text(rs.getString("question_text"));
-		question.setQuestion_order(rs.getInt("question_order"));
+		question.setQuestionId(rs.getInt("question_id"));
+		question.setSurveyId(rs.getInt("survey_id"));
+		question.setQuestionType(rs.getInt("question_type"));
+		question.setQuestionText(rs.getString("question_text"));
+		question.setQuestionOrder(rs.getInt("question_order"));
 		
 		//System.out.println("Question: "+question.getQuestion_id()+"survey: "+question.getSurvey_id());
 		

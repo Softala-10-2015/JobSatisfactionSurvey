@@ -5,64 +5,64 @@
 package fi.softala.bean;
 
 public class Question{
-	int survey_id;
-	int question_id; // id
-	int question_order; // question sequence number 
+	int surveyId;
+	int questionId; // id
+	int questionOrder; // question sequence number 
 	/* int total; // total option ? */
-	String question_text; // question
+	String questionText; // question
 	/* List options; // question options - answer choices- value pair */
-	int question_type;
+	int questionType;
 
 	public Question() {
 	}
 
-	public Question(int survey_id, int question_id,
-			int question_order, String question_text, int question_type) {
-		this.survey_id = survey_id;
-		this.question_id = question_id;
-		this.question_order = question_order;
-		this.question_text = question_text;
-		this.question_type = question_type;
+	public Question(int surveyId, int questionId,
+			int questionOrder, String questionText, int questionType) {
+		this.surveyId = surveyId;
+		this.questionId = questionId;
+		this.questionOrder = questionOrder;
+		this.questionText = questionText;
+		this.questionType = questionType;
 	}
 
-	public int getSurvey_id() {
-		return survey_id;
+	public int getSurveyId() {
+		return surveyId;
 	}
 
-	public void setSurvey_id(int survey_id) {
-		this.survey_id = survey_id;
+	public void setSurveyId(int surveyId) {
+		this.surveyId = surveyId;
 	}
 
-	public int getQuestion_id() {
-		return question_id;
+	public int getQuestionId() {
+		return questionId;
 	}
 
-	public void setQuestion_id(int question_id) {
-		this.question_id = question_id;
+	public void setQuestionId(int questionId) {
+		this.questionId = questionId;
 	}
 
-	public int getQuestion_order() {
-		return question_order;
+	public int getQuestionOrder() {
+		return questionOrder;
 	}
 
-	public void setQuestion_order(int question_order) {
-		this.question_order = question_order;
+	public void setQuestionOrder(int questionOrder) {
+		this.questionOrder = questionOrder;
 	}
 
-	public String getQuestion_text() {
-		return question_text;
+	public String getQuestionText() {
+		return questionText;
 	}
 
-	public void setQuestion_text(String question_text) {
-		this.question_text = question_text;
+	public void setQuestionText(String questionText) {
+		this.questionText = questionText;
 	}
 
-	public int getQuestion_type() {
-		return question_type;
+	public int getQuestionType() {
+		return questionType;
 	}
 
-	public void setQuestion_type(int question_type) {
-		this.question_type = question_type;
+	public void setQuestionType(int questionType) {
+		this.questionType = questionType;
 	}	
 }
 

@@ -21,24 +21,24 @@
 		  	<fieldset>		
 				<legend>Kysymyksen täyttö, ps kaikki paitsi text integerinä,pss survey id 1&3 toimii</legend>
 				<p>
-					<form:label	path="survey_id">survey_id</form:label><br/>
-					<form:input path="survey_id" />		
+					<form:label	path="surveyId">surveyId</form:label><br/>
+					<form:input path="surveyId" />		
 				</p>
 				<p>	
-					<form:label path="question_id">question_id</form:label><br/>
-					<form:input path="question_id" />
+					<form:label path="questionId">questionId</form:label><br/>
+					<form:input path="questionId" />
 				</p>
 								<p>	
-					<form:label path="question_order">question_order</form:label><br/>
-					<form:input path="question_order" />
+					<form:label path="questionOrder">questionOrder</form:label><br/>
+					<form:input path="questionOrder" />
 				</p>
 								<p>	
-					<form:label path="question_text">question_text</form:label><br/>
-					<form:input path="question_text" />
+					<form:label path="questionText">questionText</form:label><br/>
+					<form:input path="questionText" />
 				</p>
 								<p>	
-					<form:label path="question_type">question_type</form:label><br/>
-					<form:input path="question_type" />
+					<form:label path="questionType">questionType</form:label><br/>
+					<form:input path="questionType" />
 				</p>
 				<p>	
 					<button type="submit">add</button>

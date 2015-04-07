@@ -116,7 +116,7 @@ public class SurveyController {
 	@RequestMapping(value = "insertQuestion", method = RequestMethod.GET)
 	public String getCreateFormQ(Model model) {
 		Question q = new Question();
-		q.setSurvey_id(1);
+		q.setSurveyId(1);
 
 		model.addAttribute("question", q);
 		return "insertQuestion/createForm";

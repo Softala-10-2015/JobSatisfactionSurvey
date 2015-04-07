@@ -18,7 +18,7 @@
 		Luo Vastaus
 	</h1>
 
-	<p><c:out value="${question.question_text}" default="-KYSYMYSTÄ EI OLE OLEMASSA, ÄLÄ VASTAA!-"/></p>
+	<p><c:out value="${question.questionText}" default="-KYSYMYSTÄ EI OLE OLEMASSA, ÄLÄ VASTAA!-"/></p>
 
 		<form:form modelAttribute="answer" method="post">
 		  	<fieldset>		

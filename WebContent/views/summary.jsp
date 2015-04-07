@@ -76,9 +76,9 @@
 </form>
 <form method="post">
 <c:forEach items="${questions}" var="question">
-		<c:set var="question_text" scope="session" value="${question.question_text}"  />
+		<c:set var="questionText" scope="session" value="${question.questionText}"  />
 		
-		<label id="question_text"><c:out value="${question_text}"></c:out></label>
+		<label id="questionText"><c:out value="${questionText}"></c:out></label>
 		
 		<br/>
 	</c:forEach>
@@ -87,7 +87,7 @@
 	
 	<c:forEach items="${answers}" var="answer">
 		<c:set var="answerText" scope="session" value="${answer.answerText}"  />
-		<label id="answer_text"><c:out value="${answerText}"></c:out></label>
+		<label id="answerText"><c:out value="${answerText}"></c:out></label>
 	<br/>
 	</c:forEach>
 </form>

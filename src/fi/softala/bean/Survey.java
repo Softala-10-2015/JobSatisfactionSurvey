@@ -8,9 +8,9 @@ import java.util.List;
 public class Survey {
 	
 	//DAO ATRIBUUTIT
-	int survey_id; 
-	int owner_id; 
-	String survey_name; 
+	int surveyId; 
+	int ownerId; 
+	String surveyName; 
 	String email;
 	
 	//JAVA ATRIBUUTTEJA
@@ -24,24 +24,24 @@ public class Survey {
 		   questions = new ArrayList();
 	}
 
-	public int getSurvey_id() {
-		return survey_id;
+	public int getSurveyId() {
+		return surveyId;
 	}
 
-	public int getOwner_id() {
-		return owner_id;
+	public int getOwnerId() {
+		return ownerId;
 	}
 
-	public void setOwner_id(int owner_id) {
-		this.owner_id = owner_id;
+	public void setOwnerId(int ownerId) {
+		this.ownerId = ownerId;
 	}
 
-	public String getSurvey_name() {
-		return survey_name;
+	public String getSurveyName() {
+		return surveyName;
 	}
 
-	public void setSurvey_name(String survey_name) {
-		this.survey_name = survey_name;
+	public void setSurveyName(String surveyName) {
+		this.surveyName = surveyName;
 	}
 
 	public String getEmail() {
@@ -52,8 +52,8 @@ public class Survey {
 		this.email = email;
 	}
 
-	public void setSurvey_id(int survey_id) {
-		this.survey_id = survey_id;
+	public void setSurveyId(int surveyId) {
+		this.surveyId = surveyId;
 	}
 
 	public int getNextFree() {

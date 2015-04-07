@@ -92,7 +92,7 @@
       <!-- Displays a list of available surveys. -->
       <h3>Vastattavat kyselyt</h3>
       <c:forEach var="survey" items="${surveys}">
-      	<a href="survey/get-survey/${survey.survey_id}"><c:out value="${survey.getSurvey_name()}"/></a>
+      	<a href="survey/get-survey/${survey.surveyId}"><c:out value="${survey.getSurveyName()}"/></a>
       	<br>
       </c:forEach>
       
