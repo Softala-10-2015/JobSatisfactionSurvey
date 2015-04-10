@@ -150,5 +150,19 @@ public class SurveyController {
 		aDao.saveAnswer(a);
 		return "insertAnswer/vahvistus";
 	}
+	
+	@RequestMapping(value = "create", method = RequestMethod.GET)
+	public String createInit(Model model) {
+		Survey s = new Survey();
+		model.addAttribute("survey", s);
+		return "create";
+	}
+	
+	@RequestMapping(value = "create", method = RequestMethod.POST)
+	public String sendSurvey(@ModelAttribute(value = "survey") Survey s, Model model) {
+		
+		sDao.addSurvey(s);
+		return "create";
+	}
 
 }

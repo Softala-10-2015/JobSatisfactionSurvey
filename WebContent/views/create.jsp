@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -67,8 +68,26 @@
         <h1>Iso kysely</h1>
       </div>
 
-<form class="well" method="post" action="newSurvey">
+<form:form modelAttribute="survey" class="well" method="post">
   <h3>Kurssin tiedot</h3>
+  
+<fieldset>
+  
+<form:label	path="surveyId">surveyId</form:label>
+<form:input path="surveyId" /><br/>
+
+<form:label	path="ownerId">ownerId</form:label>
+<form:input path="ownerId" /><br/>
+
+<form:label	path="surveyName">surveyName</form:label>
+<form:input path="surveyName" /><br/>
+
+<form:label	path="email">email</form:label>
+<form:input path="email" /><br/>
+  
+</fieldset>
+  
+  
   <!--  optionit jsp loopilla? --> 
   <div class="form-group">
   <label for="course-opt">Kurssitunnus:</label>
@@ -110,7 +129,7 @@
 <br><br>
 <button class="btn btn-primary" type="submit" value="Send" >Submit</button>
 <br><br>
-</form>
+</form:form>
 
     <footer class="footer">
       <div class="container">
