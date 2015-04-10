@@ -104,6 +104,10 @@ public class SiteController {
 		return "create";
 	}
 	
-	
+	@RequestMapping(value = "index", method = RequestMethod.GET)
+	public String indexInit(Model model) {	
+		//kyselyluonnin initialisointi
+		return "index";
+	}
 	
 }
