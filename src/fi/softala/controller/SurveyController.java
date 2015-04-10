@@ -111,6 +111,21 @@ public class SurveyController {
 		model.addAttribute("questions", questions);
 		return "summary";
 	}
+	
+	@RequestMapping(value = "insertQuestion/{id}", method = RequestMethod.GET)
+	public String addQuestion(@PathVariable Integer id, Model model) {
+		Question q = new Question();
+		q.setSurveyId(id);
+
+		model.addAttribute("question", q);
+		return "insertQuestion/createForm";
+	}
+	
+	@RequestMapping(value = "insertQuestion/{id}", method = RequestMethod.POST)
+	public String sendQuestion(@ModelAttribute(value = "question") Question q) {
+		qDao.saveQuestion(q);
+		return "insertQuestion/vahvistus";
+	}
 
 	// yksittäisen kysymyksen luonti(petellä on tylsää)
 	@RequestMapping(value = "insertQuestion", method = RequestMethod.GET)

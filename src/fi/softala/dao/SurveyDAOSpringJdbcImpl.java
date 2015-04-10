@@ -37,9 +37,7 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 	
 	public void addSurvey(Survey newSurvey) {
 		
-		final String sql="INSERT INTO Survey(survey_id, owner_id, survey_name, email) values (?, ?, ?, ?)";
-		final int surveyId=newSurvey.getSurveyId();
-		final int ownerId=newSurvey.getOwnerId();
+		final String sql="INSERT INTO Survey(survey_name, email) values (?, ?)";
 		final String surveyName=newSurvey.getSurveyName();
 		final String email=newSurvey.getEmail();
 		
@@ -49,10 +47,8 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 					Connection connection) throws SQLException {
 				PreparedStatement ps = connection.prepareStatement(sql,
 						new String[] { "survey_id" }); //Luo uudelle surveylle oman id:n
-				ps.setInt(1, surveyId); //tallennetaan surveyyn liittyv�t attribuutit
-				ps.setInt(2, ownerId);
-				ps.setString(3, surveyName);
-				ps.setString(4, email);
+				ps.setString(1, surveyName);
+				ps.setString(2, email);
 				return ps;
 			}
 		}, idHolder);

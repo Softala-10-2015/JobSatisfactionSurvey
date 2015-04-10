@@ -72,63 +72,14 @@
   <h3>Kurssin tiedot</h3>
   
 <fieldset>
-  
-<form:label	path="surveyId">surveyId</form:label>
-<form:input path="surveyId" /><br/>
-
-<form:label	path="ownerId">ownerId</form:label>
-<form:input path="ownerId" /><br/>
-
 <form:label	path="surveyName">surveyName</form:label>
 <form:input path="surveyName" /><br/>
 
 <form:label	path="email">email</form:label>
 <form:input path="email" /><br/>
-  
 </fieldset>
   
-  
-  <!--  optionit jsp loopilla? --> 
-  <div class="form-group">
-  <label for="course-opt">Kurssitunnus:</label>
-  <select class="form-control" id="course-opt">
-  <option>Valitse</option>
-  <option>SWE12345</option>
-  <option>BUS54321</option>
- </select>
-</div>
-  <div class="input-group">
-  <span class="input-group-addon" id="basic-addon1"></span>
-  <input type="text" class="form-control createInput" placeholder="Kurssin nimi" aria-describedby="basic-addon1">
-</div>
-<br/>
-<div class="input-group">
-  <span class="input-group-addon" id="basic-addon1"></span>
-  <input type="text" class="form-control createInput" placeholder="Opettajan nimi" aria-describedby="basic-addon1">
-</div>
-<!--  optionit jsp loopilla? --> 
-  <div class="form-group">
-  <label for="class-year">Vuosikurssi:</label>
-  <select class="form-control" id="class-year">
-  <option>2012</option>
-  <option>2013</option>
-  <option>2014</option>
-  <option>2015</option>
- </select>
-</div>
-<label for="input_message">Toteutus:</label><br>
-<div class="btn-group" data-toggle="buttons">
-
-  <label class="btn btn-primary active">
-    <input type="radio" name="options" id="option1" autocomplete="off" checked>Kevät 
-  </label>
-  <label class="btn btn-primary">
-    <input type="radio" name="options" id="option2" autocomplete="off">Syksy 
-  </label>
-</div>
-<br><br>
 <button class="btn btn-primary" type="submit" value="Send" >Submit</button>
-<br><br>
 </form:form>
 
     <footer class="footer">
