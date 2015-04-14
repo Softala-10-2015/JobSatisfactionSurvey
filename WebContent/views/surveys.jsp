@@ -1,10 +1,8 @@
-<%@page contentType="text/html;charset=UTF-8"%>
-<%@page pageEncoding="UTF-8"%>
-<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form"%>
-
-<!DOCTYPE html>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <meta charset="utf-8">
@@ -12,13 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="${pageContext.request.contextPath}/resources/img/kisutopi.ico">
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/img/icon.ico">
 
-    <title>Lisää kysymys</title>
+    <title>Home</title>
 
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet">
+	
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
@@ -29,25 +29,9 @@
     <![endif]-->
   </head>
 
-<script type="text/javascript">
-var i = 0;
-    function insertInput(){
-		i=i+1;
-        var anchor, input;
-        anchor = document.getElementById('anchor');
-        input = document.createElement('input');
-        input.name = "acList["+i+"].aChoiceText";
-        input.id = "acList["+i+"].aChoiceText";
-        anchor.appendChild(input);
-        anchor.appendChild(document.createElement('br'));
-        anchor.appendChild(document.createElement('br'));
-    }
-</script>
-
-
   <body>
 
-		<!-- Fixed navbar & login -->
+	<!-- Fixed navbar & login -->
 
 	<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
@@ -59,16 +43,25 @@ var i = 0;
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-		</div>
+			
+		</div> 
+<div class="navbar-brand">
+
+<div class="container">
+
+</div>
+ </div>
 		<div id="navbar" class="collapse navbar-collapse">
+	<a class="navbar-brand" href="#"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png" alt=""></a> 
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="/Softala">Home</a></li> <!-- home tab active -->
 				<li><a href="summary">Tulokset</a></li>
 			</ul>
+				
 			<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">
 					<input type="text" class="form-control" name="username"
-						placeholder="Käyttäjätunnus">
+						placeholder="K�ytt�j�tunnus">
 				</div>
 				<div class="form-group">
 					<input type="text" class="form-control" name="password"
@@ -76,35 +69,32 @@ var i = 0;
 				</div>
 				<button type="submit" class="btn btn-primary">Kirjaudu</button>
 			</form>
+			
 		</div>
 
 	</div>
-	</nav> <!-- end of navbar -->   
-		<div class="container">
+	
+	</nav> <!-- end of navbar -->    
+    
+ 	<div class="logo"> 
+   		<center><img src="${pageContext.request.contextPath}/resources/img/logo.png"/> </center>
+	</div>
+      <!-- Displays a list of available surveys. -->
+      <h3>Vastattavat kyselyt</h3>
+      <c:forEach var="survey" items="${surveys}">
+      	<a href="get-survey/${survey.surveyId}"><c:out value="${survey.getSurveyName()}"/></a>
+      	<br>
+      </c:forEach>
+      
+    <!-- Begin page content -->
     <div class="container">
       <div class="page-header">
+
       </div>
-	<h1>
-		Lisää monivalintakysymys
-	</h1>
-		<form:form id="form" modelAttribute="questions" class="well" method="post">
-		  	<fieldset>		
-				<p>
-				</p>
-				<p>	
-					<form:label path="acList[0].aChoiceText">Vastausvaihtoehdot</form:label><br/>
-					<form:input path="acList[0].aChoiceText" /><br><br>
-					<a id="anchor"></a>
-				</p>
-				
-				<p>	<button type="button" onClick="insertInput()">Uusi vaihtoehto</button>
-					<button type="submit">Lisää</button>
-				</p>
-			</fieldset>
-		</form:form>
- <footer class="footer">
+  
+    <footer class="footer">
       <div class="container">
-        <p class="text-muted">Copiright Make 2015</p>
+        <p class="text-muted">Copiright Make ja Mikot 2015</p>
       </div>
     </footer>
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +19,7 @@ import fi.softala.bean.Question;
 import fi.softala.bean.QuestionListWrapper;
 import fi.softala.bean.Survey;
 import fi.softala.dao.AnswerDAO;
+import fi.softala.dao.DaoConnectionException;
 import fi.softala.dao.QuestionDAO;
 import fi.softala.dao.SurveyDao;
 
@@ -216,6 +218,19 @@ public class SurveyController {
 		}
 		return "redirect:/survey/choice";
 	}
-
+	
+	@RequestMapping(value = "surveys", method = RequestMethod.GET)
+	public String getSruveys(Model model){
+		
+		try {
+			List<Survey> surveyList = sDao.findSurveys();
+			System.out.println("surveys:" + surveyList);
+			model.addAttribute("surveys", surveyList);
+		} catch(DataAccessException e) {
+			throw new DaoConnectionException("Tietokantaan ei saada yhteyttä.", e);
+		}
+		
+		return "surveys";
+	}
 
 }

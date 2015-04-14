@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="resources/img/icon.ico">
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/img/icon.ico">
 
     <title>Home</title>
 
@@ -52,9 +52,9 @@
 </div>
  </div>
 		<div id="navbar" class="collapse navbar-collapse">
-	<a class="navbar-brand" href="#"><img src="resources/img/brandimg.png" alt=""></a> 
+	<a class="navbar-brand" href="#"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png" alt=""></a> 
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="home">Home</a></li> <!-- home tab active -->
+				<li class="active"><a href="/Softala">Home</a></li> <!-- home tab active -->
 				<li><a href="summary">Tulokset</a></li>
 			</ul>
 				
@@ -77,45 +77,44 @@
 	</nav> <!-- end of navbar -->    
     
  	<div class="logo"> 
-   		<center><img src="resources/img/logo.png"/> </center>
+   		<center><img src="${pageContext.request.contextPath}/resources/img/logo.png"/> </center>
 	</div>
     
     
       <div class="container marketing">
       <div class="row">
         <div class="col-lg-3">
-          <img src="resources/img/answer.png" alt="kuva" style="width: 140px; height: 140px;">
+          <img src="${pageContext.request.contextPath}/resources/img/answer.png" alt="kuva" style="width: 140px; height: 140px;">
           <h2>Vastaa kyselyyn</h2>
           <p>Vastaa sinulle laadittuun kyselyyn.</p>
-          <p><a class="btn btn-default" href="survey" role="button">Kyselyyn &raquo;</a></p>
+          <p><a class="btn btn-default" href="survey/surveys" role="button">Kyselyyn &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-3">
-          <img src="resources/img/answers.png" alt="kuva" style="width: 140px; height: 140px;">
+          <img src="${pageContext.request.contextPath}/resources/img/answers.png" alt="kuva" style="width: 140px; height: 140px;">
           <h2>Vastaukset</h2>
           <p>Tarkastele kyselyiden vastauksia.</p>
           <p><a class="btn btn-default" href="summary" role="button">Vastauksiin &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-3">
-          <img src="resources/img/create.png" alt="kuva" style="width: 140px; height: 140px;">
+          <img src="${pageContext.request.contextPath}/resources/img/create.png" alt="kuva" style="width: 140px; height: 140px;">
           <h2>Luo kysely</h2>
           <p>Luo oma kysely.</p>
           <p><a class="btn btn-default" href="survey/create" role="button">Luontiin &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-3">
-          <img src="resources/img/editing.png" alt="kuva" style="width: 140px; height: 140px;">
+          <img src="${pageContext.request.contextPath}/resources/img/editing.png" alt="kuva" style="width: 140px; height: 140px;">
           <h2>Muokkaa kyselyä</h2>
           <p>Muokkaa olemassa olevaa kyselyä</p>
           <p><a class="btn btn-default" href="survey/edit" role="button">Muokkaukseen &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
       
-      <!-- Displays a list of available surveys. -->
+      <!-- Displays a list of available surveys. 
       <h3>Vastattavat kyselyt</h3>
       <c:forEach var="survey" items="${surveys}">
       	<a href="survey/get-survey/${survey.surveyId}"><c:out value="${survey.getSurveyName()}"/></a>
       	<br>
-      </c:forEach>
-      
+      </c:forEach>-->
     <!-- Begin page content -->
     <div class="container">
       <div class="page-header">
