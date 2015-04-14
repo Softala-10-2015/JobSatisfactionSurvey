@@ -184,7 +184,7 @@ public class SurveyController {
 		
 		sDao.addSurvey(s);
 		int lastId = sDao.findLastId();
-		return "redirect:/survey/insertQuestion/"+lastId;
+		return "redirect:/survey/edit/insertQuestion/"+lastId;
 	}
 	
 	@RequestMapping(value = "edit", method = RequestMethod.GET)
