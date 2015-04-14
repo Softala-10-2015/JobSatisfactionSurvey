@@ -77,12 +77,41 @@
 				<c:forEach var="question" items="${questions}" varStatus="i">
 					<p class="well">
 						<form:label path="answerList[${i.index}].answerText">
-							Kysymys <c:out value="${question.getQuestionOrder()}"/>:&nbsp;
-							<c:out value="${question.getQuestionText()}"/>
+							Kysymys <c:out value="${question.getQuestionOrder()}" />:&nbsp;
+							<c:out value="${question.getQuestionText()}" />
 						</form:label>
-						<form:input class="form-control" rows="5" path="answerList[${i.index}].answerText"/>
-						
-						<form:hidden path="answerList[${i.index}].questionId" value="${question.getQuestionId()}"/>
+
+
+						<!-- Autor:Erik,Petri | toistaiseksi tallentaa teksti kenttä tyyllillä myöhemmin voidaan korjata...vaatti muutoksia daoon -->
+
+						<c:if test="${question.questionType != 1}">
+							<form:textarea class="form-control" rows="5"
+								path="answerList[${i.index}].answerText" />
+							<form:hidden path="answerList[${i.index}].questionId"
+								value="${question.getQuestionId()}" />
+						</c:if>
+
+						<c:if test="${question.questionType == 1}">
+							<br />
+							
+							
+							<form:radiobutton path="answerList[${i.index}].answerText"
+								value="Valinta 1"></form:radiobutton>
+							Valinta 1 &nbsp;
+							
+							<form:radiobutton path="answerList[${i.index}].answerText"
+								value="Valinta 2"></form:radiobutton>
+							Valinta 2 &nbsp;
+							
+							<form:radiobutton path="answerList[${i.index}].answerText"
+								value="Valinta 3"></form:radiobutton>
+							Valinta 3 &nbsp;
+							<form:hidden path="answerList[${i.index}].questionId"
+								value="${question.getQuestionId()}" />
+						</c:if>
+
+
+
 					</p>
 				</c:forEach>
 				<button class="btn btn-primary" type="submit" value="submit">Submit</button>

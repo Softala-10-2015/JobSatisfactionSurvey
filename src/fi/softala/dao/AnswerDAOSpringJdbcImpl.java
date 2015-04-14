@@ -34,21 +34,24 @@ public class AnswerDAOSpringJdbcImpl implements AnswerDAO{
 	
 	public void saveAnswer(Answer answer) {
 		final String sql = "insert into Answer(question_id, answer_text) values (?,?)";
-		final int questionId = answer.getQuestionId();
-		final String answerText=answer.getAnswerText();
 		
-		KeyHolder idHolder = new GeneratedKeyHolder();
-		jdbcTemplate.update(new PreparedStatementCreator() {
-			public PreparedStatement createPreparedStatement(
-					Connection connection) throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(sql,
-						new String[] { "answer_id" });
-				ps.setInt(1, questionId);
-				ps.setString(2, answerText);
-				return ps;
-			}
-		}, idHolder);
-		answer.setAnswerId(idHolder.getKey().intValue());
+		if(answer.getQuestionId() != 0 && answer.getAnswerText() != null){
+			final int questionId = answer.getQuestionId();
+			final String answerText=answer.getAnswerText();
+			//System.out.println("VASTAUSTEKSTI!! = "+answerText);
+			KeyHolder idHolder = new GeneratedKeyHolder();
+			jdbcTemplate.update(new PreparedStatementCreator() {
+				public PreparedStatement createPreparedStatement(
+						Connection connection) throws SQLException {
+					PreparedStatement ps = connection.prepareStatement(sql,
+							new String[] { "answer_id" });
+					ps.setInt(1, questionId);
+					ps.setString(2, answerText);
+					return ps;
+				}
+			}, idHolder);
+			answer.setAnswerId(idHolder.getKey().intValue());
+		}
 	}
 	
 	public Answer getOneAnswer(int answerId) {
