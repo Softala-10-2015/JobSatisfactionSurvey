@@ -15,9 +15,9 @@
     <title>Home</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="resources/css/bootstrap.css" rel="stylesheet">
-	<link href="resources/css/style.css" rel="stylesheet">
-	<link href="resources/css/home.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet">
 	
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -82,33 +82,37 @@
     
     
       <div class="container marketing">
-
-      <!-- Three columns of text below the carousel -->
       <div class="row">
-        <div class="col-lg-4">
-          <img src="" alt="kuva" style="width: 140px; height: 140px;">
+        <div class="col-lg-3">
+          <img src="resources/img/answer.png" alt="kuva" style="width: 140px; height: 140px;">
           <h2>Vastaa kyselyyn</h2>
           <p>Vastaa sinulle laadittuun kyselyyn.</p>
           <p><a class="btn btn-default" href="survey" role="button">Kyselyyn &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img src="" alt="kuva" style="width: 140px; height: 140px;">
+        <div class="col-lg-3">
+          <img src="resources/img/answers.png" alt="kuva" style="width: 140px; height: 140px;">
           <h2>Vastaukset</h2>
           <p>Tarkastele kyselyiden vastauksia.</p>
           <p><a class="btn btn-default" href="summary" role="button">Vastauksiin &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img src="" alt="kuva" style="width: 140px; height: 140px;">
-          <h2>Luo lomake</h2>
+        <div class="col-lg-3">
+          <img src="resources/img/create.png" alt="kuva" style="width: 140px; height: 140px;">
+          <h2>Luo kysely</h2>
           <p>Luo oma kysely.</p>
-          <p><a class="btn btn-default" href="create" role="button">Luontiin &raquo;</a></p>
+          <p><a class="btn btn-default" href="survey/create" role="button">Luontiin &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-3">
+          <img src="resources/img/editing.png" alt="kuva" style="width: 140px; height: 140px;">
+          <h2>Muokkaa kyselyä</h2>
+          <p>Muokkaa olemassa olevaa kyselyä</p>
+          <p><a class="btn btn-default" href="survey/edit" role="button">Muokkaukseen &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
       
       <!-- Displays a list of available surveys. -->
       <h3>Vastattavat kyselyt</h3>
       <c:forEach var="survey" items="${surveys}">
-      	<a href="survey/get-survey/${survey.survey_id}"><c:out value="${survey.getSurvey_name()}"/></a>
+      	<a href="survey/get-survey/${survey.surveyId}"><c:out value="${survey.getSurveyName()}"/></a>
       	<br>
       </c:forEach>
       
@@ -129,8 +133,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="resources/js/bootstrap.min.js"></script>
-    <script src="resources/js/angular.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/angular.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>

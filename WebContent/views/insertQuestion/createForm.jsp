@@ -77,12 +77,15 @@
 					<form:input type="hidden" path="surveyId" value="${question.surveyId}"/>		
 				</p>
 				<p>	
-					<form:label path="questionType">Kysymystyyppi</form:label><br/>
-					<form:input path="questionType" />
+					<form:label path="questionType" id="questionType">Kysymystyyppi</form:label><br/>
+					<form:select path="questionType">
+					<form:option value="0" label="Tekstikenttä" />
+					<form:option value="1" label="Checkbox" />
+					</form:select>
 				</p>
 				<p>	
 					<form:label path="questionText">Kysymysteksti</form:label><br/>
-					<form:input path="questionText" />
+					<form:textarea path="questionText" rows="3" />
 				</p>
 				<p>	
 					<form:label path="questionOrder">Kysymyksen järjestys</form:label><br/>
@@ -91,7 +94,7 @@
 				
 				
 				<p>	
-					<button type="submit">Lisää</button>
+					<button type="submit" class="btn btn-primary">Lisää</button>
 				</p>
 			</fieldset>
 		</form:form>
