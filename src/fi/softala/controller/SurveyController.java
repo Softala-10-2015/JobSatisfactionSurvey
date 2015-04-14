@@ -118,7 +118,7 @@ public class SurveyController {
 		return "summary";
 	}
 	
-	@RequestMapping(value = "insertQuestion/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "edit/insertQuestion/{id}", method = RequestMethod.GET)
 	public String addQuestion(@PathVariable Integer id, Model model) {
 		Question q = new Question();
 		q.setSurveyId(id);
@@ -127,14 +127,14 @@ public class SurveyController {
 		return "insertQuestion/createForm";
 	}
 	
-	@RequestMapping(value = "insertQuestion/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "edit/insertQuestion/{id}", method = RequestMethod.POST)
 	public String sendQuestion(@ModelAttribute(value = "question") Question q) {
 		qDao.saveQuestion(q);
-		return "redirect:/survey/insertQuestion/"+q.getSurveyId();
+		return "redirect:/survey/edit/" + q.getSurveyId();
 	}
 
 	// yksittäisen kysymyksen luonti(petellä on tylsää)
-	@RequestMapping(value = "insertQuestion", method = RequestMethod.GET)
+	@RequestMapping(value = "edit/insertQuestion", method = RequestMethod.GET)
 	public String getCreateFormQ(Model model) {
 		Question q = new Question();
 		q.setSurveyId(1);
@@ -191,7 +191,15 @@ public class SurveyController {
 	public String editableSurveys(Model model){
 		List<Survey> surveyList = sDao.findSurveys();
 		model.addAttribute("surveys", surveyList);
-		return "edit";
+		return "editSurvey/list";
+	}
+	
+	@RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
+	public String editSurvey(@PathVariable Integer id, Model model){
+		Survey survey = sDao.findSurvey(id);
+		survey.setQuestions(qDao.getQuestionsForSurvey(survey.getSurveyId()));
+		model.addAttribute("survey", survey);
+		return "editSurvey/edit";
 	}
 	
 	@RequestMapping(value = "choice", method = RequestMethod.GET)
