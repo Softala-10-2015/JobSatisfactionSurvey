@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import fi.softala.bean.Answer;
 import fi.softala.bean.AnswerListWrapper;
 import fi.softala.bean.Question;
+import fi.softala.bean.QuestionListWrapper;
 import fi.softala.bean.Survey;
 import fi.softala.dao.AnswerDAO;
 import fi.softala.dao.QuestionDAO;
@@ -75,7 +76,12 @@ public class SurveyController {
 		
 		return "survey";
 	}
-
+	
+	@RequestMapping(value="confirmation", method=RequestMethod.GET)
+	public String confirmation(){
+		
+		return "confirmation";
+	}
 	
 	//vastausten tallentaminen
 	@RequestMapping (value="get-survey/{id}", method=RequestMethod.POST)
@@ -85,7 +91,7 @@ public class SurveyController {
 			System.out.println(answer.getAnswerText() + " " + answer.getQuestionId());
 			aDao.saveAnswer(answer);
 		}
-		return "redirect:/";
+		return "redirect:/survey/confirmation";
 	}
 	
 	//Yksittäisen vastauksen hakeminen id:n perusteella
@@ -124,7 +130,7 @@ public class SurveyController {
 	@RequestMapping(value = "insertQuestion/{id}", method = RequestMethod.POST)
 	public String sendQuestion(@ModelAttribute(value = "question") Question q) {
 		qDao.saveQuestion(q);
-		return "insertQuestion/vahvistus";
+		return "redirect:/survey/insertQuestion/"+q.getSurveyId();
 	}
 
 	// yksittäisen kysymyksen luonti(petellä on tylsää)
@@ -177,7 +183,31 @@ public class SurveyController {
 	public String sendSurvey(@ModelAttribute(value = "survey") Survey s, Model model) {
 		
 		sDao.addSurvey(s);
-		return "create";
+		int lastId = sDao.findLastId();
+		return "redirect:/survey/insertQuestion/"+lastId;
 	}
+	
+	@RequestMapping(value = "edit", method = RequestMethod.GET)
+	public String editableSurveys(Model model){
+		List<Survey> surveyList = sDao.findSurveys();
+		model.addAttribute("surveys", surveyList);
+		return "edit";
+	}
+	
+	@RequestMapping(value = "choice", method = RequestMethod.GET)
+	public String addChoiceQuestion(Model model){
+		model.addAttribute("questions", new QuestionListWrapper());
+		return "choice";
+	}
+	
+	@RequestMapping(value = "choice", method = RequestMethod.POST)
+	public String saveChoiceQuestion(@ModelAttribute(value = "questions") QuestionListWrapper q, Model model){
+		
+		for (int i = 0; i < q.getAcList().size(); i++) {
+			System.out.println(q.getAcList().get(i).getaChoiceText());
+		}
+		return "redirect:/survey/choice";
+	}
+
 
 }

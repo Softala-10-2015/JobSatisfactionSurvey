@@ -52,8 +52,6 @@ public class SiteController {
 		
 		return "home";
 	}
-	
-	
 	@ExceptionHandler(DaoConnectionException.class)
 	public String connectionNotEstablished(HttpServletRequest request, DaoConnectionException e) {
 		System.out.println("Request " + request.getRequestURL() + " raised an exception: " + e);
@@ -82,9 +80,23 @@ public class SiteController {
 	
 	@RequestMapping(value = "home", method = RequestMethod.GET)
 	public String home(Model model) {	
-		//etusivu
+		System.out.println("SiteController");
+		try {
+			List<Survey> surveyList = dao.findSurveys();
+			System.out.println("surveys:" + surveyList);
+			model.addAttribute("surveys", surveyList);
+		} catch(DataAccessException e) {
+			throw new DaoConnectionException("Tietokantaan ei saada yhteyttä.", e);
+		}
+		
 		return "home";
 	}
+	
+	@RequestMapping(value = "Softala", method = RequestMethod.GET)
+	public String softala() {	
+		return "home";
+	}
+	
 	
 	@RequestMapping(value = "survey", method = RequestMethod.GET)
 	public String surveyInit(Model model) {	

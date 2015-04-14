@@ -10,7 +10,7 @@
 <meta name="author" content="">
 <link rel="icon" href="${pageContext.request.contextPath}/resources/img/kisutopi.ico">
 
-<title>Sticky Footer Navbar Template for Bootstrap</title>
+<title>Vahvistus</title>
 
 <!-- Bootstrap core CSS -->
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
@@ -43,7 +43,7 @@
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="home">Home</a></li> <!-- home tab active -->
+				<li class="active"><a href="/Softala">Home</a></li> <!-- home tab active -->
 				<li><a href="summary">Tulokset</a></li>
 			</ul>
 			<form class="navbar-form navbar-right" role="search">
@@ -70,7 +70,7 @@
 		<div class="container">
 			<h3>Kiitti hei</h3>
 			<p>oli kiva ku vastasit</p>
-			<a class="btn btn-primary btn-lg" role="button" href="home.jsp">Palaa</a>
+			<a class="btn btn-primary btn-lg" role="button" href="/Softala">Palaa</a>
 		</div>
 
 

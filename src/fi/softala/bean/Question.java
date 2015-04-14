@@ -4,6 +4,9 @@
 
 package fi.softala.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Question{
 	int surveyId;
 	int questionId; // id
@@ -12,6 +15,7 @@ public class Question{
 	String questionText; // question
 	/* List options; // question options - answer choices- value pair */
 	int questionType;
+	List<AChoice> choices = new ArrayList<AChoice>();
 
 	public Question() {
 	}
@@ -63,6 +67,15 @@ public class Question{
 
 	public void setQuestionType(int questionType) {
 		this.questionType = questionType;
-	}	
+	}
+
+	public List<AChoice> getChoices() {
+		return choices;
+	}
+
+	public void setChoices(List<AChoice> choices) {
+		this.choices = choices;
+	}
+	
 }
 

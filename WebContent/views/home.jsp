@@ -46,7 +46,7 @@
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="home">Home</a></li> <!-- home tab active -->
+				<li class="active"><a href="/Softala">Home</a></li> <!-- home tab active -->
 				<li><a href="summary">Tulokset</a></li>
 			</ul>
 			<form class="navbar-form navbar-right" role="search">
@@ -69,23 +69,29 @@
 
       <!-- Three columns of text below the carousel -->
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <img src="" alt="kuva" style="width: 140px; height: 140px;">
           <h2>Vastaa kyselyyn</h2>
           <p>Vastaa sinulle laadittuun kyselyyn.</p>
           <p><a class="btn btn-default" href="survey" role="button">Kyselyyn &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <img src="" alt="kuva" style="width: 140px; height: 140px;">
           <h2>Vastaukset</h2>
           <p>Tarkastele kyselyiden vastauksia.</p>
           <p><a class="btn btn-default" href="summary" role="button">Vastauksiin &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <img src="" alt="kuva" style="width: 140px; height: 140px;">
           <h2>Luo lomake</h2>
           <p>Luo oma kysely.</p>
-          <p><a class="btn btn-default" href="create" role="button">Luontiin &raquo;</a></p>
+          <p><a class="btn btn-default" href="survey/create" role="button">Luontiin &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-3">
+          <img src="" alt="kuva" style="width: 140px; height: 140px;">
+          <h2>Muokkaa kyselyä</h2>
+          <p>Muokkaa olemassa olevaa kyselyä</p>
+          <p><a class="btn btn-default" href="survey/edit" role="button">Muokkaukseen &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
       

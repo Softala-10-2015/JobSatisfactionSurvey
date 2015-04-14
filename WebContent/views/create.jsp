@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="${pageContext.request.contextPath}/resources/img/kisutopi.ico">
 
-    <title>Kysely</title>
+    <title>Luo kysely</title>
 
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
@@ -43,7 +43,7 @@
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="home">Home</a></li> <!-- home tab active -->
+				<li class="active"><a href="/Softala">Home</a></li> <!-- home tab active -->
 				<li><a href="summary">Tulokset</a></li>
 			</ul>
 			<form class="navbar-form navbar-right" role="search">
@@ -65,17 +65,17 @@
 	<div class="container">
     <div class="container">
       <div class="page-header">
-        <h1>Iso kysely</h1>
       </div>
-
+	<h1>
+		Luo kysely
+	</h1>
 <form:form modelAttribute="survey" class="well" method="post">
-  <h3>Kurssin tiedot</h3>
   
 <fieldset>
-<form:label	path="surveyName">surveyName</form:label>
+<form:label	path="surveyName">Kyselyn nimi</form:label>
 <form:input path="surveyName" /><br/>
 
-<form:label	path="email">email</form:label>
+<form:label	path="email">Sähköposti</form:label>
 <form:input path="email" /><br/>
 </fieldset>
   

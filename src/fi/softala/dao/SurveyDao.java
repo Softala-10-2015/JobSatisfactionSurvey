@@ -13,6 +13,8 @@ public interface SurveyDao {
 	public abstract List<Survey> findSurveys();
 	
 	public abstract void addSurvey(Survey newSurvey);
+
+	public abstract int findLastId();
 	
 	
 }

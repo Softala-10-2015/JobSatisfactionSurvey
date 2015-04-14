@@ -88,4 +88,18 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 			throw new DaoConnectionException("virhe", e);
 		}
 	}
+	
+	public int findLastId(){
+		int id=0;
+		String sql = "SELECT survey_id FROM Survey WHERE survey_id=(SELECT max(survey_id) FROM Survey);";
+		
+		try {
+			id = jdbcTemplate.queryForObject(sql, Integer.class);
+			return id;
+		} catch (DataAccessException e) {
+			throw e;
+		} catch (RuntimeException e) {
+			throw new DaoConnectionException("virhe", e);
+		}
+	}
 }

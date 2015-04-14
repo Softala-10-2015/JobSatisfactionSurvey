@@ -76,5 +76,8 @@ public class Survey {
 	public void setQuestions(List<Question> q){
 		this.questions = q;
 	}
-	
+
+	public List getQuestions() {
+		return questions;
+	}
 }
