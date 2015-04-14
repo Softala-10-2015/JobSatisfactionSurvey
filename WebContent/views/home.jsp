@@ -93,7 +93,7 @@
           <img src="${pageContext.request.contextPath}/resources/img/answers.png" alt="kuva" style="width: 140px; height: 140px;">
           <h2>Vastaukset</h2>
           <p>Tarkastele kyselyiden vastauksia.</p>
-          <p><a class="btn btn-default" href="summary" role="button">Vastauksiin &raquo;</a></p>
+          <p><a class="btn btn-default" href="survey/surveylist" role="button">Vastauksiin &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-3">
           <img src="${pageContext.request.contextPath}/resources/img/create.png" alt="kuva" style="width: 140px; height: 140px;">
