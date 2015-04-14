@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="${pageContext.request.contextPath}/resources/img/kisutopi.ico">
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/img/icon.ico">
 
     <title>Summary</title>
 
@@ -41,6 +41,7 @@
 			</button>
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
+		<a class="navbar-brand" href="#"><img src="resources/img/brandimg.png" alt=""></a> 
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="/Softala">Home</a></li> <!-- home tab active -->
 				<li><a href="summary">Tulokset</a></li>
