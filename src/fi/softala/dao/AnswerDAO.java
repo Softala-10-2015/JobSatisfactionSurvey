@@ -11,5 +11,7 @@ public interface AnswerDAO{
 	public abstract Answer getOneAnswer(int answerId);
 	
 	public abstract List<Answer> getAllAnswers();	
+	
+	public abstract List<Answer> getAnswersForSurvey(int surveyId);
 
 }

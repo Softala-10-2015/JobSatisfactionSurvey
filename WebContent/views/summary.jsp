@@ -75,9 +75,33 @@
 		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="/Softala">Himaan</a><br>
   
 </form>
-<form method="post">
-<c:forEach items="${questions}" var="question">
-		<c:set var="questionText" scope="session" value="${question.questionText}"  />
+<table>
+<caption>MUUTA TÄMÄ OTSIKKO OTSIKOKSI</caption>
+<thead>
+	<tr>
+		<td>ID</td>
+		<td>ETUNIMI</td>
+		<td>SUKUNIMI</td>
+	</tr>
+</thead>
+<tbody>
+<c:forEach items="${surveyanswers}" var="answer">
+	<tr>
+		<td><c:out value="${answer.questionText}"/></td>
+		
+		<c:if test="${not empty answer.answerText}">
+  		<td><c:out value="${answer.answerText}"/></td>
+  		</c:if>
+  		
+		<c:if test ="${not empty answer.aChoiceText}">
+		<td><c:out value="${answer.aChoiceText}"/></td>
+		</c:if>
+	</tr>
+</c:forEach>
+</tbody>
+</table>
+<c:forEach items="${surveyanswers}" var="answer">
+		<c:set var="questionText" scope="session" value="${answer.questionText}"  />
 		
 		<label id="questionText"><c:out value="${questionText}"></c:out></label>
 		
@@ -91,7 +115,7 @@
 		<label id="answerText"><c:out value="${answerText}"></c:out></label>
 	<br/>
 	</c:forEach>
-</form>
+
     <footer class="footer">
       <div class="container">
         <p class="text-muted">Copiright Make 2015</p>

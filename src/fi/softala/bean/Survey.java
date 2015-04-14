@@ -17,7 +17,8 @@ public class Survey {
 	boolean isComplete;
 	int nextFree;
 	List questions;
-	
+	List answers;
+
 	@SuppressWarnings("rawtypes")
 	public Survey() {
 		super();
@@ -79,5 +80,13 @@ public class Survey {
 
 	public List getQuestions() {
 		return questions;
+	}
+	
+	public List getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
 	}
 }

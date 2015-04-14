@@ -218,6 +218,21 @@ public class SurveyController {
 		}
 		return "redirect:/survey/choice";
 	}
+	@RequestMapping(value = "answers/{id}", method = RequestMethod.GET)
+	public String viewAnswers(@PathVariable Integer id, Model model){
+		Survey survey = sDao.findSurvey(id);
+		survey.setAnswers(aDao.getAnswersForSurvey(survey.getSurveyId()));
+		model.addAttribute("survey", survey);
+		return "viewAnswers/answers";
+	}
+
+
+	@RequestMapping(value = "surveylist", method = RequestMethod.GET)
+	public String viewableAnswers(Model model){
+		List<Survey> surveyList = sDao.findSurveys();
+		model.addAttribute("surveys", surveyList);
+		return "viewAnswers/list";
+	}
 	
 	@RequestMapping(value = "surveys", method = RequestMethod.GET)
 	public String getSruveys(Model model){
