@@ -76,12 +76,13 @@ public class AnswerDAOSpringJdbcImpl implements AnswerDAO{
 	
 	public List<Answer> getAnswersForSurvey(int surveyId) {
 		String sql = "SELECT Answer.answer_id, Answer.question_id, Answer.achoice_id, Answer.answer_text, "
-				+ "AnswerChoice.achoice_text, Question.question_text "
+				+ "AnswerChoice.achoice_text, Question.question_text, Question.question_order "
 				+ "FROM Answer "
 				+ "LEFT JOIN Question ON Answer.question_id=Question.question_id "
 				+ "LEFT JOIN AnswerChoice ON Answer.achoice_id=AnswerChoice.achoice_id "
 				+ "LEFT JOIN Survey ON Question.survey_id=Survey.survey_id "
-				+ "WHERE Survey.survey_id=?";
+				+ "WHERE Survey.survey_id=? "
+				+ "ORDER BY Question.question_order";
 		
 		Object[] params = new Object[] { surveyId };
 		//System.out.println(params[0]);
