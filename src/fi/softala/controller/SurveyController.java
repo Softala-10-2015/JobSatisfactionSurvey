@@ -198,10 +198,18 @@ public class SurveyController {
 	
 	@RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
 	public String editSurvey(@PathVariable Integer id, Model model){
-		Survey survey = sDao.findSurvey(id);
-		survey.setQuestions(qDao.getQuestionsForSurvey(survey.getSurveyId()));
-		model.addAttribute("survey", survey);
-		return "editSurvey/edit";
+		
+		if (!aDao.getAnswersForSurvey(id).isEmpty()) {
+			System.out.println(aDao.getAnswersForSurvey(id));
+			Survey survey = sDao.findSurvey(id);
+			survey.setQuestions(qDao.getQuestionsForSurvey(survey.getSurveyId()));
+			model.addAttribute("survey", survey);
+			return "editSurvey/edit";
+		}else{
+			return "redirect:/";
+		}
+		
+		
 	}
 	
 	@RequestMapping(value = "choice", method = RequestMethod.GET)

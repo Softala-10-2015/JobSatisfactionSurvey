@@ -16,5 +16,7 @@ public interface SurveyDao {
 
 	public abstract int findLastId();
 	
+	public abstract boolean ifHasAnswers(int surveyId);
+	
 	
 }
