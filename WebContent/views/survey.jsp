@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=charset=UTF-8"
+	pageEncoding="UTF-8"%>>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page session="false" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -53,7 +54,7 @@
 			<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">
 					<input type="text" class="form-control" name="username"
-						placeholder="K‰ytt‰j‰tunnus">
+						placeholder="K√§ytt√§j√§tunnus">
 				</div>
 				<div class="form-group">
 					<input type="text" class="form-control" name="password"
@@ -84,7 +85,7 @@
 						</form:label>
 
 
-						<!-- Autor:Erik,Petri | toistaiseksi tallentaa teksti kentt‰ tyyllill‰ myˆhemmin voidaan korjata...vaatti muutoksia daoon -->
+						<!-- Autor:Erik,Petri | toistaiseksi tallentaa teksti kentt√§ tyyllill√§ my√∂hemmin voidaan korjata...vaatti muutoksia daoon -->
 
 						<c:if test="${question.questionType != 1}">
 							<form:textarea class="form-control" rows="5"
@@ -162,7 +163,7 @@
 					<div class="btn-group" data-toggle="buttons">
 
 						<label class="btn btn-primary active"> <input type="radio"
-							name="options" id="option1" autocomplete="off" checked>Kev‰t
+							name="options" id="option1" autocomplete="off" checked>Kev√§t
 						</label> <label class="btn btn-primary"> <input type="radio"
 							name="options" id="option2" autocomplete="off">Syksy
 						</label>
@@ -174,10 +175,10 @@
 			<form action="email" method="post">
 				<div class="well">
 
-					<!-- Tekstikentt‰ -->
+					<!-- Tekstikentt√§ -->
 					<div class="form-group">
 						<div class="input-group">
-							<label for="input_message">Ole hyv‰ ja kerro, milt‰
+							<label for="input_message">Ole hyv√§ ja kerro, milt√§
 								sinusta nyt tuntuu:</label> <input type="text" name="input_message"
 								id="input_message" class="form-control" rows="5" required
 								autofocus> <input type="hidden" name="receiver"
@@ -190,8 +191,8 @@
 
 
 				<div class="well">
-					<br> <label for="input_message">Ole hyv‰ ja kerro,
-						milt‰ sinusta nyt tuntuu hymynaamoilla:</label><br>
+					<br> <label for="input_message">Ole hyv√§ ja kerro,
+						milt√§ sinusta nyt tuntuu hymynaamoilla:</label><br>
 					<div class="btn-group" data-toggle="buttons">
 
 						<label class="btn btn-primary"> <input type="radio"
@@ -208,8 +209,8 @@
 				</div>
 
 				<div class="well">
-					<br> <label for="input_message">Mitk‰ kaikki n‰ist‰
-						feelsseist‰ sulla on nyt? </label><br>
+					<br> <label for="input_message">Mitk√§ kaikki n√§ist√§
+						feelsseist√§ sulla on nyt? </label><br>
 					<div class="btn-group" data-toggle="buttons">
 						<label class="btn btn-primary"> <input type="checkbox"
 							autocomplete="off"> Feels good man
