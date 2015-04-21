@@ -73,7 +73,8 @@
       <c:forEach items="${errors}" var="error">
       <c:out value="${error}"/>
       </c:forEach>
-      
+      <br>
+      <a href="../edit">Takaisin</a>
       
  <footer class="footer">
       <div class="container">
