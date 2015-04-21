@@ -17,7 +17,7 @@ public class Answer {
 		this.answerId = answerId;
 		this.answerText =  answerText;
 		this.questionId=questionId;
-		this.aChoiceText = aChoiceText;
+		//this.aChoiceText = aChoiceText;
 		this.questionText=questionText;
 	}
 	public int getAnswerId() {

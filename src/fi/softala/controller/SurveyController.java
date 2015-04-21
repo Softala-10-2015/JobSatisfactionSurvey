@@ -199,7 +199,7 @@ public class SurveyController {
 	@RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
 	public String editSurvey(@PathVariable Integer id, Model model){
 		
-		if (!aDao.getAnswersForSurvey(id).isEmpty()) {
+		if (sDao.ifHasAnswers(id)==false) {
 			System.out.println(aDao.getAnswersForSurvey(id));
 			Survey survey = sDao.findSurvey(id);
 			survey.setQuestions(qDao.getQuestionsForSurvey(survey.getSurveyId()));
