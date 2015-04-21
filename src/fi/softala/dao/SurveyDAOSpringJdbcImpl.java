@@ -89,6 +89,24 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 		}
 	}
 	
+	//Testataan, onko muokkaukseen valitussa kyselyssä vastauksia
+	public boolean ifHasAnswers(int surveyId) {
+		String sql = "SELECT a.answer_id, a.question_id a.achoce_id, a.answer_text FROM Answer a JOIN Question q JOIN Survey s WHERE a.question_id = q.question_id AND q.survey_id = ? AND s.survey_id=?";
+		boolean hasAnswers=false;
+		RowMapper<Answer> mapper = new AnswerRowMapper();
+		try{
+			List<Answer> answers = jdbcTemplate.query(sql, mapper);
+			if(answers.isEmpty()) {
+				hasAnswers=true;
+			}
+		} catch(DataAccessException e) {
+			throw e;
+		} catch(RuntimeException e) {
+			throw new DaoConnectionException("virhe", e);
+		}
+		return hasAnswers;
+	}
+	
 	public int findLastId(){
 		int id=0;
 		String sql = "SELECT survey_id FROM Survey WHERE survey_id=(SELECT max(survey_id) FROM Survey);";
