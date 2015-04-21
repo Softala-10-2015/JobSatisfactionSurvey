@@ -65,19 +65,19 @@
 	</nav> <!-- end of navbar -->   
     <!-- Begin page content -->
 	<div class="container">
-    <div class="container">
-      <div class="page-header">
-      </div>
-
 	<h1>Kyselyt</h1>
-      <c:forEach var="survey" items="${surveys}">
-      	<a href="edit/${survey.surveyId}"><c:out value="${survey.getSurveyName()}"/></a>
-      	<br>
-      </c:forEach>
+    <div class="well">
 
+
+      <c:forEach var="survey" items="${surveys}">
+      <table class="table table-striped">
+      	<td><a href="edit/${survey.surveyId}"><c:out value="${survey.getSurveyName()}"/></a></td>
+      	</table>
+      </c:forEach>
+	</div>
     <footer class="footer">
       <div class="container">
-        <p class="text-muted">Copiright Make 2015</p>
+        <p class="text-muted">Copiright Make ja mikot 2015</p>
       </div>
     </footer>
 
