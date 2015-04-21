@@ -61,6 +61,8 @@ var i = 0;
 			</button>
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
+		<!-- navbarlogo -->
+		<a class="navbar-brand" href="/Softala"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png" alt=""></a>
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="/Softala">Home</a></li> <!-- home tab active -->
 				<li><a href="summary">Tulokset</a></li>
