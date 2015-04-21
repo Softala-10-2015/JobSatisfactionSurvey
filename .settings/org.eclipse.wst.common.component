@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project-modules id="moduleCoreId" project-version="1.5.0">
-	<wb-module deploy-name="Softala">
-		<wb-resource deploy-path="/" source-path="/WebContent"
-			tag="defaultRootSource" />
-		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src" />
-		<wb-resource deploy-path="/WEB-INF/classes" source-path="/conf" />
-		<property name="context-root" value="Softala" />
-		<property name="java-output-path" value="/Softala/build/classes" />
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+	<wb-module deploy-name="kysely">
+		<wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+		<wb-resource deploy-path="/WEB-INF/classes" source-path="/conf"/>
+		<property name="java-output-path" value="/kysely/build/classes"/>
+        <property name="context-root" value="kysely"/>
 	</wb-module>
 </project-modules>

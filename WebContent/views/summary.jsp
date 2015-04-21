@@ -42,9 +42,9 @@
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 		<!-- navbarlogo -->
-		<a class="navbar-brand" href="/Softala"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png" alt=""></a>
+		<a class="navbar-brand" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png" alt=""></a>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/Softala">Home</a></li> <!-- home tab active -->
+				<li class="active"><a href="/kysely">Home</a></li> <!-- home tab active -->
 				<li><a href="summary">Tulokset</a></li>
 			</ul>
 			<form class="navbar-form navbar-right" role="search">
@@ -73,7 +73,7 @@
 <form class="well" method="post" action="email">
   <h3>Ootko Make? -kysely</h3>
   		<img alt="make" src="${pageContext.request.contextPath}/resources/img/make.PNG">
-		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="/Softala">Himaan</a><br>
+		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="/kysely">Himaan</a><br>
   
 </form>
 <table>
