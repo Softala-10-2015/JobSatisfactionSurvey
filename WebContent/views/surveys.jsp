@@ -12,7 +12,7 @@
     <meta name="author" content="">
   <link rel="icon" href="${pageContext.request.contextPath}/resources/img/icon.ico">
 
-    <title>Home</title>
+    <title>Vastaa kyselyyn</title>
 
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
@@ -80,19 +80,17 @@
  	<div class="logo"> 
    		<center><img src="${pageContext.request.contextPath}/resources/img/logo.png"/> </center>
 	</div>
+     <div class="container">
+	<div class="well">
       <!-- Displays a list of available surveys. -->
       <h3>Vastattavat kyselyt</h3>
       <c:forEach var="survey" items="${surveys}">
-      	<a href="get-survey/${survey.surveyId}"><c:out value="${survey.getSurveyName()}"/></a>
-      	<br>
+      <table class="table table-striped">
+      	<td><a href="get-survey/${survey.surveyId}"><c:out value="${survey.getSurveyName()}"/></a>
+      	</td>
+      	</table>
       </c:forEach>
-      
-    <!-- Begin page content -->
-    <div class="container">
-      <div class="page-header">
-
-      </div>
-  
+  	</div>
     <footer class="footer">
       <div class="container">
         <p class="text-muted">Copiright Make ja Mikot 2015</p>
