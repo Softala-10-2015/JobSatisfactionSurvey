@@ -81,9 +81,9 @@
    		<center><img src="${pageContext.request.contextPath}/resources/img/logo.png"/> </center>
 	</div>
      <div class="container">
+    <h3>Vastattavat kyselyt</h3>
 	<div class="well">
       <!-- Displays a list of available surveys. -->
-      <h3>Vastattavat kyselyt</h3>
       <c:forEach var="survey" items="${surveys}">
       <table class="table table-striped">
       	<td><a href="get-survey/${survey.surveyId}"><c:out value="${survey.getSurveyName()}"/></a>
