@@ -198,7 +198,7 @@ public class SurveyController {
 	
 	@RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
 	public String editSurvey(@PathVariable Integer id, Model model){
-		
+		System.out.println(sDao.ifHasAnswers(id));
 		if (sDao.ifHasAnswers(id)==false) {
 			System.out.println(aDao.getAnswersForSurvey(id));
 			Survey survey = sDao.findSurvey(id);
@@ -206,7 +206,10 @@ public class SurveyController {
 			model.addAttribute("survey", survey);
 			return "editSurvey/edit";
 		}else{
-			return "redirect:/";
+			List<String> errors = new ArrayList<String>();
+			errors.add("Et voi muokata kyselyä jossa on jo vastauksia");
+			model.addAttribute("errors" , errors);
+			return "error";
 		}
 		
 		

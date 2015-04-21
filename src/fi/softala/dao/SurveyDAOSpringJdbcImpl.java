@@ -91,12 +91,13 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 	
 	//Testataan, onko muokkaukseen valitussa kyselyssä vastauksia
 	public boolean ifHasAnswers(int surveyId) {
-		String sql = "SELECT a.answer_id, a.question_id, a.answer_text, q.question_text FROM Answer a JOIN Question q JOIN Survey s WHERE a.question_id = q.question_id AND s.survey_id=?";
+		String sql = "SELECT a.answer_id, a.question_id, a.answer_text, q.question_text FROM Answer a JOIN Question q ON a.question_id=q.question_id JOIN Survey s ON q.survey_id=s.survey_id  WHERE s.survey_id=?";
 		boolean hasAnswers=true;
 		Object[] param = new Object[] { surveyId};
 		RowMapper<Answer> mapper = new AnswerTextRowMapper();
 		try{
 			List<Answer> answers = jdbcTemplate.query(sql, param, mapper);
+			System.out.println(answers);
 			if(answers.isEmpty()) {
 				hasAnswers=false;
 			}
