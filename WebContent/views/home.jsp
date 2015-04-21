@@ -82,7 +82,7 @@
 	</div>
     
     
-      <div class="container marketing">
+      <div class="container marketing" style="text-align:center">
       <div class="row">
         <div class="col-lg-3">
           <img src="${pageContext.request.contextPath}/resources/img/answer.png" alt="kuva" style="width: 140px; height: 140px;">
