@@ -77,7 +77,7 @@
 			
 			<form:form  class="well" modelAttribute="answers" method="post">
 				<c:forEach var="question" items="${questions}" varStatus="i">
-					<p class="well">
+					<div class="well">
 						<form:label path="answerList[${i.index}].answerText">
 							Kysymys <c:out value="${question.getQuestionOrder()}" />:&nbsp;
 							<c:out value="${question.getQuestionText()}" />
@@ -92,29 +92,29 @@
 							<form:hidden path="answerList[${i.index}].questionId"
 								value="${question.getQuestionId()}" />
 						</c:if>
-
+						<br><br>
+						<div class="btn-group" data-toggle="buttons">
 						<c:if test="${question.questionType == 1}">
-							<br />
+						
 							
 							
-							<form:radiobutton path="answerList[${i.index}].answerText"
+							<label class="btn btn-primary"><form:radiobutton path="answerList[${i.index}].answerText"
 								value="Valinta 1"></form:radiobutton>
-							Valinta 1 &nbsp;
+							<img src="${pageContext.request.contextPath}/resources/img/hymy.png" alt="hymy" style="position: relative;left: 4px;"> &nbsp;</label>
 							
-							<form:radiobutton path="answerList[${i.index}].answerText"
+							<label class="btn btn-primary"><form:radiobutton path="answerList[${i.index}].answerText"
 								value="Valinta 2"></form:radiobutton>
-							Valinta 2 &nbsp;
+							<img src="${pageContext.request.contextPath}/resources/img/perus.png" alt="perus" style="position: relative;left: 4px;"> &nbsp;</label>
 							
-							<form:radiobutton path="answerList[${i.index}].answerText"
+							<label class="btn btn-primary"><form:radiobutton path="answerList[${i.index}].answerText"
 								value="Valinta 3"></form:radiobutton>
-							Valinta 3 &nbsp;
+							<img src="${pageContext.request.contextPath}/resources/img/suru.png" alt="suru" style="position: relative;left: 4px;"> &nbsp;</label>
 							<form:hidden path="answerList[${i.index}].questionId"
 								value="${question.getQuestionId()}" />
+							
 						</c:if>
-
-
-
-					</p> 
+					</div>
+					</div>
 				</c:forEach>
 				<button class="btn btn-primary" type="submit" value="submit">Lähetä</button>
 				<a class="btn btn-default" href="../surveys" role="button">Peruuta</a>
