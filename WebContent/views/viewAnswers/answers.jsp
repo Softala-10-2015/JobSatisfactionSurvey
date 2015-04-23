@@ -71,6 +71,7 @@
 	<h1><c:out value="${survey.surveyName}" /></h1>
 	<c:set var="questionid" value="${survey.answers[0].questionId}"/>
 	<c:set var="count" value="0" scope="page"/>
+	<div id="viewcount" class="title"></div>
 	<!-- <script language="">${"#maxvalue"}.html()</script>  -->
 		<div class="well">
 		<!-- <span>KysymysID: <c:out value="${survey.answers[0].questionId}"></c:out></span><br /> -->
@@ -117,5 +118,9 @@
     <script src="${pageContext.request.contextPath}/resources/js/angular.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+     <script language="javascript">
+    $(function(){
+    	$("#viewcount").html("Vastaajia: " + $("#maxcount").html());
+    	})</script> 
   </body>
 </html>
