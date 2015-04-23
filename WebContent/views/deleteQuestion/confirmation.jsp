@@ -10,14 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="${pageContext.request.contextPath}/resources/img/kisutopi.ico">
-
-    <title>Muokkaa kyselyä</title>
+     <link rel="icon" href="${pageContext.request.contextPath}/resources/img/icon.ico">
+    <title>Poista kysymys</title>
 
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/resources/css/answers.css" rel="stylesheet">
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
@@ -44,8 +42,10 @@
 			</button>
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
+		<!-- navbarlogo -->
+		<a class="navbar-brand" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png" alt=""></a>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/Softala">Home</a></li> <!-- home tab active -->
+				<li class="active"><a href="/kysely">Home</a></li> <!-- home tab active -->
 				<li><a href="summary">Tulokset</a></li>
 			</ul>
 			<form class="navbar-form navbar-right" role="search">
@@ -65,47 +65,20 @@
 	</nav> <!-- end of navbar -->   
     <!-- Begin page content -->
 	<div class="container">
-    <div class="container">
-      <div class="page-header">
-      </div>
-
-	<h1><c:out value="${survey.surveyName}" /></h1>
-	<c:set var="questionid" value="${survey.answers[0].questionId}"/>
-	<c:set var="count" value="0" scope="page"/>
-	<!-- <script language="">${"#maxvalue"}.html()</script>  -->
-		<div>
-		<!-- <span>KysymysID: <c:out value="${survey.answers[0].questionId}"></c:out></span><br /> -->
-		<div class="title">Kysymys: <c:out value="${survey.answers[0].questionText}"></c:out></div>
-		<c:set var="maxcount" value="0" scope="page"/>
-		<c:forEach var="answer" items="${survey.answers}">
-			<c:choose>
-				<c:when test="${questionid == answer.questionId}">
-				<div class="answer">vastaus: <c:out value="${answer.answerText}"></c:out></div>
-				<c:set var="count" value="${count + 1}" scope="page"/>
-				<c:if test="${count >= maxcount}">
-				<c:set var="maxcount" value="${count}"/>
-				</c:if>
-				<!-- <span>vastausID: <c:out value="${answer.answerId}"></c:out></span><br /> -->
-				</c:when>
-				<c:otherwise>
-				<!-- <span>KysymysID: <c:out value="${answer.questionId}"></c:out></span><br /> -->
-				<div class="title">Kysymys: <c:out value="${answer.questionText}"></c:out></div>
-				<div class="answer">vastaus: <c:out value="${answer.answerText}"></c:out></div>
-				<!-- <span>vastausID: <c:out value="${answer.answerId}"></c:out></span><br />  -->
-				<c:set var="questionid" value="${answer.questionId}"/>
-				<c:set var="count" value="1" scope="page"/>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
-		</div>
-      	<br>
-      	<div id="maxcount">
-      	<c:out value="${maxcount}"/>
-      	</div>
-
+	<h1>Poista kysymys</h1>
+    <div class="well">
+    	<span>Kysymystyyppi: <c:out value="${question.questionType}"></c:out></span><br />
+		<span>Kysymysteksti: <c:out value="${question.questionText}"></c:out></span><br />
+		<span>Kysymyksen järjestys: <c:out value="${question.questionOrder}"></c:out></span><br />
+		<br />
+		<p>Haluatko varmasti poistaa kysymyksen</p>
+		<form method="post">
+			<button>Poista</button>
+		</form>
+		
     <footer class="footer">
       <div class="container">
-        <p class="text-muted">Copiright Make, Jukka, Pasi 2015</p>
+        <p class="text-muted">Copiright Make ja mikot 2015</p>
       </div>
     </footer>
 

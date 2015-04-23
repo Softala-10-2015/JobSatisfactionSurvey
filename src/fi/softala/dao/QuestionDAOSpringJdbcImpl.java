@@ -119,4 +119,12 @@ public class QuestionDAOSpringJdbcImpl implements QuestionDAO{
 
 		return questions;
 	}
+	
+	public void deleteQuestion(int questionId) {
+		String sql = "DELETE FROM Question WHERE question_id = ?";
+		Object[] params = new Object[] { questionId };
+		System.out.println("QuestionDAO: DELETE " + params[0]);
+		
+		this.jdbcTemplate.update(sql, params);
+	}
 }
