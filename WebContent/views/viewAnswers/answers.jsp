@@ -17,6 +17,7 @@
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/answers.css" rel="stylesheet">
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
@@ -70,30 +71,37 @@
 
 	<h1><c:out value="${survey.surveyName}" /></h1>
 	<c:set var="questionid" value="${survey.answers[0].questionId}"/>
+	<c:set var="count" value="0" scope="page"/>
+	<!-- <script language="">${"#maxvalue"}.html()</script>  -->
 		<div>
 		<!-- <span>KysymysID: <c:out value="${survey.answers[0].questionId}"></c:out></span><br /> -->
-		<span>Kysymys: <c:out value="${survey.answers[0].questionText}"></c:out></span><br />
-		<br>
+		<div class="title">Kysymys: <c:out value="${survey.answers[0].questionText}"></c:out></div>
+		<c:set var="maxcount" value="0" scope="page"/>
 		<c:forEach var="answer" items="${survey.answers}">
 			<c:choose>
 				<c:when test="${questionid == answer.questionId}">
-				<span>vastaus: <c:out value="${answer.answerText}"></c:out></span>
+				<div class="answer">vastaus: <c:out value="${answer.answerText}"></c:out></div>
+				<c:set var="count" value="${count + 1}" scope="page"/>
+				<c:if test="${count >= maxcount}">
+				<c:set var="maxcount" value="${count}"/>
+				</c:if>
 				<!-- <span>vastausID: <c:out value="${answer.answerId}"></c:out></span><br /> -->
 				</c:when>
 				<c:otherwise>
 				<!-- <span>KysymysID: <c:out value="${answer.questionId}"></c:out></span><br /> -->
-				<br>
-				<span>Kysymys: <c:out value="${answer.questionText}"></c:out></span><br />
-				<br>
-				<span>vastaus: <c:out value="${answer.answerText}"></c:out></span>
+				<div class="title">Kysymys: <c:out value="${answer.questionText}"></c:out></div>
+				<div class="answer">vastaus: <c:out value="${answer.answerText}"></c:out></div>
 				<!-- <span>vastausID: <c:out value="${answer.answerId}"></c:out></span><br />  -->
 				<c:set var="questionid" value="${answer.questionId}"/>
+				<c:set var="count" value="1" scope="page"/>
 				</c:otherwise>
 			</c:choose>
-			<br />
 		</c:forEach>
 		</div>
       	<br>
+      	<div id="maxcount">
+      	<c:out value="${maxcount}"/>
+      	</div>
 
     <footer class="footer">
       <div class="container">
