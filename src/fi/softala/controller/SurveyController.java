@@ -54,6 +54,14 @@ public class SurveyController {
 		this.sDao = dao;
 	}
 	
+	public QuestionDAO getQuestionDAO() {
+		return this.qDao;
+	}
+	
+	public void setQuestionDAO(QuestionDAO dao) {
+		this.qDao = dao;
+	}
+	
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String getCreateForm(Model model) {
 		System.out.println("SurveyController test");
@@ -118,6 +126,45 @@ public class SurveyController {
 		List<Question> questions = qDao.getAllQuestions();
 		model.addAttribute("questions", questions);
 		return "summary";
+	}
+	
+	@RequestMapping(value = "edit", method = RequestMethod.GET)
+	public String editableSurveys(Model model){
+		List<Survey> surveyList = sDao.findSurveys();
+		model.addAttribute("surveys", surveyList);
+		return "editSurvey/list";
+	}
+	
+	@RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
+	public String editSurvey(@PathVariable Integer id, Model model){
+		System.out.println(sDao.ifHasAnswers(id));
+		if (sDao.ifHasAnswers(id)==false) {
+			System.out.println(aDao.getAnswersForSurvey(id));
+			Survey survey = sDao.findSurvey(id);
+			survey.setQuestions(qDao.getQuestionsForSurvey(survey.getSurveyId()));
+			model.addAttribute("survey", survey);
+			return "editSurvey/edit";
+		}else{
+			List<String> errors = new ArrayList<String>();
+			errors.add("Et voi muokata kyselyä jossa on jo vastauksia");
+			model.addAttribute("errors" , errors);
+			return "error";
+		}	
+	}
+	
+	@RequestMapping(value = "edit/{sId}/deleteQuestion/{qId}", method = RequestMethod.GET)
+	public String deleteQuestionConfirmation(@PathVariable Integer sId, @PathVariable Integer qId, Model model) {
+		Question q = qDao.getOneQuestion(qId);
+		System.out.println("SurveyController: deleteQuestion");
+		model.addAttribute("question", q);
+		return "deleteQuestion/confirmation";
+	}
+	
+	@RequestMapping(value = "edit/{sId}/deleteQuestion/{qId}", method = RequestMethod.POST)
+	public String deleteQuestion(@PathVariable Integer sId, @PathVariable Integer qId, Model model) {
+		Question q = new Question();
+		qDao.deleteQuestion(qId);
+		return "redirect:/survey/edit/" + sId;
 	}
 	
 	@RequestMapping(value = "edit/insertQuestion/{id}", method = RequestMethod.GET)
@@ -187,32 +234,6 @@ public class SurveyController {
 		sDao.addSurvey(s);
 		int lastId = sDao.findLastId();
 		return "redirect:/survey/edit/insertQuestion/"+lastId;
-	}
-	
-	@RequestMapping(value = "edit", method = RequestMethod.GET)
-	public String editableSurveys(Model model){
-		List<Survey> surveyList = sDao.findSurveys();
-		model.addAttribute("surveys", surveyList);
-		return "editSurvey/list";
-	}
-	
-	@RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
-	public String editSurvey(@PathVariable Integer id, Model model){
-		System.out.println(sDao.ifHasAnswers(id));
-		if (sDao.ifHasAnswers(id)==false) {
-			System.out.println(aDao.getAnswersForSurvey(id));
-			Survey survey = sDao.findSurvey(id);
-			survey.setQuestions(qDao.getQuestionsForSurvey(survey.getSurveyId()));
-			model.addAttribute("survey", survey);
-			return "editSurvey/edit";
-		}else{
-			List<String> errors = new ArrayList<String>();
-			errors.add("Et voi muokata kyselyä jossa on jo vastauksia");
-			model.addAttribute("errors" , errors);
-			return "error";
-		}
-		
-		
 	}
 	
 	@RequestMapping(value = "choice", method = RequestMethod.GET)

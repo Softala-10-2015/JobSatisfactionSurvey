@@ -1,5 +1,5 @@
 /**
-* @author Jukka, Samuli
+* @author Jukka, Samuli, Harri
 */
 
 package fi.softala.dao;
@@ -26,4 +26,5 @@ public interface QuestionDAO{
 	
 	public abstract void addAnswerChoice(AChoice answeChoice);
 
+	public abstract void deleteQuestion(int questionId);
 }

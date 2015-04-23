@@ -77,11 +77,14 @@
 			<span>Kysymystyyppi: <c:out value="${question.questionType}"></c:out></span><br />
 			<span>Kysymysteksti: <c:out value="${question.questionText}"></c:out></span><br />
 			<span>Kysymyksen j‰rjestys: <c:out value="${question.questionOrder}"></c:out></span><br />
+			<a href="${survey.surveyId}/deleteQuestion/${question.questionId}">Poista kysymys</a>
 			<br />
 		</div>
       	<br>
       </c:forEach>
-      <a href="insertQuestion/${survey.surveyId}">Lis‰‰ kysymys</a>
+      <p><a href="insertQuestion/${survey.surveyId}">Lis‰‰ kysymys</a>&nbsp;&nbsp;&nbsp;
+      <a href="../edit">Palaa</a>&nbsp;&nbsp;&nbsp;
+      <a href="../create">Luo uusi kysely</a></p>
 
     <footer class="footer">
       <div class="container">
