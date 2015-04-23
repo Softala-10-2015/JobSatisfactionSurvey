@@ -71,7 +71,7 @@
       </div>
 
 	<h1><c:out value="${survey.surveyName}" /></h1>
-	
+	<h4><a title="" href="/kysely/survey/get-survey/${survey.surveyId}">http://${pageContext.request.serverName}:${pageContext.request.localPort}/kysely/survey/get-survey/${survey.surveyId}</a></h4>
 	<c:forEach var="question" items="${survey.questions}">
 		<div>
 			<span>Kysymystyyppi: <c:out value="${question.questionType}"></c:out></span><br />
