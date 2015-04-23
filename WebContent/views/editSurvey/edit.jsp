@@ -81,7 +81,9 @@
 		</div>
       	<br>
       </c:forEach>
-      <a href="insertQuestion/${survey.surveyId}">Lis‰‰ kysymys</a>
+      <p><a href="insertQuestion/${survey.surveyId}">Lis‰‰ kysymys</a>&nbsp;&nbsp;&nbsp;
+      <a href="../edit">Palaa</a>&nbsp;&nbsp;&nbsp;
+      <a href="../create">Luo uusi kysely</a></p>
 
     <footer class="footer">
       <div class="container">
