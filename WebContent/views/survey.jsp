@@ -28,7 +28,7 @@
     <![endif]-->
 </head>
 
-<body>
+<body> 
 
 	<!-- Fixed navbar & login -->
 
