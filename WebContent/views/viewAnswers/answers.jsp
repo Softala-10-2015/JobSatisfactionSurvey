@@ -12,7 +12,7 @@
     <meta name="author" content="">
     <link rel="icon" href="${pageContext.request.contextPath}/resources/img/kisutopi.ico">
 
-    <title>Muokkaa kyselyä</title>
+    <title>Vastaukset</title>
 
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
@@ -64,7 +64,6 @@
 	</div>
 	</nav> <!-- end of navbar -->   
     <!-- Begin page content -->
-	<div class="container">
     <div class="container">
       <div class="page-header">
       </div>
@@ -73,7 +72,7 @@
 	<c:set var="questionid" value="${survey.answers[0].questionId}"/>
 	<c:set var="count" value="0" scope="page"/>
 	<!-- <script language="">${"#maxvalue"}.html()</script>  -->
-		<div>
+		<div class="well">
 		<!-- <span>KysymysID: <c:out value="${survey.answers[0].questionId}"></c:out></span><br /> -->
 		<div class="title">Kysymys: <c:out value="${survey.answers[0].questionText}"></c:out></div>
 		<c:set var="maxcount" value="0" scope="page"/>
