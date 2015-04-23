@@ -11,8 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
      <link rel="icon" href="${pageContext.request.contextPath}/resources/img/icon.ico">
-
-    <title>Muokkaa kyselyä</title>
+    <title>SPURDOSPÄRGL</title>
 
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
@@ -66,29 +65,19 @@
 	</nav> <!-- end of navbar -->   
     <!-- Begin page content -->
 	<div class="container">
-    <div class="container">
-      <div class="page-header">
-      </div>
+	<h1>Kyselyt</h1>
+    <div class="well">
 
-	<h1><c:out value="${survey.surveyName}" /></h1>
-	<h4><a title="" href="/kysely/survey/get-survey/${survey.surveyId}">http://${pageContext.request.serverName}:${pageContext.request.localPort}/kysely/survey/get-survey/${survey.surveyId}</a></h4>
-	<c:forEach var="question" items="${survey.questions}">
-		<div>
-			<span>Kysymystyyppi: <c:out value="${question.questionType}"></c:out></span><br />
-			<span>Kysymysteksti: <c:out value="${question.questionText}"></c:out></span><br />
-			<span>Kysymyksen järjestys: <c:out value="${question.questionOrder}"></c:out></span><br />
-			<a href="${survey.surveyId}/deleteQuestion/${question.questionId}">Poista kysymys</a>
-			<br />
-		</div>
-      	<br>
+
+      <c:forEach var="survey" items="${surveys}">
+      <table class="table table-striped">
+      	<td><a href="answers/${survey.surveyId}"><c:out value="${survey.getSurveyName()}"/></a></td>
+      	</table>
       </c:forEach>
-      <p><a href="insertQuestion/${survey.surveyId}">Lisää kysymys</a>&nbsp;&nbsp;&nbsp;
-      <a href="../edit">Palaa</a>&nbsp;&nbsp;&nbsp;
-      <a href="../create">Luo uusi kysely</a></p>
-
+	</div>
     <footer class="footer">
       <div class="container">
-        <p class="text-muted">Copiright Make 2015</p>
+        <p class="text-muted">Copiright Make ja mikot 2015</p>
       </div>
     </footer>
 

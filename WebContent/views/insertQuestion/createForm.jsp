@@ -15,7 +15,6 @@
     <link rel="icon" href="${pageContext.request.contextPath}/resources/img/kisutopi.ico">
 
     <title>Lisää kysymys</title>
-
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
@@ -73,6 +72,7 @@
 	<h1>
 		Lisää kysymys
 	</h1>
+	<h4><a title="" href="/kysely/survey/get-survey/${question.surveyId}">http://${pageContext.request.serverName}:${pageContext.request.localPort}/kysely/survey/get-survey/${question.surveyId}</a></h4>
 		<form:form modelAttribute="question" class="well" method="post">
 		  	<fieldset>		
 				<p>
