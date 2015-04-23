@@ -90,6 +90,10 @@
       	</td>
       	</table>
       </c:forEach>
+      <div>
+		<br>
+		<a class="btn btn-default" href="/kysely" role="button">Peruuta</a>
+	</div>
   	</div>
     <footer class="footer">
       <div class="container">

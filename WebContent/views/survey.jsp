@@ -116,7 +116,8 @@
 
 					</p>
 				</c:forEach>
-				<button class="btn btn-primary" type="submit" value="submit">Submit</button>
+				<button class="btn btn-primary" type="submit" value="submit">Lähetä</button>
+				<a class="btn btn-default" href="../surveys" role="button">Peruuta</a>
 			</form:form>
 			
 			
