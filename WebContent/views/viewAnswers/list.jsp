@@ -77,7 +77,7 @@
 	</div>
     <footer class="footer">
       <div class="container">
-        <p class="text-muted">Copiright Make ja mikot 2015</p>
+        <p class="text-muted">Copiright Make ja mikot, Pasi, Jukka, Kytis 2015</p>
       </div>
     </footer>
 
