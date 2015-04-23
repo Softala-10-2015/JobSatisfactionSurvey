@@ -75,7 +75,7 @@
 
 	</div>
 	
-	</nav> <!-- end of navbar -->    
+	</nav> <!-- end of navbar -->     
     
  	<div class="logo"> 
    		<center><img src="${pageContext.request.contextPath}/resources/img/logo.png"/> </center>
