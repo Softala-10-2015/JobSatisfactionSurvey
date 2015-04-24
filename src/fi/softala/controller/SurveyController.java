@@ -152,6 +152,29 @@ public class SurveyController {
 		}	
 	}
 	
+	@RequestMapping(value = "edit/editQuestion/{id}", method = RequestMethod.GET)
+	public String editQuestion(@PathVariable Integer id, Model model) {
+		Question q = new Question();
+		q.setSurveyId(qDao.getOneQuestion(id).getSurveyId());
+		q.setQuestionId(qDao.getOneQuestion(id).getQuestionId());
+		q.setQuestionText(qDao.getOneQuestion(id).getQuestionText());
+		q.setQuestionOrder(qDao.getOneQuestion(id).getQuestionOrder());
+		q.setQuestionType(qDao.getOneQuestion(id).getQuestionType());
+		System.out.println(q.toString());
+		model.addAttribute("question", q);
+		return "insertQuestion/editQuestion";
+	}
+	
+	//Yksittäisen kysymyksen muokkaus
+	@RequestMapping(value = "edit/editQuestion/{id}", method = RequestMethod.POST)
+	public String sendEditedQuestion(@ModelAttribute(value = "question") Question q, @PathVariable Integer id) {
+		System.out.println(q.toString());
+		q.setQuestionId(id);
+		qDao.editQuestion(q);
+		System.out.println(q.toString());
+		return "redirect:/survey/edit/" + q.getSurveyId();
+	}
+	
 	@RequestMapping(value = "edit/{sId}/deleteQuestion/{qId}", method = RequestMethod.GET)
 	public String deleteQuestionConfirmation(@PathVariable Integer sId, @PathVariable Integer qId, Model model) {
 		Question q = qDao.getOneQuestion(qId);

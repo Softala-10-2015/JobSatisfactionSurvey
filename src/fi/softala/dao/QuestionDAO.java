@@ -27,4 +27,6 @@ public interface QuestionDAO{
 	public abstract void addAnswerChoice(AChoice answeChoice);
 
 	public abstract void deleteQuestion(int questionId);
+	
+	public abstract void editQuestion(Question question);
 }

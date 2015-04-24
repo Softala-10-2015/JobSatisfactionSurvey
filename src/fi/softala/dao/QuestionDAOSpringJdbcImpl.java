@@ -94,6 +94,27 @@ public class QuestionDAOSpringJdbcImpl implements QuestionDAO{
 		return wanted;
 	}
 	
+	//Yksittäisen kysymyksen muokkaus
+			public void editQuestion(Question question) {
+				final String sql = "update Question set question_text=?, question_order=? where question_id=?";
+				final String text = question.getQuestionText();
+				final int order = question.getQuestionOrder();
+				final int id = question.getQuestionId();
+				KeyHolder idHolder = new GeneratedKeyHolder();
+				jdbcTemplate.update(new PreparedStatementCreator() {
+					public PreparedStatement createPreparedStatement(
+							Connection connection) throws SQLException {
+						PreparedStatement ps = connection.prepareStatement(sql,
+								new String[] { "question_id" }); //Luo uudelle kysymykselle oman id:n
+						ps.setString(1, text); //tallennetaan kysymykseen liittyv�t attribuutit
+						ps.setInt(2, order);
+						ps.setInt(3, id);
+						System.out.println(ps);
+						return ps;
+					}
+				}, idHolder);		
+			}
+	
 	public List<Question> getAllQuestions() { //Metodi, jolla haetaan kaikki kysymykset tietokantataulusta
 		String sql = "select question_id, survey_id, question_type, question_text, question_order from Question";
 		RowMapper<Question> mapper = new QuestionRowMapper();

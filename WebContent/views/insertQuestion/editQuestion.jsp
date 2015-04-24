@@ -1,8 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form"%>
+<%@page contentType="text/html;charset=UTF-8"%>
+<%@page pageEncoding="UTF-8"%>
+<%@ page session="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form"%>
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -10,9 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-     <link rel="icon" href="${pageContext.request.contextPath}/resources/img/icon.ico">
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/img/kisutopi.ico">
 
-    <title>Muokkaa kysely‰</title>
+    <title>Muokkaa kysymyst√§</title>
 
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
@@ -49,11 +51,10 @@
 				<li class="active"><a href="/kysely">Home</a></li> <!-- home tab active -->
 				<li><a href="summary">Tulokset</a></li>
 			</ul>
-			<!-- 
 			<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">
 					<input type="text" class="form-control" name="username"
-						placeholder="K‰ytt‰j‰tunnus">
+						placeholder="K√§ytt√§j√§tunnus">
 				</div>
 				<div class="form-group">
 					<input type="text" class="form-control" name="password"
@@ -61,35 +62,46 @@
 				</div>
 				<button type="submit" class="btn btn-primary">Kirjaudu</button>
 			</form>
-			 -->
 		</div>
 
 	</div>
 	</nav> <!-- end of navbar -->   
-    <!-- Begin page content -->
+		<div class="container">
     <div class="container">
       <div class="page-header">
       </div>
-
-	<h1><c:out value="${survey.surveyName}" /></h1>
-	<form:form class="well">
-	<c:forEach var="question" items="${survey.questions}">
-		<div>
-			<span>Kysymystyyppi: <c:out value="${question.questionType}"></c:out></span><br />
-			<span>Kysymysteksti: <c:out value="${question.questionText}"></c:out></span><br />
-			<span>Kysymyksen j‰rjestys: <c:out value="${question.questionOrder}"></c:out></span><br />
-			<a href="../edit/editQuestion/${question.questionId}">Muokkaa kysymyst‰</a><br/>
-			<a href="${survey.surveyId}/deleteQuestion/${question.questionId}">Poista kysymys</a>
-			<br />
-		</div>
-      	<br>
-      </c:forEach>
-      <p><a href="insertQuestion/${survey.surveyId}">Lis‰‰ kysymys</a>&nbsp;&nbsp;&nbsp;
-      <a href="../edit">Palaa</a>&nbsp;&nbsp;&nbsp;
-      <a href="../create">Luo uusi kysely</a></p>
-</form:form>
-
-    <footer class="footer">
+<body>
+<h1>
+		Muokkaa kysymyst√§
+	</h1>
+		<form:form modelAttribute="question" class="well" method="post">
+		  	<fieldset>		
+				<p>
+					<form:input type="hidden" path="surveyId" value="${question.surveyId}"/>		
+				</p>
+				<p>	
+					<form:label path="questionType" id="questionType">Kysymystyyppi</form:label><br/>
+					<form:select path="questionType">
+					<form:option value="0" label="Tekstikentt√§" />
+					<form:option value="1" label="Checkbox" />
+					</form:select>
+				</p>
+				<p>	
+					<form:label path="questionText">Kysymysteksti</form:label><br/>
+					<form:textarea path="questionText" rows="3" />
+				</p>
+				<p>	
+					<form:label path="questionOrder">Kysymyksen j√§rjestys</form:label><br/>
+					<form:input path="questionOrder" />
+				</p>
+				
+				
+				<p>	
+					<button type="submit" class="btn btn-primary">Muokkaa</button>
+				</p>
+			</fieldset>
+		</form:form>
+<footer class="footer">
       <div class="container">
         <p class="text-muted">Copiright Make 2015</p>
       </div>
@@ -104,5 +116,5 @@
     <script src="${pageContext.request.contextPath}/resources/js/angular.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+</body>
 </html>
