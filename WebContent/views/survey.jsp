@@ -103,16 +103,29 @@
 							
 							
 							<label class="btn btn-primary"><form:radiobutton path="answerList[${i.index}].answerText"
-								value="Valinta 1"></form:radiobutton>
-							<img src="${pageContext.request.contextPath}/resources/img/hymy.png" alt="hymy" style="position: relative;left: 4px;"> &nbsp;</label>
+								value="Erittäin erimieltä"></form:radiobutton>
+							<img src="${pageContext.request.contextPath}/resources/img/suru.png" alt="hymy" style="position: relative;left: 4px;"> &nbsp;</label>
 							
 							<label class="btn btn-primary"><form:radiobutton path="answerList[${i.index}].answerText"
-								value="Valinta 2"></form:radiobutton>
+								value="Melko erimieltä"></form:radiobutton>
 							<img src="${pageContext.request.contextPath}/resources/img/perus.png" alt="perus" style="position: relative;left: 4px;"> &nbsp;</label>
 							
 							<label class="btn btn-primary"><form:radiobutton path="answerList[${i.index}].answerText"
-								value="Valinta 3"></form:radiobutton>
-							<img src="${pageContext.request.contextPath}/resources/img/suru.png" alt="suru" style="position: relative;left: 4px;"> &nbsp;</label>
+								value="Melko samaa mieltä"></form:radiobutton>
+							<img src="${pageContext.request.contextPath}/resources/img/hymy.png" alt="suru" style="position: relative;left: 4px;"> &nbsp;</label>
+							
+							<label class="btn btn-primary"><form:radiobutton path="answerList[${i.index}].answerText"
+								value="Erittäin samaa mieltä"></form:radiobutton>
+							<img src="${pageContext.request.contextPath}/resources/img/hymy.png" alt="suru" style="position: relative;left: 4px;"> &nbsp;</label>
+							
+							<label class="btn btn-primary"><form:radiobutton path="answerList[${i.index}].answerText"
+								value="En osaa vastata"></form:radiobutton>En osaa<br>vastata
+							</label>
+							
+							<label class="btn btn-primary"><form:radiobutton path="answerList[${i.index}].answerText"
+								value="En halua vastata"></form:radiobutton>En halua<br>vastata
+							</label>
+									
 							<form:hidden path="answerList[${i.index}].questionId"
 								value="${question.getQuestionId()}" />
 							
