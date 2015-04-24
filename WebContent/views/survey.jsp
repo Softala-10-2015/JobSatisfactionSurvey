@@ -104,19 +104,19 @@
 							
 							<label class="btn btn-primary"><form:radiobutton path="answerList[${i.index}].answerText"
 								value="Erittäin erimieltä"></form:radiobutton>
-							<img src="${pageContext.request.contextPath}/resources/img/suru.png" alt="hymy" style="position: relative;left: 4px;"> &nbsp;</label>
+							<img src="${pageContext.request.contextPath}/resources/img/suru.png" alt="suru" style="position: relative;left: 4px;"> &nbsp;</label>
 							
 							<label class="btn btn-primary"><form:radiobutton path="answerList[${i.index}].answerText"
 								value="Melko erimieltä"></form:radiobutton>
-							<img src="${pageContext.request.contextPath}/resources/img/perus.png" alt="perus" style="position: relative;left: 4px;"> &nbsp;</label>
+							<img src="${pageContext.request.contextPath}/resources/img/semi.png" alt="semi" style="position: relative;left: 4px;"> &nbsp;</label>
 							
 							<label class="btn btn-primary"><form:radiobutton path="answerList[${i.index}].answerText"
 								value="Melko samaa mieltä"></form:radiobutton>
-							<img src="${pageContext.request.contextPath}/resources/img/hymy.png" alt="suru" style="position: relative;left: 4px;"> &nbsp;</label>
+							<img src="${pageContext.request.contextPath}/resources/img/hymy.png" alt="hymy" style="position: relative;left: 4px;"> &nbsp;</label>
 							
 							<label class="btn btn-primary"><form:radiobutton path="answerList[${i.index}].answerText"
 								value="Erittäin samaa mieltä"></form:radiobutton>
-							<img src="${pageContext.request.contextPath}/resources/img/hymy.png" alt="suru" style="position: relative;left: 4px;"> &nbsp;</label>
+							<img src="${pageContext.request.contextPath}/resources/img/megahymy.png" alt="megahymy" style="position: relative;left: 4px;"> &nbsp;</label>
 							
 							<label class="btn btn-primary"><form:radiobutton path="answerList[${i.index}].answerText"
 								value="En osaa vastata"></form:radiobutton>En osaa<br>vastata
