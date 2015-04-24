@@ -4,7 +4,7 @@ public class Answer {
 	private int answerId;
 	private int questionId;
 	private String answerText;
-	private String aChoiceText;
+	//private String aChoiceText;
 	private String questionText;
 	
 	
@@ -38,12 +38,12 @@ public class Answer {
 	public void setQuestionId(int questionId) {
 		this.questionId = questionId;
 	}
-	public String getaChoiceText() {
-		return aChoiceText;
-	}
-	public void setaChoiceText(String aChoiceText) {
-		this.aChoiceText = aChoiceText;
-	}
+//	public String getaChoiceText() {
+//		return aChoiceText;
+//	}
+//	public void setaChoiceText(String aChoiceText) {
+//		this.aChoiceText = aChoiceText;
+//	}
 	public String getQuestionText() {
 		return questionText;
 	}

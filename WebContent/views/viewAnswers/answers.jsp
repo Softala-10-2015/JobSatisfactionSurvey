@@ -84,20 +84,20 @@
 		<c:forEach var="answer" items="${survey.answers}">
 			<c:choose>
 				<c:when test="${questionid == answer.questionId}">
-				<div class="answer">vastaus: <c:out value="${answer.answerText}"></c:out></div>
 				<c:set var="count" value="${count + 1}" scope="page"/>
 				<c:if test="${count >= maxcount}">
 				<c:set var="maxcount" value="${count}"/>
 				</c:if>
+				<div class="answer">Vastaus <c:out value="${count}"></c:out>: <c:out value="${answer.answerText}"></c:out></div>
 				<!-- <span>vastausID: <c:out value="${answer.answerId}"></c:out></span><br /> -->
 				</c:when>
 				<c:otherwise>
 				<!-- <span>KysymysID: <c:out value="${answer.questionId}"></c:out></span><br /> -->
 				<div class="title">Kysymys: <c:out value="${answer.questionText}"></c:out></div>
-				<div class="answer">vastaus: <c:out value="${answer.answerText}"></c:out></div>
+				<c:set var="count" value="1" scope="page"/>
+				<div class="answer">Vastaus <c:out value="${count}"></c:out>: <c:out value="${answer.answerText}"></c:out></div>
 				<!-- <span>vastausID: <c:out value="${answer.answerId}"></c:out></span><br />  -->
 				<c:set var="questionid" value="${answer.questionId}"/>
-				<c:set var="count" value="1" scope="page"/>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
