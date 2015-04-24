@@ -83,6 +83,7 @@ public class AnswerDAOSpringJdbcImpl implements AnswerDAO{
 				+ "WHERE Survey.survey_id=? "
 				+ "ORDER BY Question.question_order";
 		
+		//kommentti
 		Object[] params = new Object[] { surveyId };
 		//System.out.println(params[0]);
 		RowMapper<Answer> mapper = new AnswerRowMapper();
