@@ -49,6 +49,8 @@
 				<li class="active"><a href="/kysely">Home</a></li> <!-- home tab active -->
 				<li><a href="summary">Tulokset</a></li>
 			</ul>
+			
+			<!-- 
 			<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">
 					<input type="text" class="form-control" name="username"
@@ -60,21 +62,22 @@
 				</div>
 				<button type="submit" class="btn btn-primary">Kirjaudu</button>
 			</form>
+			-->
 		</div>
 
 	</div>
 	</nav> <!-- end of navbar -->   
     <!-- Begin page content -->
-	<div class="container">
     <div class="container">
-      <div class="page-header">
-      </div>
+      <form:form class="well">
       
       <c:forEach items="${errors}" var="error">
       <c:out value="${error}"/>
       </c:forEach>
       <br>
-      <a href="../edit">Takaisin</a>
+      <br>
+    <a class="btn btn-default" href="../edit" role="button">Takaisin</a>
+      </form:form>
       
  <footer class="footer">
       <div class="container">

@@ -48,6 +48,8 @@
 				<li class="active"><a href="/kysely">Home</a></li> <!-- home tab active -->
 				<li><a href="summary">Tulokset</a></li>
 			</ul>
+			
+			<!--  
 			<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">
 					<input type="text" class="form-control" name="username"
@@ -59,6 +61,7 @@
 				</div>
 				<button type="submit" class="btn btn-primary">Kirjaudu</button>
 			</form>
+			-->
 		</div>
 
 	</div>

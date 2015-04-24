@@ -49,6 +49,7 @@
 				<li class="active"><a href="/kysely">Home</a></li> <!-- home tab active -->
 				<li><a href="summary">Tulokset</a></li>
 			</ul>
+			<!-- 
 			<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">
 					<input type="text" class="form-control" name="username"
@@ -60,6 +61,7 @@
 				</div>
 				<button type="submit" class="btn btn-primary">Kirjaudu</button>
 			</form>
+			 -->
 		</div>
 
 	</div>
@@ -71,6 +73,7 @@
 
 	<h1><c:out value="${survey.surveyName}" /></h1>
 	<h4><a title="" href="/kysely/survey/get-survey/${survey.surveyId}">http://${pageContext.request.serverName}:${pageContext.request.localPort}/kysely/survey/get-survey/${survey.surveyId}</a></h4>
+	<form:form class="well">
 	<c:forEach var="question" items="${survey.questions}">
 		<div>
 			<span>Kysymystyyppi: <c:out value="${question.questionType}"></c:out></span><br />
@@ -84,6 +87,7 @@
       <p><a href="insertQuestion/${survey.surveyId}">Lis‰‰ kysymys</a>&nbsp;&nbsp;&nbsp;
       <a href="../edit">Palaa</a>&nbsp;&nbsp;&nbsp;
       <a href="../create">Luo uusi kysely</a></p>
+</form:form>
 
     <footer class="footer">
       <div class="container">

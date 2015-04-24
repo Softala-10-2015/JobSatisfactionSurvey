@@ -59,6 +59,7 @@
 				<li><a href="summary">Tulokset</a></li>
 			</ul>
 				
+			<!--  	
 			<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">
 					<input type="text" class="form-control" name="username"
@@ -70,6 +71,7 @@
 				</div>
 				<button type="submit" class="btn btn-primary">Kirjaudu</button>
 			</form>
+			-->
 			
 		</div>
 
@@ -77,9 +79,7 @@
 	
 	</nav> <!-- end of navbar -->     
     
- 	<div class="logo"> 
-   		<center><img src="${pageContext.request.contextPath}/resources/img/logo.png"/> </center>
-	</div>
+ 	
      <div class="container">
     <h3>Vastattavat kyselyt</h3>
 	<div class="well">
