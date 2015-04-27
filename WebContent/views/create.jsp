@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -74,18 +75,180 @@
 	<h1>
 		Luo kysely
 	</h1>
-<form:form modelAttribute="survey" class="well" method="post">
-  
-<fieldset>
-<form:label	path="surveyName">Kyselyn nimi</form:label>
-<form:input path="surveyName" /><br/>
 
-<form:label	path="email">Sähköposti</form:label>
-<form:input path="email" /><br/>
-</fieldset>
-  
-<button class="btn btn-primary" type="submit" value="Send" >Submit</button>
-</form:form>
+<div class="well">
+	<h3>Kyselyn pohja</h3>
+	<div class="well">
+		<div class="row">
+			<div class="div-lg-12">	
+				<p>
+					Voit luoda kyselyn alusta lähtien, 
+					tai voit tuoda valmiin kyselyn tiedot ja kysymykset alla olevasta listasta
+				</p>	
+					<div class="row">
+						<div class="col-lg-12">
+							<!-- <div class="form-group" id="survey-list-select"> -->
+							<button class="btn btn-default dropdown-toggle" id="survey-select-butn" type="button" data-toggle="dropdown">
+								Valitse <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+		 						<c:forEach items="${surveys}" var="survey">
+									<li><a href="getSurveys/${survey.getSurveyId()}"><c:out value="${survey.getSurveyName()}"/></a></li>
+								</c:forEach>
+							</ul>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-lg-12">
+							<!-- <button type="button" class="btn btn-primary">Tyhjennä kysely</button> -->
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<h3>Kyselyn tiedot</h3>
+	
+	<div class="well">
+	<form:form class="form-horizontal" id="survey-form" modelAttribute="survey" method="post" action="create">
+		<fieldset>
+			<div class="row">
+			<div class="col-xs-3">
+				<div class="form-group" style="padding-left:0; margin-left:0">
+					<form:label	path="surveyName" value="${survey.getSurveyName()}">Kyselyn nimi</form:label>
+					<form:input class="col-xs-1 form-control" path="surveyName" /><br/>
+					
+					<form:label path="email" value="${survey.getEmail()}">Sähköposti</form:label>
+					<form:input class="col-xs-1 form-control" path="email" /><br/>
+				</div>
+			</div>
+			</div>
+	
+		</fieldset>
+	</form:form>
+	</div>
+	
+	<div class="row">
+		<div class="col-lg-12">
+			
+			<%-- 
+			--	Aleksin koodeja, jos kysymyksiä
+			--%>	
+			<!-- begin quest listing (ajax -> ajax/viewQuestions.jsp + jQuery append)-->
+			<h3>Kysymykset</h3>
+			<div class="col-lg-5 " id="questions-div"></div>
+			<!-- end quest listing -->
+				
+				<!-- begin quest adding -->
+				<div class="col-lg-6 col-lg-offset-1 well">
+				
+					<h3>Kysymysten lisäys</h3>
+					
+					<form:form class="form-horizontal" id="add-question-form" modelAttribute="question" action="" method="POST">
+						<fieldset>
+						<div class="row">
+							<div class="col-lg-11">
+								<div class="form-group" style="margin-left:0">
+									<p>
+										<form:label path="questionText">Kysymys teksti</form:label>
+										<form:input class="form-control" id="#questionText" path="questionText"/>
+									</p>
+									
+									<p>
+										<form:label path="questionType">Kysymyksen tyyppi</form:label>
+										<form:select class="form-control" id="#questionType" path="questionType">
+											<form:option value="0" label="Tekstikenttä" />
+											<form:option value="1" label="Checkbox" />
+										</form:select>
+									</p>
+									<%-- 	<form:label path="choices[0].aChoiceText">Vastausvaihtoehdot</form:label><br/>
+									<form:input path="choices[0].aChoiceText" /><br><br> --%>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-3">
+								<form:button class="btn btn-default" id="add-question" type="submit">Lisää kysymys</form:button>
+							</div>
+						</div>
+						
+						</fieldset>
+					</form:form>
+				</div>
+				<!-- end quest adding -->
+		</div>
+	</div>
+	
+	<!-- begin survey send -->
+	<div class="row">
+		<div class="col-lg-1 col-lg-offset-10">
+		<p>
+			<button id="submit-button" class="btn btn-lg btn-primary" type="button" value="Send" >Submit</button>
+		</p>
+		</div>
+	</div>
+	<!-- end survey send -->
+
+</div>
+
+<!-- jQuery for adding and listing the questions -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript">
+	$( document ).ready(function() {
+		$.get("ajax/viewQuestions", {"" : ""}, callback);
+		function callback (data){
+			$('#questions-div').text("");
+			$('#questions-div').append(data);
+		}; 
+		
+		
+		$('#submit-button').click(function() {
+			console.log("submitting form");
+			$('#survey-form').submit();
+		});
+		
+		$('#add-question-form').submit(function(){
+			var data = {};
+			var dataStr = "";
+			
+			$.each(this, function(index, value){
+				var input = $(value);
+				data[input.attr("name")] = input.val();
+				
+				if(dataStr) {
+					dataStr += "&";
+				}
+				
+				dataStr += input.attr("name") + "=" + data[input.attr("name")]
+				console.log('input value: ' + input.val());
+				delete data["undefined"];
+			});
+			
+			console.log('posting ajax' + " " + JSON.stringify(data));
+			
+			$.ajax({
+				type:"post",
+				url:"ajax/addQuestion",
+				data:dataStr,
+				async:false,
+			});
+ 			
+			$.get("ajax/viewQuestions", {"" : ""}, callback);
+			function callback (data){
+				$('#questions-div').text("");
+				$('#questions-div').append(data);
+			};  
+			
+			return false;
+			
+		});
+	});
+</script>
+<%-- 
+--end Aleksin koodit 
+--%>
 
     <footer class="footer">
       <div class="container">

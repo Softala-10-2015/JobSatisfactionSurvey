@@ -1,18 +1,22 @@
 package fi.softala.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import fi.softala.bean.AChoice;
 import fi.softala.bean.Answer;
 import fi.softala.bean.AnswerListWrapper;
 import fi.softala.bean.Question;
@@ -245,17 +249,46 @@ public class SurveyController {
 	}
 	
 	@RequestMapping(value = "create", method = RequestMethod.GET)
-	public String createInit(Model model) {
-		Survey s = new Survey();
+	public String createInit(Model model, HttpSession session) {
+		try {
+			List<Survey> surveys = sDao.findSurveys();
+			model.addAttribute("surveys", surveys);
+		} catch(DataAccessException e) {
+			throw new DaoConnectionException("Tietokantaan ei saada yhteyttä.", e);
+		}
+		
+		List<Question> questions = (ArrayList<Question>)session.getAttribute("questions");
+		if(questions != null && !questions.isEmpty()) {
+			model.addAttribute("questions", questions);
+		}
+		
+		Survey s = (Survey)session.getAttribute("survey");
+		if(s == null) {
+			s = new Survey();
+		}
+		
 		model.addAttribute("survey", s);
+		model.addAttribute("question", new Question());
 		return "create";
 	}
 	
 	@RequestMapping(value = "create", method = RequestMethod.POST)
-	public String sendSurvey(@ModelAttribute(value = "survey") Survey s, Model model) {
-		
+	public String sendSurvey(@ModelAttribute(value = "survey") Survey s, Model model, HttpSession session) {
+		List<Question> questions = (ArrayList<Question>)session.getAttribute("questions");
+		if(questions != null && !questions.isEmpty()) {
+			s.setQuestions(questions);
+		}
+		System.out.println("test");
 		sDao.addSurvey(s);
 		int lastId = sDao.findLastId();
+		
+		if(questions != null && !questions.isEmpty()) {
+			for(Question q : questions) {
+				q.setSurveyId(lastId);
+				qDao.saveQuestion(q);
+			}
+		}
+		
 		return "redirect:/survey/edit/insertQuestion/"+lastId;
 	}
 	
@@ -303,4 +336,197 @@ public class SurveyController {
 		return "surveys";
 	}
 
+	@ModelAttribute("survey")
+	public Survey getSurvey() {
+		Survey survey = new Survey();
+		return survey;
+	}
+	
+	/**
+	 * Lisää kyselyyn kysymyksen, käytetään ajaxin avulla. Lisää parametrinä saadun kysymyksen sessiossa sijaitsevaan listaan.
+	 * @param question	lisättävä kysymys
+	 * @return
+	 */
+	@RequestMapping(value = "ajax/addQuestion", method = RequestMethod.POST)
+	public String addQuestionToSurvey(@ModelAttribute ("question") Question question, 
+			ModelMap model, HttpSession session) {
+	
+		System.out.println("ajax/addQuestion POST");
+		
+		System.out.println(question.toString());
+		List<Question> questions;
+		if(session.getAttribute("questions") == null) {
+			questions = new ArrayList<Question>();
+		} else {
+			questions = (ArrayList<Question>)session.getAttribute("questions");
+		}
+		
+		System.out.println(question.toString());
+		if(questions != null && !questions.isEmpty()) {
+			int lastQuestionOrder = 0;
+			for(Question q : questions) {
+				lastQuestionOrder = q.getQuestionOrder();
+			}
+			question.setQuestionOrder(lastQuestionOrder + 1);
+		} else {
+			question.setQuestionOrder(1);
+		}
+		
+		questions.add(question);
+		
+		session.setAttribute("questions", questions);
+		model.addAttribute("questions", questions);
+
+		return "redirect:/survey/ajax/viewQuestions";
+	}
+	
+	/**
+	 * Metodi ajaxia varten, palauttaa sessiosta listan kysymyksiä.
+	 * @return	palauttaa ajax/viewQuestions.jsp-sivulle
+	 */
+	@RequestMapping(value = "ajax/viewQuestions", method = RequestMethod.GET)
+	public String viewQuestions(ModelMap model, HttpSession session) {
+		System.out.println("ajax/viewQuestions GET");
+		ArrayList<Question> questions = (ArrayList<Question>)session.getAttribute("questions");
+		if(questions != null) {
+			//List<Question> questions = survey.getQuestions();
+			model.addAttribute("questions", questions);
+		}
+		
+		return "ajax/viewQuestions";
+	}
+	
+	/**
+	 * Poistaa paramterinä saadun id:n perusteella kysymyksen sessiossa sijaitsevasta listalta.
+	 * @param id	siirrettävän kysymyksen järjestysnumero
+	 * @return		Palauttaa ajax/viewQuestions.jsp-sivulle.
+	 */
+	@RequestMapping(value = "ajax/deleteQuestion/{id}", method = RequestMethod.GET)
+	//@ResponseBody
+	public String deleteQuestionAjax(@PathVariable Integer id, ModelMap model, HttpSession session) {
+		System.out.println("ajax/deleteQuestion/" + id + " GET");
+		List<Question> questions = (ArrayList<Question>)session.getAttribute("questions");
+
+		if(questions != null && !questions.isEmpty()) {
+			
+			Iterator<Question> qIterator = questions.iterator();
+			while(qIterator.hasNext()) {
+				Question q = qIterator.next();
+				if(q.getQuestionOrder() == id) {
+					qIterator.remove();
+				}
+			}
+			for(int i = 0; i < questions.size(); i++) {
+				questions.get(i).setQuestionOrder(i + 1);
+			}
+			model.addAttribute("questions", questions);
+		}
+		return "ajax/viewQuestions";
+	}
+	
+	/**
+	 * Metodi ajaxia varten, siirtää sessiossa sijaitsevan kysymyslistan kysymyksen paikkaa.
+	 * @param id			Siirrettävän kysymyksen järjetysnumero
+	 * @param direction		up/down
+	 * @return				palauttaa ajax/viewQuestions.jsp-sivulle
+	 */
+	@RequestMapping(value = "ajax/moveQuestion/{direction}/{id}", method = RequestMethod.GET)
+	//@ResponseBody
+	public String moveQuestionUp(@PathVariable Integer id, @PathVariable String direction, ModelMap model, HttpSession session) {
+		System.out.println("ajax/moveQuestion GET");
+		System.out.println(direction);
+		List<Question> questions = (ArrayList<Question>) session.getAttribute("questions");
+		
+		
+		Question tempQuestion = new Question();
+		if(questions != null && !questions.isEmpty()) {
+			int index = 0;
+			
+			//tarkistetaanko löytyykö id:llä (kysymyksen järjestyksellä) kysymys listalta
+			for(int i = 0; i < questions.size(); i++) {
+				if(questions.get(i).getQuestionOrder() == id) {
+					index = i;
+				}
+			}
+			
+			if(questions.get(index) != null) {
+				tempQuestion = questions.get(index);
+				
+		 		if(direction.equals("up")) {
+		 			System.out.println("moving up");
+		 			if(index != 0) {
+						questions.remove(index);
+						questions.add(index - 1, tempQuestion);
+		 			}
+				} else if(direction.equals("down")) {
+					System.out.println("moving down");
+					if(index + 1 < questions.size()) {
+						questions.remove(index);
+						questions.add(index + 1, tempQuestion);
+					}
+				}
+			}
+
+	 		for(int i = 0; i < questions.size(); i++) {
+				questions.get(i).setQuestionOrder(i + 1);
+			}
+		}
+	
+		model.addAttribute("questions", questions);
+		return "ajax/viewQuestions";
+	}
+	
+	/**
+	 * Ei käytössä vielä, kyselyn luontisivulla valintojen lisääminen monivalintakysymyksiin
+	 */
+	@RequestMapping(value = "ajax/addAnswerChoice/{id}/{choice}", method = RequestMethod.GET)
+	public String addAnswerChoiceAjax(@PathVariable Integer id, @PathVariable String choiceStr, ModelMap model, HttpSession session) {
+		System.out.println("ajax/moveQuestion GET");
+		
+		List<Question> questions = (ArrayList<Question>) session.getAttribute("questions");
+		
+		
+		if(questions != null && !questions.isEmpty()) {
+			if(questions.get(id) != null) {
+				AChoice choice = new AChoice();
+				
+				choice.setaChoiceText(choiceStr);
+				choice.setQuestionId(id);
+				
+				List<AChoice> choices = new ArrayList<AChoice>();
+				if(questions.get(id).getChoices() != null && !questions.get(id).getChoices().isEmpty()) {
+					questions.get(id).getChoices().add(choice);
+				} else {
+					choices.add(choice);
+					questions.get(id).setChoices(choices);
+				}
+			}
+		}
+		return " ";
+	}
+	
+	/**
+	 * Palauttaa listan kyselyistä kyselyiden luontisivulle
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "getSurveys/{id}", method = RequestMethod.GET)
+	public String getSurveyList(@PathVariable Integer id, ModelMap model, HttpSession session) {
+		System.out.println("getSurveys GET");
+		System.out.println(session.getAttributeNames());
+		session.removeAttribute("questions");
+		session.removeAttribute("survey");
+		
+		Survey survey = sDao.findSurvey(id);
+		
+		List<Question> questions = qDao.getQuestionsForSurvey(survey.getSurveyId());
+
+		session.setAttribute("questions", questions);
+		session.setAttribute("survey", survey);
+
+		return "redirect:/survey/create";
+	}
+	
+
 }
+

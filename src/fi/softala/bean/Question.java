@@ -76,6 +76,14 @@ public class Question{
 	public void setChoices(List<AChoice> choices) {
 		this.choices = choices;
 	}
+
+	@Override
+	public String toString() {
+		return "Question [surveyId=" + surveyId + ", questionId=" + questionId
+				+ ", questionOrder=" + questionOrder + ", questionText="
+				+ questionText + ", questionType=" + questionType
+				+ ", choices=" + choices + "]";
+	}
 	
 }
 
