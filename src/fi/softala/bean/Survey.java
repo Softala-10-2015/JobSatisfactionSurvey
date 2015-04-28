@@ -16,13 +16,12 @@ public class Survey {
 	//JAVA ATRIBUUTTEJA
 	boolean isComplete;
 	int nextFree;
-	List questions;
-	List answers;
+	List<Question> questions;
+	List<Answer> answers;
 
-	@SuppressWarnings("rawtypes")
 	public Survey() {
 		super();
-		   questions = new ArrayList();
+		   questions = new ArrayList<Question>();
 	}
 
 	public int getSurveyId() {
@@ -65,7 +64,6 @@ public class Survey {
 		this.nextFree = nextFree;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public void addQuestion(Question q){
 		questions.add(q);
 	}
@@ -78,15 +76,23 @@ public class Survey {
 		this.questions = q;
 	}
 
-	public List getQuestions() {
+	public List<Question> getQuestions() {
 		return questions;
 	}
 	
-	public List getAnswers() {
+	public List<Answer> getAnswers() {
 		return answers;
 	}
 
 	public void setAnswers(List<Answer> answers) {
 		this.answers = answers;
+	}
+
+	@Override
+	public String toString() {
+		return "Survey [surveyId=" + surveyId + ", ownerId=" + ownerId
+				+ ", surveyName=" + surveyName + ", email=" + email
+				+ ", isComplete=" + isComplete + ", nextFree=" + nextFree
+				+ ", questions=" + questions + ", answers=" + answers + "]";
 	}
 }
