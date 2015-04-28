@@ -4400,28 +4400,34 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 .navbar .brand {
 position:absolute;
 max-height: 40px;
-overflow: visible;
-padding-top: 0;
-padding-bottom: 0;
+overflow: hidden;
 }
 
-.navbar a.navbar-brand {float: left; }
+.navbar a.navbar-brand {
+	float:left;
+	overflow: hidden;
+	max-width: 100%;
+
+
+	}
 
 .navbar-brand:hover,.navbar-brand:focus {
 	text-decoration: none;
 }
-
-/*.navbar-brand>img {
-	display: block;
 	
 }
-*/
+
+
+.navbar-brand>img {
+	display:inline;
+}
 @media ( min-width : 768px) {
 	.navbar>.container .navbar-brand,.navbar>.container-fluid .navbar-brand
 		{
 		margin-left: -15px;
 	}
 }
+
 
 .navbar-toggle {
 	position: relative;
@@ -4458,13 +4464,16 @@ padding-bottom: 0;
 }
 
 .navbar-nav {
-	margin: 7.5px -15px;
+	margin: 1px -15px ;
+	
 }
 
+
 .navbar-nav>li>a {
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-top: 25px;
+	padding-bottom: 15px;
 	line-height: 20px;
+	
 }
 
 @media ( max-width : 767px) {
@@ -6943,6 +6952,7 @@ button.close {
 @media ( max-width : 767px) {
 	.hidden-xs {
 		display: none !important;
+		
 	}
 }
 

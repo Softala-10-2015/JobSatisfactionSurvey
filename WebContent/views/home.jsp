@@ -53,7 +53,7 @@
  </div>
 		<div id="navbar" class="collapse navbar-collapse">
 		<!-- navbarlogo -->
-		<a class="navbar-brand" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png" alt=""></a>
+		<a class="navbar-brand" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png"  alt="Navbar-brand kuva"></a>
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="/kysely">Home</a></li> <!-- home tab active -->
 				<li><a href="summary">Tulokset</a></li>
@@ -125,8 +125,8 @@
       </div>
   
     <footer class="footer">
-      <div class="container">
-        <p class="text-muted">Copiright Make ja Mikot 2015</p>
+      <div class="container" >
+        <p class="text-muted"  style="float: left;">Copyright Make ja Mikot 2015</p>
       </div>
     </footer>
 
