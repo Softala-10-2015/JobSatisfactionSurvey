@@ -275,18 +275,26 @@ public class SurveyController {
 		if(questions != null && !questions.isEmpty()) {
 			s.setQuestions(questions);
 		}
-		System.out.println("test");
+		
 		sDao.addSurvey(s);
 		int lastId = sDao.findLastId();
 		
+		//tallennetaan sessiossa olevat kysymykset kantaan, ja poistetaan ne sessiosta
 		if(questions != null && !questions.isEmpty()) {
 			for(Question q : questions) {
 				q.setSurveyId(lastId);
 				qDao.saveQuestion(q);
+				session.removeAttribute("questions");
 			}
 		}
 		
-		return "redirect:/survey/edit/insertQuestion/"+lastId;
+		//poistetaan kysely sessiosta
+		if(session.getAttribute("survey") != null) {
+			session.removeAttribute("survey");
+		}
+		
+		//return "redirect:/survey/edit/insertQuestion/"+lastId;
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value = "choice", method = RequestMethod.GET)
@@ -517,6 +525,17 @@ public class SurveyController {
 		session.setAttribute("questions", questions);
 		session.setAttribute("survey", survey);
 
+		return "redirect:/survey/create";
+	}
+	
+	@RequestMapping(value="clearSurvey", method = RequestMethod.GET)
+	public String clearSurvey(HttpSession session) {
+		if(session.getAttribute("survey") != null) {
+			session.removeAttribute("survey");
+		}
+		if (session.getAttribute("questions") != null) {
+			session.removeAttribute("questions");
+		}
 		return "redirect:/survey/create";
 	}
 	

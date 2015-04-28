@@ -108,7 +108,9 @@
 					<br>
 					<div class="row">
 						<div class="col-lg-12">
-							<!-- <button type="button" class="btn btn-primary">Tyhjennä kysely</button> -->
+							<form:form action="clearSurvey" method="get">
+								<button id="clear-survey" class="btn btn-primary" type="submit">Tyhjennä kysely</button>
+							</form:form>
 						</div>
 					</div>
 			</div>
@@ -209,7 +211,6 @@
 			$('#questions-div').text("");
 			$('#questions-div').append(data);
 		}; 
-		
 		
 		$('#submit-button').click(function() {
 			console.log("submitting form");
