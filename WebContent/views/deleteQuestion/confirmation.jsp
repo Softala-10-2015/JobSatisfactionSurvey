@@ -76,7 +76,8 @@
 		<br />
 		<p>Haluatko varmasti poistaa kysymyksen</p>
 		<form method="post">
-			<button>Poista</button>
+			<button class="btn btn-danger">Poista</button>&nbsp;&nbsp;
+			<a class="btn btn-default" href="${pageContext.request.contextPath}/survey/edit/${surveyId}">Takaisin</a>
 		</form>
 		
     <footer class="footer">

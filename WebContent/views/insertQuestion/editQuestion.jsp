@@ -97,7 +97,8 @@
 				
 				
 				<p>	
-					<button type="submit" class="btn btn-primary">Muokkaa</button>
+					<button type="submit" class="btn btn-primary">Tallenna</button>
+					<a class="btn btn-default" href="${pageContext.request.contextPath}/survey/edit/${question.surveyId}">Takaisin</a>
 				</p>
 			</fieldset>
 		</form:form>

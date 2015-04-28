@@ -78,15 +78,18 @@
 			<span>Kysymystyyppi: <c:out value="${question.questionType}"></c:out></span><br />
 			<span>Kysymysteksti: <c:out value="${question.questionText}"></c:out></span><br />
 			<span>Kysymyksen j‰rjestys: <c:out value="${question.questionOrder}"></c:out></span><br />
-			<a href="../edit/editQuestion/${question.questionId}">Muokkaa kysymyst‰</a><br/>
-			<a href="${survey.surveyId}/deleteQuestion/${question.questionId}">Poista kysymys</a>
+			<a class="btn btn-primary btn-xs" href="../edit/editQuestion/${question.questionId}">Muokkaa kysymyst‰</a>&nbsp;&nbsp;
+					<a  class="btn btn-danger btn-xs" href="${survey.surveyId}/deleteQuestion/${question.questionId}">Poista kysymys</a>
 			<br />
 		</div>
       	<br>
       </c:forEach>
-      <p><a href="insertQuestion/${survey.surveyId}">Lis‰‰ kysymys</a>&nbsp;&nbsp;&nbsp;
-      <a href="../edit">Palaa</a>&nbsp;&nbsp;&nbsp;
-      <a href="../create">Luo uusi kysely</a></p>
+      <br /><br />
+      <p><a class="btn btn-primary" href="insertQuestion/${survey.surveyId}">Lis‰‰ kysymys</a></p>&nbsp;&nbsp;&nbsp;
+      <br /><br /><br /><br />
+      <p>
+      <a class="btn btn-primary" href="../create">Luo uusi kysely</a>&nbsp;&nbsp;
+      <a class="btn btn-default" href="../edit">Takaisin</a></p>
 </form:form>
 
     <footer class="footer">
