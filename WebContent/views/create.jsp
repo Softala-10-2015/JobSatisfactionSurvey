@@ -192,7 +192,7 @@
 	<div class="row">
 		<div class="col-lg-1 col-lg-offset-10">
 		<p>
-			<button id="submit-button" class="btn btn-lg btn-primary" type="button" value="Send" >Submit</button>
+			<button id="submit-button" class="btn btn-lg btn-primary" type="button" value="Send" >Tallenna</button>
 		</p>
 		</div>
 	</div>

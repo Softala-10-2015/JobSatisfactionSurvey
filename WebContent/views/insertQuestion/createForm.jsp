@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="${pageContext.request.contextPath}/resources/img/kisutopi.ico">
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/img/icon.ico">
 
     <title>Lisää kysymys</title>
     <!-- Bootstrap core CSS -->
@@ -101,6 +101,7 @@
 				
 				<p>	
 					<button type="submit" class="btn btn-primary">Lisää</button>
+					<a class="btn btn-default" href="${pageContext.request.contextPath}/survey/edit/${question.surveyId}">Takaisin</a>
 				</p>
 			</fieldset>
 		</form:form>
