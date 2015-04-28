@@ -183,6 +183,7 @@ public class SurveyController {
 	public String deleteQuestionConfirmation(@PathVariable Integer sId, @PathVariable Integer qId, Model model) {
 		Question q = qDao.getOneQuestion(qId);
 		System.out.println("SurveyController: deleteQuestion");
+		model.addAttribute("surveyId", sId);
 		model.addAttribute("question", q);
 		return "deleteQuestion/confirmation";
 	}
@@ -250,12 +251,8 @@ public class SurveyController {
 	
 	@RequestMapping(value = "create", method = RequestMethod.GET)
 	public String createInit(Model model, HttpSession session) {
-		try {
-			List<Survey> surveys = sDao.findSurveys();
-			model.addAttribute("surveys", surveys);
-		} catch(DataAccessException e) {
-			throw new DaoConnectionException("Tietokantaan ei saada yhteyttä.", e);
-		}
+		List<Survey> surveys = sDao.findSurveys();
+		model.addAttribute("surveys", surveys);
 		
 		List<Question> questions = (ArrayList<Question>)session.getAttribute("questions");
 		if(questions != null && !questions.isEmpty()) {
@@ -325,13 +322,9 @@ public class SurveyController {
 	@RequestMapping(value = "surveys", method = RequestMethod.GET)
 	public String getSruveys(Model model){
 		
-		try {
-			List<Survey> surveyList = sDao.findSurveys();
-			System.out.println("surveys:" + surveyList);
-			model.addAttribute("surveys", surveyList);
-		} catch(DataAccessException e) {
-			throw new DaoConnectionException("Tietokantaan ei saada yhteyttä.", e);
-		}
+		List<Survey> surveyList = sDao.findSurveys();
+		System.out.println("surveys:" + surveyList);
+		model.addAttribute("surveys", surveyList);
 		
 		return "surveys";
 	}

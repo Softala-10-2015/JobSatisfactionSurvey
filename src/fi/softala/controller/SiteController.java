@@ -42,22 +42,10 @@ public class SiteController {
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String getSurveyList(Model model) {
 		System.out.println("SiteController");
-		try {
-			List<Survey> surveyList = dao.findSurveys();
-			System.out.println("surveys:" + surveyList);
-			model.addAttribute("surveys", surveyList);
-		} catch(DataAccessException e) {
-			throw new DaoConnectionException("Tietokantaan ei saada yhteyttä.", e);
-		}
 		
-		return "home";
-	}
-	@ExceptionHandler(DaoConnectionException.class)
-	public String connectionNotEstablished(HttpServletRequest request, DaoConnectionException e) {
-		System.out.println("Request " + request.getRequestURL() + " raised an exception: " + e);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("url", request);
-		mav.addObject("exception", e.getMessage());
+		List<Survey> surveyList = dao.findSurveys();
+		System.out.println("surveys:" + surveyList);
+		model.addAttribute("surveys", surveyList);
 		
 		return "home";
 	}
@@ -81,13 +69,10 @@ public class SiteController {
 	@RequestMapping(value = "home", method = RequestMethod.GET)
 	public String home(Model model) {	
 		System.out.println("SiteController");
-		try {
-			List<Survey> surveyList = dao.findSurveys();
-			System.out.println("surveys:" + surveyList);
-			model.addAttribute("surveys", surveyList);
-		} catch(DataAccessException e) {
-			throw new DaoConnectionException("Tietokantaan ei saada yhteyttä.", e);
-		}
+
+		List<Survey> surveyList = dao.findSurveys();
+		System.out.println("surveys:" + surveyList);
+		model.addAttribute("surveys", surveyList);
 		
 		return "home";
 	}

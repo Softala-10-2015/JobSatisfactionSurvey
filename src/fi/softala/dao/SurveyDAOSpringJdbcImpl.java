@@ -84,8 +84,6 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 			return surveys;
 		} catch (DataAccessException e) {
 			throw e;
-		} catch (RuntimeException e) {
-			throw new DaoConnectionException("virhe", e);
 		}
 	}
 	
@@ -103,9 +101,8 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 			}
 		} catch(DataAccessException e) {
 			throw e;
-		} catch(RuntimeException e) {
-			throw new DaoConnectionException("virhe", e);
 		}
+		
 		return hasAnswers;
 	}
 	
@@ -118,8 +115,6 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 			return id;
 		} catch (DataAccessException e) {
 			throw e;
-		} catch (RuntimeException e) {
-			throw new DaoConnectionException("virhe", e);
 		}
 	}
 }

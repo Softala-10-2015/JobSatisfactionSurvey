@@ -12,7 +12,7 @@
     <meta name="author" content="">
   <link rel="icon" href="${pageContext.request.contextPath}/resources/img/icon.ico">
 
-    <title>Muokkaa kyselyä</title>
+    <title>Virhe</title>
 
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
@@ -69,15 +69,10 @@
 	</nav> <!-- end of navbar -->   
     <!-- Begin page content -->
     <div class="container">
-      <form:form class="well">
       
       <c:forEach items="${errors}" var="error">
-      <c:out value="${error}"/>
+      <c:out value="${error}"/><br />
       </c:forEach>
-      <br>
-      <br>
-    <a class="btn btn-default" href="../edit" role="button">Takaisin</a>
-      </form:form>
       
  <footer class="footer">
       <div class="container">
