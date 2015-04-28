@@ -76,6 +76,7 @@
       	<td><a href="edit/${survey.surveyId}"><c:out value="${survey.getSurveyName()}"/></a></td>
       	</table>
       </c:forEach>
+      		<a class="btn btn-default" href="/kysely" role="button">Takaisin</a>
 	</div>
     <footer class="footer">
       <div class="container">

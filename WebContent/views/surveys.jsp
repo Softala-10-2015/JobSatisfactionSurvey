@@ -92,7 +92,7 @@
       </c:forEach>
       <div>
 		<br>
-		<a class="btn btn-default" href="/kysely" role="button">Peruuta</a>
+		<a class="btn btn-default" href="/kysely" role="button">Takaisin</a>
 	</div>
   	</div>
     <footer class="footer">

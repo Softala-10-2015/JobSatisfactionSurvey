@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
      <link rel="icon" href="${pageContext.request.contextPath}/resources/img/icon.ico">
-    <title>SPURDOSPÄRGL</title>
+    <title>Vastaukset</title>
 
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
@@ -78,6 +78,8 @@
       	<td><a href="answers/${survey.surveyId}"><c:out value="${survey.getSurveyName()}"/></a></td>
       	</table>
       </c:forEach>
+      		<a class="btn btn-default" href="/kysely" role="button">Takaisin</a>
+      
 	</div>
     <footer class="footer">
       <div class="container">

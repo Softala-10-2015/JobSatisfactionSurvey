@@ -85,6 +85,7 @@
 </fieldset>
   
 <button class="btn btn-primary" type="submit" value="Send" >Submit</button>
+		<a class="btn btn-default" href="/kysely" role="button">Takaisin</a>
 </form:form>
 
     <footer class="footer">
