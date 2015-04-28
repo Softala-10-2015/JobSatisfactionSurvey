@@ -78,8 +78,8 @@ public class SurveyController {
 	public String getSurvey(@PathVariable Integer id, Model model) {
 		System.out.println("get-survey/" + id);
 		//haetaan kysely, jonka perusteella voidaan tuoda otsikko, tekijä jne.
-			//Survey survey = sDao.FindSurvey(id);
-			//model.addAttribute("survey", survey);
+		Survey survey = sDao.findSurvey(id);
+		model.addAttribute("survey", survey);
 
 		List<Question> questions = qDao.getQuestionsForSurvey(id);
 
