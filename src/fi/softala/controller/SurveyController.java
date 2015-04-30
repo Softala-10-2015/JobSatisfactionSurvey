@@ -286,6 +286,17 @@ public class SurveyController {
 			}
 		}
 		
+		if(session.getAttribute("survey") != null) {
+			System.out.println("Removing session attribute survey.");
+			session.removeAttribute("survey");
+		}
+		
+		if(session.getAttribute("questions") != null) {
+			System.out.println("Removing session attribute questions.");
+			session.removeAttribute("questions");
+
+		}
+		
 		return "redirect:/survey/edit/insertQuestion/"+lastId;
 	}
 	
