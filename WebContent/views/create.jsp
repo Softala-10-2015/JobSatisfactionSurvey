@@ -76,11 +76,7 @@
 		Luo kysely
 	</h1>
 
-<%-- <form:label	path="email">Sähköposti</form:label>
-<form:input path="email" /><br/>
-</fieldset>
-  
-<button class="btn btn-primary" type="submit" value="Send" >Submit</button>
+<%--<button class="btn btn-primary" type="submit" value="Send" >Submit</button>
 		<a class="btn btn-default" href="/kysely" role="button">Takaisin</a>
 </form:form> --%>
 <div class="well">
@@ -126,9 +122,6 @@
 				<div class="form-group" style="padding-left:0; margin-left:0">
 					<form:label	path="surveyName" value="${survey.getSurveyName()}">Kyselyn nimi</form:label>
 					<form:input class="col-xs-1 form-control" path="surveyName" /><br/>
-					
-					<form:label path="email" value="${survey.getEmail()}">Sähköposti</form:label>
-					<form:input class="col-xs-1 form-control" path="email" /><br/>
 				</div>
 			</div>
 			</div>
