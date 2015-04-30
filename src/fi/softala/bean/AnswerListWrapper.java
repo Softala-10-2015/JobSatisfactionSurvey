@@ -1,3 +1,6 @@
+/** @authors Jukka, Pasi, Kytis, Olli
+*/
+
 package fi.softala.bean;
 
 import java.util.List;

@@ -1,3 +1,6 @@
+/** @authors Jukka, Pasi, Kytis, Olli
+*/
+
 package fi.softala.dao;
 
 import java.sql.ResultSet;
