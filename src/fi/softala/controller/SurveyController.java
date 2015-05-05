@@ -6,11 +6,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -99,13 +101,25 @@ public class SurveyController {
 	
 	//vastausten tallentaminen
 	@RequestMapping (value="get-survey/{id}", method=RequestMethod.POST)
-	public String saveAnswer(@ModelAttribute(value="answers") /*List<Answer> answers*/ AnswerListWrapper answers) {
+	public String saveAnswer(@PathVariable Integer id, @Valid @ModelAttribute(value="answers") AnswerListWrapper answers, BindingResult result, Model model) {
 		System.out.println("get-survey/{id} POST");
-		for(Answer answer : answers.getAnswerList()) {
-			System.out.println(answer.getAnswerText() + " " + answer.getQuestionId());
-			aDao.saveAnswer(answer);
+		
+		if (result.hasErrors()) {
+			Survey survey = sDao.findSurvey(id);
+			model.addAttribute("survey", survey);
+
+			List<Question> questions = qDao.getQuestionsForSurvey(id);
+			model.addAttribute("questions", questions);
+
+			return "survey";
+		} else {
+			for(Answer answer : answers.getAnswerList()) {
+				System.out.println(answer.getAnswerText() + " " + answer.getQuestionId());
+				aDao.saveAnswer(answer);
+			}
+			return "redirect:/survey/confirmation";
 		}
-		return "redirect:/survey/confirmation";
+
 	}
 	
 	//Yksittäisen vastauksen hakeminen id:n perusteella
