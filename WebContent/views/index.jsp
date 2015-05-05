@@ -13,9 +13,7 @@
     <link href="recources/js/bootstrap-responsive.min.css" rel="stylesheet">
      <link rel="icon" href="${pageContext.request.contextPath}/resources/img/icon.ico">
 
-    <!--[if lt IE 9]>
-    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+   
 
 
 

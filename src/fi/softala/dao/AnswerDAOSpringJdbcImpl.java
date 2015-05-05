@@ -41,7 +41,6 @@ public class AnswerDAOSpringJdbcImpl implements AnswerDAO{
 		if(answer.getQuestionId() != 0 && answer.getAnswerText() != null){
 			final int questionId = answer.getQuestionId();
 			final String answerText=answer.getAnswerText();
-			//System.out.println("VASTAUSTEKSTI!! = "+answerText);
 			KeyHolder idHolder = new GeneratedKeyHolder();
 			jdbcTemplate.update(new PreparedStatementCreator() {
 				public PreparedStatement createPreparedStatement(
@@ -86,9 +85,9 @@ public class AnswerDAOSpringJdbcImpl implements AnswerDAO{
 				+ "WHERE Survey.survey_id=? "
 				+ "ORDER BY Question.question_order";
 		
-		//kommentti
+		
 		Object[] params = new Object[] { surveyId };
-		//System.out.println(params[0]);
+		
 		RowMapper<Answer> mapper = new AnswerRowMapper();
 		
 		List<Answer> answers= jdbcTemplate.query(sql, params, mapper);

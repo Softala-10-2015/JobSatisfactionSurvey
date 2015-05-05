@@ -16,7 +16,6 @@ public class AnswerTextRowMapper implements RowMapper<Answer> {
 		answer.setAnswerId(rs.getInt("answer_id"));
 		answer.setQuestionId(rs.getInt("question_id"));
 		answer.setAnswerText(rs.getString("answer_text")); 
-		//answer.setaChoiceText(rs.getString("achoice_text"));
 		answer.setQuestionText(rs.getString("question_text"));
 		
 		return answer;
