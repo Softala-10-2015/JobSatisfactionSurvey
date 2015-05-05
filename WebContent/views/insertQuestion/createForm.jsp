@@ -66,7 +66,7 @@
 					<form:label path="questionType" id="questionType">Kysymystyyppi</form:label><br/>
 					<form:select path="questionType">
 					<form:option value="0" label="Tekstikenttä" />
-					<form:option value="1" label="Checkbox" />
+					<form:option value="1" label="Väite" />
 					</form:select>
 				</p>
 				<p>	

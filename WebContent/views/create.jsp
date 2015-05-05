@@ -152,7 +152,7 @@
 										<form:label path="questionType">Kysymyksen tyyppi</form:label>
 										<form:select class="form-control" id="#questionType" path="questionType">
 											<form:option value="0" label="Tekstikenttä" />
-											<form:option value="1" label="Checkbox" />
+											<form:option value="1" label="Väite" />
 										</form:select>
 									</p>
 									<%-- 	<form:label path="choices[0].aChoiceText">Vastausvaihtoehdot</form:label><br/>
