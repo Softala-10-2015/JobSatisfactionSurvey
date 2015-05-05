@@ -210,44 +210,7 @@ public class SurveyController {
 		return "redirect:/survey/edit/" + q.getSurveyId();
 	}
 
-	// yksittäisen kysymyksen luonti(petellä on tylsää)
-	@RequestMapping(value = "edit/insertQuestion", method = RequestMethod.GET)
-	public String getCreateFormQ(Model model) {
-		Question q = new Question();
-		q.setSurveyId(1);
-
-		model.addAttribute("question", q);
-		return "insertQuestion/createForm";
-	}
-
-	// yksittäisen kysymyksen käsittely(petellä on tylsää)
-	@RequestMapping(value = "insertQuestion", method = RequestMethod.POST)
-	public String createQ(@ModelAttribute(value = "question") Question q) {
-		qDao.saveQuestion(q);
-		return "insertQuestion/vahvistus";
-	}
-
-	// yksittäisen vastauksen luonti(petellä on tylsää)
-	// kyssäri teksti bugaa jo dao tasolla -> etsi syylliset
-	@RequestMapping(value = "insertAnswer/{id}", method = RequestMethod.GET)
-	public String getCreateForma(@PathVariable Integer id, Model model) {
-		Question question = qDao.getOneQuestion(id);
-		Answer answer = new Answer();
-		answer.setQuestionId(id);
-		
-		model.addAttribute("question",question);
-		model.addAttribute("answer",answer);
-		return "insertAnswer/createForm";
-	}
-
-	// yksittäisen vastauksen käsittely(petellä on tylsää)
-	@RequestMapping(value = "insertAnswer/{id}", method = RequestMethod.POST)
-	public String createA(@PathVariable Integer id, @ModelAttribute(value = "answer") Answer a) {
-		
-		a.setQuestionId(id);
-		aDao.saveAnswer(a);
-		return "insertAnswer/vahvistus";
-	}
+	
 	
 	@RequestMapping(value = "create", method = RequestMethod.GET)
 	public String createInit(Model model, HttpSession session) {
