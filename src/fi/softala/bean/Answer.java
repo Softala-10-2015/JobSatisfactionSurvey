@@ -1,25 +1,29 @@
-/** @authors Jukka, Pasi, Kytis, Olli
+/** @authors Jukka, Pasi, Kytis, Olli, Harri
 */
 package fi.softala.bean;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class Answer {
 	private int answerId;
 	private int questionId;
-	private String answerText;
-	//private String aChoiceText;
-	private String questionText;
 	
+	@NotNull
+	@Size(min = 2, max = 3000)
+	private String answerText;
+
+	private String questionText;
 	
 	public Answer() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
+	
 	public Answer(int answerId, String answerText, int questionId, String aChoiceText, String questionText) {
 		super();
 		this.answerId = answerId;
 		this.answerText =  answerText;
 		this.questionId=questionId;
-		//this.aChoiceText = aChoiceText;
 		this.questionText=questionText;
 	}
 	public int getAnswerId() {
@@ -40,12 +44,7 @@ public class Answer {
 	public void setQuestionId(int questionId) {
 		this.questionId = questionId;
 	}
-//	public String getaChoiceText() {
-//		return aChoiceText;
-//	}
-//	public void setaChoiceText(String aChoiceText) {
-//		this.aChoiceText = aChoiceText;
-//	}
+
 	public String getQuestionText() {
 		return questionText;
 	}

@@ -1,15 +1,18 @@
-/** @authors Jukka, Pasi, Kytis, Olli
+/** @authors Jukka, Pasi, Kytis, Olli, Harri
 */
 
 package fi.softala.bean;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 /**
  * @author Aleksi T
  *
  */
 public class AnswerListWrapper {
+	@Valid
 	private List<Answer> answerList;
 
 	public List<Answer> getAnswerList() {
