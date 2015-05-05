@@ -64,15 +64,14 @@
 	<!-- Begin page content -->
 	<div class="container">
 		<div class="page-header">
-			<h1>Iso kysely</h1>
+			<h1>Vastaus lähetetty</h1>
 		</div>
-		<div class="container">
-			<h3>Kiitti hei</h3>
-			<p>oli kiva ku vastasit</p>
-			<a class="btn btn-primary btn-lg" role="button" href="/kysely">Palaa</a>
+		<div class="well">
+		<h3>Kiitos!</h3>
+		<p>Kiitos kyselyyn osallistumisestasi.</p>
+		<br>
+			<a class="btn btn-primary btn-lg" role="button" href="/kysely">Etusivulle</a>
 		</div>
-
-
 
 		<footer class="footer">
 			<div class="container">
