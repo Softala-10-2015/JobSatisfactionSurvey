@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags"  prefix="spring"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page session="false" %>
 <!DOCTYPE html>
@@ -58,6 +59,11 @@
 				<h1> <c:out value="${survey.getSurveyName()}" default="Hyvinvointikysely"/> </h1>
 			</div>
 			<br>
+			
+			<spring:hasBindErrors name="answers">
+					<p><strong>Kaikkiin kysymyksiin on vastattava</strong></p>
+					<div><form:errors path="*"/></div>
+			</spring:hasBindErrors>
 			
 			<form:form  class="well" modelAttribute="answers" method="post">
 				<c:forEach var="question" items="${questions}" varStatus="i">
