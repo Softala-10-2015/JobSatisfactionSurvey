@@ -74,11 +74,7 @@
 			<a class="btn btn-primary btn-lg" role="button" href="/kysely">Etusivulle</a>
 		</div>
 
-		<footer class="footer">
-			<div class="container">
-				<p class="text-muted">Copiright make 2015</p>
-			</div>
-		</footer>
+		
 	</div>
 
 	<!-- Bootstrap core JavaScript
