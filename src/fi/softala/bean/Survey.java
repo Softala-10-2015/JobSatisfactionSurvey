@@ -11,7 +11,6 @@ public class Survey {
 	int surveyId; 
 	int ownerId; 
 	String surveyName; 
-	String email;
 	
 	//JAVA ATRIBUUTTEJA
 	boolean isComplete;
@@ -42,14 +41,6 @@ public class Survey {
 
 	public void setSurveyName(String surveyName) {
 		this.surveyName = surveyName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public void setSurveyId(int surveyId) {
@@ -91,7 +82,7 @@ public class Survey {
 	@Override
 	public String toString() {
 		return "Survey [surveyId=" + surveyId + ", ownerId=" + ownerId
-				+ ", surveyName=" + surveyName + ", email=" + email
+				+ ", surveyName=" + surveyName
 				+ ", isComplete=" + isComplete + ", nextFree=" + nextFree
 				+ ", questions=" + questions + ", answers=" + answers + "]";
 	}

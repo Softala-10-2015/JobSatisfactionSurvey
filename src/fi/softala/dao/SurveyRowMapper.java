@@ -17,7 +17,6 @@ public Survey mapRow(ResultSet rs, int rowNum) throws SQLException {
 	//dao olio
 		s.setSurveyId(rs.getInt("survey_id"));
 		s.setOwnerId(rs.getInt("owner_id"));
-		s.setEmail(rs.getString("email"));
 		s.setSurveyName(rs.getString("survey_name"));
 
 	//end of dao olio

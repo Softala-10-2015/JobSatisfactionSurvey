@@ -37,9 +37,8 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 	
 	public void addSurvey(Survey newSurvey) {
 		
-		final String sql="INSERT INTO Survey(survey_name, email) values (?, ?)";
+		final String sql="INSERT INTO Survey(survey_name) values (?)";
 		final String surveyName=newSurvey.getSurveyName();
-		final String email=newSurvey.getEmail();
 		
 		KeyHolder idHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator() {
@@ -48,7 +47,6 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 				PreparedStatement ps = connection.prepareStatement(sql,
 						new String[] { "survey_id" }); //Luo uudelle surveylle oman id:n
 				ps.setString(1, surveyName);
-				ps.setString(2, email);
 				return ps;
 			}
 		}, idHolder);
