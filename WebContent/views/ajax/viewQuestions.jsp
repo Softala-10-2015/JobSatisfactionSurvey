@@ -22,9 +22,9 @@
 				</c:otherwise>
 			</c:choose>
 		</p>
-		<button class="btn btn-primary" id="editButton${question.getQuestionOrder()}" type="button" name="button${question.getQuestionOrder()}" value="${question.getQuestionOrder()}">
+<%-- 		<button class="btn btn-primary" id="editButton${question.getQuestionOrder()}" type="button" name="button${question.getQuestionOrder()}" value="${question.getQuestionOrder()}">
 			<span class="glyphicon glyphicon-edit"></span>
-		</button>
+		</button> --%>
 		<button class="btn btn-danger deleteQBut" id="deleteButton${question.getQuestionOrder()}" type="button" name="button${question.getQuestionOrder()}" value="${question.getQuestionOrder()}">
 			<span class="glyphicon glyphicon-trash"></span>
 		</button>
@@ -41,7 +41,7 @@
 	</div>
 </c:forEach>
 <form:hidden path="questions" value="${questions}"/>
-<%-- </form:form> --%>
+
 </c:if>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -65,68 +65,10 @@
 		$('.moveButton').click(function() {
 			var name = $(this).attr('name');
 			var clicked = $(this);
-			$.get("ajax/moveQuestion/"+ name + "/" + $(this).val(), function callback(data){
-/*  				var fromElement = clicked.parents('.well:first');
-				var toElement;
-				
-				if(clicked.attr('name') == "up") {
-					toElement = fromElement.prevAll('.questionListElement').first();
-		
-				} else if (clicked.attr('name') == "down") {
-					toElement = fromElement.nextAll('.questionListElement').first();
-					
-				}
-				console.log(toElement.position().top);
-				fromElement.css('position:relative');
-  				$(function() {
-  					fromElement.animate({ opacity : 0 }, { duration: 100, queue : false });
-  					toElement.animate({ opacity : 0 },{ duration: 100, queue : false}, {complete: function() {
-  						console.log("test");
-  					}
-  					});
-				}); */
-				
+			$.get("ajax/moveQuestion/"+ name + "/" + $(this).val(), function callback(data){			
 				$('#questions-div').text("");
-				$('#questions-div').append(data);
-				
-			});
-<%-- 			$.ajax ({
-				type:"get",
-				url:"ajax/moveQuestion/"+ name + "/" + $(this).val(),
-				async:true,
-				complete: function callback(data) {
-					console.log("asd" + data);
-				
-					$('#questions-div').text("");
-					$('#questions-div').append(data);
-				}
-				/* cache:false, */
-				complete: $.get("ajax/viewQuestions", {"" : ""}, function callback (data){
-				$('#questions-div').text("");
-				$('#questions-div').append(data);
-				$.get("ajax/viewQuestions");
-				}),
-				
-			}); --%>
-					
- 				/*success : function(result) {
-					callback(result)
-				} */
-			/* .done($.get("ajax/viewQuestions", function callback (data){
-				$('#questions-div').text("");
-				$('#questions-div').append(data);
-				
-				function delayAjax() {
-					$.ajax({
-						type:"get",
-						url:"ajax/viewQuestions",
-						success:console.log("success")
-					}) */
-				
-			
-
-			
-	
+				$('#questions-div').append(data);				
+			});				
 			 return false;
 		});
 	});
