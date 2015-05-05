@@ -74,7 +74,7 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 		//kaikki kyselyt, vois varmaan siisitiä
 		
 		String sql = "SELECT * FROM Survey;";
-		//Object[] param = new Object[] { i };
+		
 		RowMapper<Survey> mapper = new SurveyRowMapper();
 		
 		try {

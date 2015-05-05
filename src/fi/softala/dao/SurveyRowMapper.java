@@ -18,20 +18,8 @@ public Survey mapRow(ResultSet rs, int rowNum) throws SQLException {
 		s.setSurveyId(rs.getInt("survey_id"));
 		s.setOwnerId(rs.getInt("owner_id"));
 		s.setSurveyName(rs.getString("survey_name"));
-
-	//end of dao olio
 	
-	/*
-	//mock
-		s.setSurvey_id(1);
-		s.setOwner_id(21);
-		s.setEmail("a@a.fi");
-		s.setSurvey_name("asd");
-		System.out.println("Mock olio luotu:"+s.toString());
-	//end of mock
-	*/
-		
-		//kommentti
+	
 	return s;
 }
 	

@@ -1,11 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form"%>
 
-<%-- <form:form modelAttribute="survey"> --%>
+
 <c:if test="${questions != null}">
 <c:forEach items="${questions}" var="question" varStatus="status">	
 	<div class="row questionListElement well" id="questionNumber${question.getQuestionOrder()}">
-		<!-- <div class="col-lg-4"></div> -->
+		
 		<div class="col-lg-9">
 		<h4>Kysymys <c:out value="${question.getQuestionOrder()}"/></h4> 
 		<p>
@@ -22,20 +22,17 @@
 				</c:otherwise>
 			</c:choose>
 		</p>
-<%-- 		<button class="btn btn-primary" id="editButton${question.getQuestionOrder()}" type="button" name="button${question.getQuestionOrder()}" value="${question.getQuestionOrder()}">
-			<span class="glyphicon glyphicon-edit"></span>
-		</button> --%>
+
 		<button class="btn btn-danger deleteQBut" id="deleteButton${question.getQuestionOrder()}" type="button" name="button${question.getQuestionOrder()}" value="${question.getQuestionOrder()}">
 			<span class="glyphicon glyphicon-trash"></span>
 		</button>
 		</div>
 		<div class="col-lg-1">
-		<!-- <div class="row"> -->
+		
 			<button class="btn btn-default moveButton" name="up" value="${question.getQuestionOrder()}" type="button"><span class="glyphicon glyphicon-arrow-up"></span></button>
-		<!-- </div> -->
-		<!-- <div class="row"> -->
+		
 			<button class="btn btn-default moveButton" name="down" value="${question.getQuestionOrder()}" type="button"><span class="glyphicon glyphicon-arrow-down"></span></button>
-		<!-- </div> -->
+		
 		</div>
 
 	</div>
