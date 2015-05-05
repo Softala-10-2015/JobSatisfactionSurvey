@@ -275,7 +275,7 @@ public class SurveyController {
 
 		}
 		
-		return "redirect:/survey/createConfirmation/" + s.getSurveyId();
+		return "redirect:/survey/createConfirmation/" + lastId;
 	}
 	
 	@RequestMapping(value = "createConfirmation/{id}", method = RequestMethod.GET)
