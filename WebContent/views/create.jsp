@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags"  prefix="spring"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -114,6 +115,7 @@
 				<div class="form-group" style="padding-left:0; margin-left:0">
 					<form:label	path="surveyName" value="${survey.getSurveyName()}">Kyselyn nimi</form:label>
 					<form:input class="col-xs-1 form-control" path="surveyName" /><br/>
+					<form:errors path="surveyName"/>	
 				</div>
 			</div>
 			</div>

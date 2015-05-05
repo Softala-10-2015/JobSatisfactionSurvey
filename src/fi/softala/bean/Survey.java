@@ -5,11 +5,15 @@ package fi.softala.bean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.Size;
+
 public class Survey {
 	
 	//DAO ATRIBUUTIT
 	int surveyId; 
-	int ownerId; 
+	int ownerId;
+	
+	@Size(min=1, max=50, message="Kyselyn nimessä tulee olla 1-50 merkkiä")
 	String surveyName; 
 	
 	//JAVA ATRIBUUTTEJA

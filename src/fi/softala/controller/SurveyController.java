@@ -248,34 +248,40 @@ public class SurveyController {
 	}
 	//kyselyn luonti
 	@RequestMapping(value = "create", method = RequestMethod.POST)
-	public String sendSurvey(@ModelAttribute(value = "survey") Survey s, Model model, HttpSession session) {
-		List<Question> questions = (ArrayList<Question>)session.getAttribute("questions");
-		if(questions != null && !questions.isEmpty()) {
-			s.setQuestions(questions);
-		}
-		System.out.println("test");
-		sDao.addSurvey(s);
-		int lastId = sDao.findLastId();
+	public String sendSurvey(@Valid @ModelAttribute(value = "survey") Survey s, BindingResult result, @ModelAttribute(value = "question") Question q,Model model, HttpSession session) {
 		
-		if(questions != null && !questions.isEmpty()) {
-			for(Question q : questions) {
-				q.setSurveyId(lastId);
-				qDao.saveQuestion(q);
-			}
-		}
-		
-		if(session.getAttribute("survey") != null) {
-			System.out.println("Removing session attribute survey.");
-			session.removeAttribute("survey");
-		}
-		
-		if(session.getAttribute("questions") != null) {
-			System.out.println("Removing session attribute questions.");
-			session.removeAttribute("questions");
+		if (result.hasErrors()) {
+			return "create";
+		}else{
 
+			List<Question> questions = (ArrayList<Question>)session.getAttribute("questions");
+			if(questions != null && !questions.isEmpty()) {
+				s.setQuestions(questions);
+			}
+			System.out.println("test");
+			sDao.addSurvey(s);
+			int lastId = sDao.findLastId();
+			
+			if(questions != null && !questions.isEmpty()) {
+				for(Question qq : questions) {
+					qq.setSurveyId(lastId);
+					qDao.saveQuestion(qq);
+				}
+			}
+			
+			if(session.getAttribute("survey") != null) {
+				System.out.println("Removing session attribute survey.");
+				session.removeAttribute("survey");
+			}
+			
+			if(session.getAttribute("questions") != null) {
+				System.out.println("Removing session attribute questions.");
+				session.removeAttribute("questions");
+	
+			}
+			
+			return "redirect:/survey/createConfirmation/" + lastId;
 		}
-		
-		return "redirect:/survey/createConfirmation/" + lastId;
 	}
 	
 	@RequestMapping(value = "createConfirmation/{id}", method = RequestMethod.GET)
