@@ -138,24 +138,25 @@ public class SurveyController {
 		model.addAttribute("answers", answers);
 		return "summary";
 	}
-
+	//listaa kysymykset
 	@RequestMapping(value="get-all-questions", method=RequestMethod.GET)
 	public String getAllQuestions(Model model) {
 		List<Question> questions = qDao.getAllQuestions();
 		model.addAttribute("questions", questions);
 		return "summary";
 	}
-	
+	//editoi kyselyn kysymyksiä
 	@RequestMapping(value = "edit", method = RequestMethod.GET)
 	public String editableSurveys(Model model){
 		List<Survey> surveyList = sDao.findSurveys();
 		model.addAttribute("surveys", surveyList);
 		return "editSurvey/list";
 	}
-	
+	//muokkaa kyselyitä
 	@RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
 	public String editSurvey(@PathVariable Integer id, Model model){
 		System.out.println(sDao.ifHasAnswers(id));
+		//muokkaa vaan jos vastauksia ei ole
 		if (sDao.ifHasAnswers(id)==false) {
 			System.out.println(aDao.getAnswersForSurvey(id));
 			Survey survey = sDao.findSurvey(id);
@@ -169,7 +170,7 @@ public class SurveyController {
 			return "error";
 		}	
 	}
-	
+	//Kysymyksen järjestys
 	@RequestMapping(value = "edit/editQuestion/{id}", method = RequestMethod.GET)
 	public String editQuestion(@PathVariable Integer id, Model model) {
 		Question q = new Question();
@@ -192,7 +193,7 @@ public class SurveyController {
 		System.out.println(q.toString());
 		return "redirect:/survey/edit/" + q.getSurveyId();
 	}
-	
+	//kysymyksen poisto
 	@RequestMapping(value = "edit/{sId}/deleteQuestion/{qId}", method = RequestMethod.GET)
 	public String deleteQuestionConfirmation(@PathVariable Integer sId, @PathVariable Integer qId, Model model) {
 		Question q = qDao.getOneQuestion(qId);
@@ -201,14 +202,14 @@ public class SurveyController {
 		model.addAttribute("question", q);
 		return "deleteQuestion/confirmation";
 	}
-	
+	//kysymyksen poisto
 	@RequestMapping(value = "edit/{sId}/deleteQuestion/{qId}", method = RequestMethod.POST)
 	public String deleteQuestion(@PathVariable Integer sId, @PathVariable Integer qId, Model model) {
 		Question q = new Question();
 		qDao.deleteQuestion(qId);
 		return "redirect:/survey/edit/" + sId;
 	}
-	
+	//Kysymyksen luonti
 	@RequestMapping(value = "edit/insertQuestion/{id}", method = RequestMethod.GET)
 	public String addQuestion(@PathVariable Integer id, Model model) {
 		Question q = new Question();
@@ -217,7 +218,7 @@ public class SurveyController {
 		model.addAttribute("question", q);
 		return "insertQuestion/createForm";
 	}
-	
+	//Kysymyksen luonti
 	@RequestMapping(value = "edit/insertQuestion/{id}", method = RequestMethod.POST)
 	public String sendQuestion(@ModelAttribute(value = "question") Question q) {
 		qDao.saveQuestion(q);
@@ -225,7 +226,7 @@ public class SurveyController {
 	}
 
 	
-	
+	//Kyselyn luonti
 	@RequestMapping(value = "create", method = RequestMethod.GET)
 	public String createInit(Model model, HttpSession session) {
 		List<Survey> surveys = sDao.findSurveys();
@@ -245,7 +246,7 @@ public class SurveyController {
 		model.addAttribute("question", new Question());
 		return "create";
 	}
-	
+	//kyselyn luonti
 	@RequestMapping(value = "create", method = RequestMethod.POST)
 	public String sendSurvey(@ModelAttribute(value = "survey") Survey s, Model model, HttpSession session) {
 		List<Question> questions = (ArrayList<Question>)session.getAttribute("questions");
@@ -274,15 +275,15 @@ public class SurveyController {
 
 		}
 		
-		return "redirect:/survey/edit/insertQuestion/"+lastId;
+		return "createConfirmation";
 	}
-	
+	//valintakysymys
 	@RequestMapping(value = "choice", method = RequestMethod.GET)
 	public String addChoiceQuestion(Model model){
 		model.addAttribute("questions", new QuestionListWrapper());
 		return "choice";
 	}
-	
+	//valinnan tallennus
 	@RequestMapping(value = "choice", method = RequestMethod.POST)
 	public String saveChoiceQuestion(@ModelAttribute(value = "questions") QuestionListWrapper q, Model model){
 		
@@ -291,6 +292,7 @@ public class SurveyController {
 		}
 		return "redirect:/survey/choice";
 	}
+	//vastausten listaus
 	@RequestMapping(value = "answers/{id}", method = RequestMethod.GET)
 	public String viewAnswers(@PathVariable Integer id, Model model){
 		Survey survey = sDao.findSurvey(id);
@@ -299,19 +301,18 @@ public class SurveyController {
 		return "viewAnswers/answers";
 	}
 
-
+	//Kyselyiden listaus vastausten tarkastelua varten
 	@RequestMapping(value = "surveylist", method = RequestMethod.GET)
 	public String viewableAnswers(Model model){
 		List<Survey> surveyList = sDao.findSurveys();
 		model.addAttribute("surveys", surveyList);
 		return "viewAnswers/list";
 	}
-	
+	//kyselyiden listaus vastaamista varten
 	@RequestMapping(value = "surveys", method = RequestMethod.GET)
-	public String getSruveys(Model model){
+	public String getSurveys(Model model){
 		
 		List<Survey> surveyList = sDao.findSurveys();
-		System.out.println("surveys:" + surveyList);
 		model.addAttribute("surveys", surveyList);
 		
 		return "surveys";
