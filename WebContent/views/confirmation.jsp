@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+
+<%@ page language="java" contentType="text/html; charset=charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +48,7 @@
 			<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">
 					<input type="text" class="form-control" name="username"
-						placeholder="Käyttäjätunnus">
+						placeholder="KÃ¤yttÃ¤jÃ¤tunnus">
 				</div>
 				<div class="form-group">
 					<input type="text" class="form-control" name="password"
@@ -64,7 +65,7 @@
 	<!-- Begin page content -->
 	<div class="container">
 		<div class="page-header">
-			<h1>Vastaus lähetetty</h1>
+			<h1>Vastaus lÃ¤hetetty</h1>
 		</div>
 		<div class="well">
 		<h3>Kiitos!</h3>
