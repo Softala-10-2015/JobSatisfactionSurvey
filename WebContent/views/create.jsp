@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -46,7 +46,7 @@
 			<form class="navbar-form navbar-right" role="search">
 				<div class="form-group">
 					<input type="text" class="form-control" name="username"
-						placeholder="K‰ytt‰j‰tunnus">
+						placeholder="K√§ytt√§j√§tunnus">
 				</div>
 				<div class="form-group">
 					<input type="text" class="form-control" name="password"
@@ -77,7 +77,7 @@
 		<div class="row">
 			<div class="div-lg-12">	
 				<p>
-					Voit luoda kyselyn alusta l‰htien, 
+					Voit luoda kyselyn alusta l√§htien, 
 					tai voit tuoda valmiin kyselyn tiedot ja kysymykset alla olevasta listasta
 				</p>	
 					<div class="row">
@@ -96,7 +96,7 @@
 					<br>
 					<div class="row">
 						<div class="col-lg-12">
-							<!-- <button type="button" class="btn btn-primary">Tyhjenn‰ kysely</button> -->
+							<!-- <button type="button" class="btn btn-primary">Tyhjenn√§ kysely</button> -->
 						</div>
 					</div>
 			</div>
@@ -126,7 +126,7 @@
 		<div class="col-lg-12">
 			
 			<%-- 
-			--	Aleksin koodeja, jos kysymyksi‰
+			--	Aleksin koodeja, jos kysymyksi√§
 			--%>	
 			<!-- begin quest listing (ajax -> ajax/viewQuestions.jsp + jQuery append)-->
 			<h3>Kysymykset</h3>
@@ -136,7 +136,7 @@
 				<!-- begin quest adding -->
 				<div class="col-lg-6 col-lg-offset-1 well">
 				
-					<h3>Kysymysten lis‰ys</h3>
+					<h3>Kysymysten lis√§ys</h3>
 					
 					<form:form class="form-horizontal" id="add-question-form" modelAttribute="question" action="" method="POST">
 						<fieldset>
@@ -151,7 +151,7 @@
 									<p>
 										<form:label path="questionType">Kysymyksen tyyppi</form:label>
 										<form:select class="form-control" id="#questionType" path="questionType">
-											<form:option value="0" label="Tekstikentt‰" />
+											<form:option value="0" label="Tekstikentt√§" />
 											<form:option value="1" label="Checkbox" />
 										</form:select>
 									</p>
@@ -162,7 +162,7 @@
 						</div>
 						<div class="row">
 							<div class="col-lg-3">
-								<form:button class="btn btn-default" id="add-question" type="submit">Lis‰‰ kysymys</form:button>
+								<form:button class="btn btn-default" id="add-question" type="submit">Lis√§√§ kysymys</form:button>
 							</div>
 						</div>
 						
