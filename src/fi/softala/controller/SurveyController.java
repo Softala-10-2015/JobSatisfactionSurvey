@@ -275,8 +275,17 @@ public class SurveyController {
 
 		}
 		
+		return "redirect:/survey/createConfirmation/" + s.getSurveyId();
+	}
+	
+	@RequestMapping(value = "createConfirmation/{id}", method = RequestMethod.GET)
+	public String sendSurvey(@PathVariable Integer id, Model model) {
+		model.addAttribute("id", id);
+		
 		return "createConfirmation";
 	}
+	
+	
 	//valintakysymys
 	@RequestMapping(value = "choice", method = RequestMethod.GET)
 	public String addChoiceQuestion(Model model){

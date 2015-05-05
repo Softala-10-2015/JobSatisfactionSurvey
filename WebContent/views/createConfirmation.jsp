@@ -76,6 +76,9 @@
 					<p>
 						Voit luoda uuden kyselyn tai palata etusivulle.
 					</p>
+					<p>
+						<a href="/kysely/survey/get-survey/${id}">Linkki kyselyyn</a>
+					</p>					
 					<br>
 				</div>
 			</div>
