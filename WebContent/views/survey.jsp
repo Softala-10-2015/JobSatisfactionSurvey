@@ -118,11 +118,11 @@
 								value="Erittäin samaa mieltä"></form:radiobutton>
 							<img src="${pageContext.request.contextPath}/resources/img/megahymy.png" alt="megahymy" style="position: relative;left: 4px;"> &nbsp;</label>
 							
-							<label class="btn btn-primary"><form:radiobutton path="answerList[${i.index}].answerText"
-								value="En osaa vastata"></form:radiobutton>En osaa<br>vastata
+							<label class="btn btn-primary surveyButton"><form:radiobutton path="answerList[${i.index}].answerText"
+								value="En osaa vastata"></form:radiobutton>En osaa<br>sanoa
 							</label>
 							
-							<label class="btn btn-primary"><form:radiobutton path="answerList[${i.index}].answerText"
+							<label class="btn btn-primary surveyButton"><form:radiobutton path="answerList[${i.index}].answerText"
 								value="En halua vastata"></form:radiobutton>En halua<br>vastata
 							</label>
 									

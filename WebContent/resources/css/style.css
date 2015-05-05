@@ -92,3 +92,12 @@ body {
 .createInput{
 	width: 300px !important;
 }
+
+.surveyButton{
+	height:64px;
+	width:84px;
+	text-align: center;
+	vertical-align: middle;
+	padding-top:10px;
+	
+}
