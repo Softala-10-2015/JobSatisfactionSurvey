@@ -77,7 +77,8 @@
 						Voit luoda uuden kyselyn tai palata etusivulle.
 					</p>
 					<p>
-						<a href="/kysely/survey/get-survey/${id}">Linkki kyselyyn</a>
+						<a href="/kysely/survey/get-survey/${id}">http://${pageContext.request.serverName}:${pageContext.request.localPort}/kysely/survey/get-survey/${id}</a>
+						
 					</p>					
 					<br>
 				</div>
