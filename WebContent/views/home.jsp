@@ -49,8 +49,7 @@
 		<!-- navbarlogo -->
 		<a class="navbar-brand" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png"  alt="Navbar-brand kuva"></a>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/kysely">Home</a></li> <!-- home tab active -->
-				<li><a href="summary">Tulokset</a></li>
+				<li class="active"><a href="/kysely">Etusivu</a></li> <!-- home tab active -->
 			</ul>
 				
 			

@@ -55,9 +55,7 @@
 				src="${pageContext.request.contextPath}/resources/img/brandimg.png"
 				alt=""></a>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/kysely">Home</a></li>
-				<!-- home tab active -->
-				<li><a href="summary">Tulokset</a></li>
+				<li><a href="/kysely">Etusivu</a></li>
 			</ul>
 
 			<!-- 
