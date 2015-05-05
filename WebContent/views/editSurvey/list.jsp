@@ -59,12 +59,6 @@
       </c:forEach>
       		<a class="btn btn-default" href="/kysely" role="button">Takaisin</a>
 	</div>
-    <footer class="footer">
-      <div class="container">
-        <p class="text-muted">Copiright Make ja mikot 2015</p>
-      </div>
-    </footer>
-
 </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->

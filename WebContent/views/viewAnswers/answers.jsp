@@ -137,13 +137,6 @@
 			<c:out value="${maxcount}" />
 
 		</div>
-
-		<footer class="footer">
-		<div class="container">
-			<p class="text-muted">Copiright Make, Jukka, Pasi 2015</p>
-		</div>
-		</footer>
-
 	</div>
 	<!-- Bootstrap core JavaScript
     ================================================== -->

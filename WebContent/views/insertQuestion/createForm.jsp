@@ -85,13 +85,7 @@
 				</p>
 			</fieldset>
 		</form:form>
- <footer class="footer">
-      <div class="container">
-        <p class="text-muted">Copiright Make 2015</p>
-      </div>
-    </footer>
-
-</div>
+ </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

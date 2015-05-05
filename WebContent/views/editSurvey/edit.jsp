@@ -72,13 +72,6 @@
       <a class="btn btn-primary" href="../create">Luo uusi kysely</a>&nbsp;&nbsp;
       <a class="btn btn-default" href="../edit">Takaisin</a></p>
 </form:form>
-
-    <footer class="footer">
-      <div class="container">
-        <p class="text-muted">Copiright Make 2015</p>
-      </div>
-    </footer>
-
 </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
