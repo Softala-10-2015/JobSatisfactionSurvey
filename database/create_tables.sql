@@ -2,7 +2,7 @@ CREATE TABLE Survey(
 	survey_id INT NOT NULL AUTO_INCREMENT,
 	owner_id INT,
 	survey_name VARCHAR(50) NOT NULL,
-	email VARCHAR(254) NOT NULL,
+	email VARCHAR(254),
 	create_date TIMESTAMP,
 	PRIMARY KEY (survey_id)
 ) ENGINE=InnoDB CHARACTER SET UTF8;
