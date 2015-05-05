@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -55,7 +55,7 @@
 			</div>
 
 			<form class="well" method="post" action="email">
-				<h3>Mit‰ haluut teh‰t?</h3>
+				<h3>Mit√§ haluut teh√§t?</h3>
 				<a href="create.jsp">Luo lomake</a><br> <a href="summary.jsp">Yhteenveto</a>
 
 			</form>
