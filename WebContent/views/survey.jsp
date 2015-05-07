@@ -81,6 +81,7 @@
 								path="answerList[${i.index}].answerText" />
 							<form:hidden path="answerList[${i.index}].questionId"
 								value="${question.getQuestionId()}" />
+							<span><form:errors path="answerList[${i.index}].answerText">Vastauksen on oltava 1-3000 merkkiä</form:errors></span>
 						</c:if>
 						<br><br>
 						<div class="btn-group" data-toggle="buttons">
@@ -112,6 +113,7 @@
 								value="En halua vastata"></form:radiobutton>En halua<br>vastata
 							</label>
 									
+							<span><form:errors path="answerList[${i.index}].answerText">Kysymykseen on vastattava</form:errors></span>
 							<form:hidden path="answerList[${i.index}].questionId"
 								value="${question.getQuestionId()}" />
 							
