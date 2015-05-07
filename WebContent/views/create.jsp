@@ -130,13 +130,8 @@
 			<%-- 
 			--	Aleksin koodeja, jos kysymyksiä
 			--%>	
-			<!-- begin quest listing (ajax -> ajax/viewQuestions.jsp + jQuery append)-->
-			<h3>Kysymykset</h3>
-			<div class="col-lg-5 " id="questions-div"></div>
-			<!-- end quest listing -->
-				
-				<!-- begin quest adding -->
-				<div class="col-lg-6 col-lg-offset-1 well">
+							<!-- begin quest adding -->
+				<div class="col-lg-6 well">
 				
 					<h3>Kysymysten lisäys</h3>
 					
@@ -172,6 +167,11 @@
 					</form:form>
 				</div>
 				<!-- end quest adding -->
+			<!-- begin quest listing (ajax -> ajax/viewQuestions.jsp + jQuery append)-->
+			<div class="col-lg-5 col-lg-offset-1 " id="questions-div"></div>
+			<!-- end quest listing -->
+				
+
 		</div>
 	</div>
 	
