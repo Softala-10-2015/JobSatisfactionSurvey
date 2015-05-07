@@ -1,5 +1,5 @@
 /**
-* @author Pasi, Samuli, Jukka
+* @author Pasi, Samuli, Jukka, Juha Palmu
 */
 package fi.softala.bean;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class Survey {
 	int ownerId;
 	
 	@Size(min=1, max=50, message="Kyselyn nimessä tulee olla 1-50 merkkiä")
-	@Pattern(regexp = "[a-zöäåA-ZÖÄÅ0-9 !\"#¤%&/()=?`´^*¨\'~<>|{}\\+-_.:,;£$€\\[\\]]+", message="Kyselyn nimessä saa olla kirjaimia, numeroita ja vain yleisesti käytettyjä erikoismerkkejä")
+	@Pattern(regexp = "[a-zöäåA-ZÖÄÅ0-9 §½!\"#¤%&/()=?`´^*¨\'~<>|{}\\+-_.:,;£$€\\[\\]]+", message="Kyselyn nimessä saa olla kirjaimia, numeroita ja vain yleisesti käytettyjä erikoismerkkejä")
 	String surveyName; 
 	
 	//JAVA ATRIBUUTTEJA
