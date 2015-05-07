@@ -7,13 +7,22 @@ package fi.softala.bean;
 import java.util.ArrayList;
 import java.util.List;
 
+//standardeja jsr303-annotaatioita
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import javax.validation.constraints.NotNull;
+
 public class Question{
+	
 	int surveyId;
 	int questionId; // id
+	@NotNull
 	int questionOrder; // question sequence number 
-	/* int total; // total option ? */
+	@NotNull
+	@Size (min=1, max=100)
 	String questionText; // question
-	/* List options; // question options - answer choices- value pair */
+	
 	int questionType;
 	List<AChoice> choices = new ArrayList<AChoice>();
 
@@ -86,4 +95,3 @@ public class Question{
 	}
 	
 }
-

@@ -185,14 +185,27 @@ public class SurveyController {
 	}
 	
 	//Yksittäisen kysymyksen muokkaus
-	@RequestMapping(value = "edit/editQuestion/{id}", method = RequestMethod.POST)
-	public String sendEditedQuestion(@ModelAttribute(value = "question") Question q, @PathVariable Integer id) {
-		System.out.println(q.toString());
-		q.setQuestionId(id);
-		qDao.editQuestion(q);
-		System.out.println(q.toString());
-		return "redirect:/survey/edit/" + q.getSurveyId();
-	}
+		@RequestMapping(value = "edit/editQuestion/{id}", method = RequestMethod.POST)
+		public String sendEditedQuestion(@Valid @ModelAttribute(value = "question") Question q, BindingResult rs, @PathVariable Integer id, Model model) {
+			System.out.println(q.toString());
+			q.setQuestionId(id);
+			if(rs.hasErrors()) {
+				q = new Question();
+				q.setSurveyId(qDao.getOneQuestion(id).getSurveyId());
+				q.setQuestionId(qDao.getOneQuestion(id).getQuestionId());
+				q.setQuestionText(qDao.getOneQuestion(id).getQuestionText());
+				q.setQuestionOrder(qDao.getOneQuestion(id).getQuestionOrder());
+				q.setQuestionType(qDao.getOneQuestion(id).getQuestionType());
+				System.out.println(q.toString());
+				model.addAttribute("question", q);
+				return "insertQuestion/editQuestion";
+			} else{
+				qDao.editQuestion(q);
+				System.out.println(q.toString());
+				return "redirect:/survey/edit/" + q.getSurveyId();
+			}
+		}
+		
 	//kysymyksen poisto
 	@RequestMapping(value = "edit/{sId}/deleteQuestion/{qId}", method = RequestMethod.GET)
 	public String deleteQuestionConfirmation(@PathVariable Integer sId, @PathVariable Integer qId, Model model) {
@@ -219,12 +232,19 @@ public class SurveyController {
 		return "insertQuestion/createForm";
 	}
 	//Kysymyksen luonti
-	@RequestMapping(value = "edit/insertQuestion/{id}", method = RequestMethod.POST)
-	public String sendQuestion(@ModelAttribute(value = "question") Question q) {
-		qDao.saveQuestion(q);
-		return "redirect:/survey/edit/" + q.getSurveyId();
-	}
+		@RequestMapping(value = "edit/insertQuestion/{id}", method = RequestMethod.POST)
+		public String sendQuestion(@Valid @ModelAttribute(value = "question") Question q, BindingResult rs, Model model) {
+			if(rs.hasErrors()) {
+				Question qq = new Question();
+				qq.setSurveyId(q.getSurveyId());
 
+				model.addAttribute("question", qq);
+				return "insertQuestion/createForm";
+			} else {
+				qDao.saveQuestion(q);
+				return "redirect:/survey/edit/" + q.getSurveyId();
+			}
+		}
 	
 	//Kyselyn luonti
 	@RequestMapping(value = "create", method = RequestMethod.GET)
@@ -344,8 +364,13 @@ public class SurveyController {
 	 * @param question	lisättävä kysymys
 	 * @return
 	 */
+	/**
+	 * Lisää kyselyyn kysymyksen, käytetään ajaxin avulla. Lisää parametrinä saadun kysymyksen sessiossa sijaitsevaan listaan.
+	 * @param question	lisättävä kysymys
+	 * @return
+	 */
 	@RequestMapping(value = "ajax/addQuestion", method = RequestMethod.POST)
-	public String addQuestionToSurvey(@ModelAttribute ("question") Question question, 
+	public String addQuestionToSurvey(@Valid @ModelAttribute ("question") Question question, BindingResult rs,
 			ModelMap model, HttpSession session) {
 	
 		System.out.println("ajax/addQuestion POST");
@@ -368,13 +393,16 @@ public class SurveyController {
 		} else {
 			question.setQuestionOrder(1);
 		}
+		if(rs.hasErrors()) {
+			return "ajax/addQuestion";
+		} else {
+			questions.add(question);
 		
-		questions.add(question);
-		
-		session.setAttribute("questions", questions);
-		model.addAttribute("questions", questions);
+			session.setAttribute("questions", questions);
+			model.addAttribute("questions", questions);
 
-		return "redirect:/survey/ajax/viewQuestions";
+			return "redirect:/survey/ajax/viewQuestions";
+		}
 	}
 	
 	/**
