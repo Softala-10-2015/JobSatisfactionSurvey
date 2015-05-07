@@ -61,7 +61,7 @@
     
  	
      <div class="container">
-    <h3>Vastattavat kyselyt</h3>
+    <h1>Vastattavat kyselyt</h1>
 	<div class="well">
       <!-- Displays a list of available surveys. -->
       <c:forEach var="survey" items="${surveys}">
