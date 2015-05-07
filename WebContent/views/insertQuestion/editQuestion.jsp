@@ -86,7 +86,7 @@
 					</form:select>
 				</p>
 				<p>	
-					<form:label path="questionText">Kysymysteksti</form:label><br/>
+					<form:label path="questionText">Kysymysteksti *</form:label><br/>
 					<form:textarea path="questionText" rows="3" />
 				</p>
 				<p>	

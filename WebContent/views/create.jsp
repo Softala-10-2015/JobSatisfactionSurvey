@@ -113,7 +113,7 @@
 			<div class="row">
 			<div class="col-xs-3">
 				<div class="form-group" style="padding-left:0; margin-left:0">
-					<form:label	path="surveyName" value="${survey.getSurveyName()}">Kyselyn nimi</form:label>
+					<form:label	path="surveyName" value="${survey.getSurveyName()}">Kyselyn nimi *</form:label>
 					<form:input class="col-xs-1 form-control" path="surveyName" /><br/>
 					<form:errors path="surveyName"/>	
 				</div>
@@ -141,7 +141,7 @@
 							<div class="col-lg-11">
 								<div class="form-group" style="margin-left:0">
 									<p>
-										<form:label path="questionText">Kysymys teksti</form:label>
+										<form:label path="questionText">Kysymys teksti *</form:label>
 										<form:input class="form-control" id="#questionText" path="questionText"/>
 									</p>
 									
