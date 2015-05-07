@@ -58,11 +58,6 @@
     <div class="container">
       <div class="page-header">
       </div>
-<!-- 	<h1>
-		Kysely luotu
-	</h1> -->
-
-
 
 	<div class="row">
 		<div class="col-lg-12">
@@ -71,26 +66,29 @@
 					<h2>Kysely luotu</h2>
 				</div>
 			</div>
+			<div class="well">
 			<div class="row">
 				<div class="col-lg-12">
 					<p>
 						Voit luoda uuden kyselyn tai palata etusivulle.
 					</p>
 					<p>
-						<a href="/kysely/survey/get-survey/${id}">http://${pageContext.request.serverName}:${pageContext.request.localPort}/kysely/survey/get-survey/${id}</a>
+						<a href="/kysely/survey/get-survey/${id}">Klikkaa tästä päästäksesi kyselyysi.</a>
 						
 					</p>					
 					<br>
 				</div>
 			</div>
+			
 			<div class="row">
 				<div class="col-lg-2">
-					<a href="/kysely/survey/create"><button class="btn btn-primary" type="button">Luo uusi kysely</button></a>
+					<a href="/kysely/survey/create"><button class="btn btn-primary" type="button">Uusi kysely</button></a>
 				</div>
 				<div class="col-lg-2">
-					<a href="/kysely"><button class="btn btn-primary" type="button">Palaa etusivulle</button></a>
+					<a href="/kysely"><button class="btn btn-primary" type="button">Etusivulle</button></a>
 				</div>
 			</div>
+			
 		</div>
 	</div>
 
