@@ -49,30 +49,47 @@
 	</nav> <!-- end of navbar -->   
     <!-- Begin page content -->
     <div class="container">
-      <div class="page-header">
-      </div>
+		<div class="page-header"></div>
 
-	<h1><c:out value="${survey.surveyName}" /></h1>
-	<form:form class="well">
-	<c:forEach var="question" items="${survey.questions}">
-		<div>
-			<span>Kysymystyyppi: <c:out value="${question.questionType}"></c:out></span><br />
-			<span>Kysymysteksti: <c:out value="${question.questionText}"></c:out></span><br />
-			<span>Kysymyksen järjestys: <c:out value="${question.questionOrder}"></c:out></span><br />
-			<a class="btn btn-primary btn-xs" href="../edit/editQuestion/${question.questionId}">Muokkaa kysymystä</a>&nbsp;&nbsp;
-					<a  class="btn btn-danger btn-xs" href="${survey.surveyId}/deleteQuestion/${question.questionId}">Poista kysymys</a>
+		<h1>
+			<c:out value="${survey.surveyName}" />
+		</h1>
+		<form:form class="well">
+			<c:forEach var="question" items="${survey.questions}">
+				<div>
+					<span> <span>Kysymystyyppi: <c:choose>
+								<c:when test="${question.questionType == 0}">Tekstikenttä
+								</c:when>
+								<c:otherwise>Väite
+								</c:otherwise>
+							</c:choose></span><br />
+							 <span>Kysymysteksti: <c:out
+								value="${question.questionText}"></c:out></span><br /> <span>Kysymyksen
+							järjestys: <c:out value="${question.questionOrder}"></c:out>
+					</span><br /> <a class="btn btn-primary btn-xs"
+						href="../edit/editQuestion/${question.questionId}">Muokkaa
+							kysymystä</a>&nbsp;&nbsp; <a class="btn btn-danger btn-xs"
+						href="${survey.surveyId}/deleteQuestion/${question.questionId}">Poista
+							kysymys</a> <br />
+				</div>
+				<br>
+			</c:forEach>
 			<br />
-		</div>
-      	<br>
-      </c:forEach>
-      <br /><br />
-      <p><a class="btn btn-primary" href="insertQuestion/${survey.surveyId}">Lisää kysymys</a></p>&nbsp;&nbsp;&nbsp;
-      <br /><br /><br /><br />
-      <p>
-      <a class="btn btn-primary" href="../create">Luo uusi kysely</a>&nbsp;&nbsp;
-      <a class="btn btn-default" href="../edit">Takaisin</a></p>
-</form:form>
-</div>
+			<br />
+			<p>
+				<a class="btn btn-primary" href="insertQuestion/${survey.surveyId}">Lisää
+					kysymys</a>
+			</p>&nbsp;&nbsp;&nbsp;
+      <br />
+			<br />
+			<br />
+			<br />
+			<p>
+				<a class="btn btn-primary" href="../create">Luo uusi kysely</a>&nbsp;&nbsp;
+				<a class="btn btn-default" href="../edit">Takaisin</a>
+			</p>
+		</form:form>
+	</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
