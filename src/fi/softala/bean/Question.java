@@ -20,9 +20,23 @@ public class Question{
 	@NotNull
 	int questionOrder; // question sequence number 
 	@NotNull
-	@Size (min=1, max=100)
+	@Size (min=1, max=100, message="Kyselyn nimessä tulee olla 1-100 merkkiä")
+	@Pattern(regexp = "[a-zöäåA-ZÖÄÅ0-9 §½!\"#¤%&/()=?`´^*¨\'~<>|{}\\+-_.:,;£$€\\[\\]]+", message="Kyselyn nimessä saa olla kirjaimia, numeroita ja vain yleisesti käytettyjä erikoismerkkejä")
 	String questionText; // question
 	
+	//int validointia varten
+/*	@NotNull
+	@Pattern(regexp = "[1-9]*")
+	String questionOrderStr;
+	
+	public String getQuestionOrderStr() {
+		return questionOrderStr;
+	}*/
+
+	public void setQuestionOrderInteger(String questionOrderStr) {
+		this.questionOrder = Integer.parseInt(questionOrderStr);
+	}
+
 	int questionType;
 	List<AChoice> choices = new ArrayList<AChoice>();
 

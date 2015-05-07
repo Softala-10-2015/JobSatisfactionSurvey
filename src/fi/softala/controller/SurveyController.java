@@ -190,14 +190,15 @@ public class SurveyController {
 			System.out.println(q.toString());
 			q.setQuestionId(id);
 			if(rs.hasErrors()) {
-				q = new Question();
+/*				q = new Question();
 				q.setSurveyId(qDao.getOneQuestion(id).getSurveyId());
 				q.setQuestionId(qDao.getOneQuestion(id).getQuestionId());
 				q.setQuestionText(qDao.getOneQuestion(id).getQuestionText());
 				q.setQuestionOrder(qDao.getOneQuestion(id).getQuestionOrder());
-				q.setQuestionType(qDao.getOneQuestion(id).getQuestionType());
+				q.setQuestionType(qDao.getOneQuestion(id).getQuestionType());*/
+				System.out.println("test");
 				System.out.println(q.toString());
-				model.addAttribute("question", q);
+//				model.addAttribute("question", q);
 				return "insertQuestion/editQuestion";
 			} else{
 				qDao.editQuestion(q);
