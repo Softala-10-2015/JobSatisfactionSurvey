@@ -10,7 +10,7 @@ public class Answer {
 	private int questionId;
 	
 	@NotNull
-	@Size(min = 2, max = 3000)
+	@Size(min = 1, max = 3000)
 	private String answerText;
 
 	private String questionText;
@@ -22,9 +22,9 @@ public class Answer {
 	public Answer(int answerId, String answerText, int questionId, String aChoiceText, String questionText) {
 		super();
 		this.answerId = answerId;
-		this.answerText =  answerText;
-		this.questionId=questionId;
-		this.questionText=questionText;
+		this.answerText = answerText.trim();
+		this.questionId = questionId;
+		this.questionText = questionText;
 	}
 	public int getAnswerId() {
 		return answerId;
@@ -36,7 +36,7 @@ public class Answer {
 		return answerText;
 	}
 	public void setAnswerText(String answerText) {
-		this.answerText = answerText;
+		this.answerText = answerText.trim();
 	}
 	public int getQuestionId() {
 		return questionId;
