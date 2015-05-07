@@ -27,24 +27,14 @@
 
 	<!-- Fixed navbar & login -->
 
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-default navbar-fixed-top custom-navbar">
 	<div class="container">
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-				aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			
+			<button type="button" class="navbar-toggle collapsed">
+				<a class="navbar-brand" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimgsmall.png"  alt="Navbar-brand kuva">Etusivu</a>
+			</button>		
 		</div> 
-<div class="navbar-brand">
 
-<div class="container">
-
-</div>
- </div>
 		<div id="navbar" class="collapse navbar-collapse">
 		<!-- navbarlogo -->
 		<a class="navbar-brand" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png"  alt="Navbar-brand kuva"></a>
