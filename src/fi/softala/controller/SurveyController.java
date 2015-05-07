@@ -31,7 +31,7 @@ import fi.softala.dao.SurveyDao;
 
 
 /**
- * @author Aleksi Tilli
+ * @author Aleksi Tilli, Pasi, Jukka, Olli, Samuli, Topi, Juha Palmu, Harri, Erik, Petri, Pipsa, Mikot, Markus
  *
  */
 @Controller

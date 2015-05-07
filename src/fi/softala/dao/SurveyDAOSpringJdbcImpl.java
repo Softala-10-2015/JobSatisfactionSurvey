@@ -1,3 +1,8 @@
+/**
+ * @author Aleksi Tilli, Pasi, Jukka, Olli, Samuli, Topi, Juha Palmu, Harri, Erik, Petri, Pipsa, Mikot, Markus
+ *
+ */
+
 package fi.softala.dao;
 
 import java.sql.Connection;

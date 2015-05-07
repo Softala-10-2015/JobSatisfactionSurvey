@@ -1,4 +1,4 @@
-/** @authors Jukka, Pasi, Kytis, Olli
+/** @authors Jukka, Pasi, Kytis, Olli, Pipsa
 */
 
 package fi.softala.dao;

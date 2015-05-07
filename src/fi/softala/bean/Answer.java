@@ -1,4 +1,4 @@
-/** @authors Jukka, Pasi, Kytis, Olli, Harri
+/** @authors Jukka, Pasi, Kytis, Olli, Harri, Pipsa
 */
 package fi.softala.bean;
 
