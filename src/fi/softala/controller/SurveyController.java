@@ -236,10 +236,10 @@ public class SurveyController {
 		@RequestMapping(value = "edit/insertQuestion/{id}", method = RequestMethod.POST)
 		public String sendQuestion(@Valid @ModelAttribute(value = "question") Question q, BindingResult rs, Model model) {
 			if(rs.hasErrors()) {
-				Question qq = new Question();
-				qq.setSurveyId(q.getSurveyId());
+				//Question qq = new Question();
+				//qq.setSurveyId(q.getSurveyId());
 
-				model.addAttribute("question", qq);
+				//model.addAttribute("question", qq);
 				return "insertQuestion/createForm";
 			} else {
 				qDao.saveQuestion(q);

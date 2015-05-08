@@ -66,10 +66,16 @@
 				<p>	
 					<form:label path="questionText">Kysymysteksti</form:label><br/>
 					<form:textarea path="questionText" rows="3" />
+					<p>
+						<form:errors path="questionText"/>
+					</p>
 				</p>
 				<p>	
 					<form:label path="questionOrder">Kysymyksen järjestys</form:label><br/>
 					<form:input path="questionOrder" />
+					<p>
+						<form:errors path="questionOrder"/>
+					</p>
 				</p>
 				
 				
