@@ -65,7 +65,7 @@
 		<h3>Kiitos!</h3>
 		<p>Kiitos kyselyyn osallistumisestasi.</p>
 		<br>
-			<a class="btn btn-primary btn-lg" role="button" href="/kysely">Etusivulle</a>
+			<a class="btn btn-primary" role="button" href="/kysely">Etusivulle</a>
 		</div>
 
 		

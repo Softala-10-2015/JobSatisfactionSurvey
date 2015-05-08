@@ -171,11 +171,18 @@
 	
 	<!-- begin survey send -->
 	<div class="row">
-		<div class="col-lg-1 col-lg-offset-10">
+		<div class="col-lg-1">
 		<p>
-			<button id="submit-button" class="btn btn-lg btn-primary" type="button" value="Send" >Tallenna</button>
+			<button id="submit-button" class="btn btn-primary" type="button" value="Send" >Tallenna</button>
 		</p>
 		</div>
+		<div class="col-lg-1">
+		<a class="btn btn-default" href="/kysely" role="button">Takaisin</a>
+		
+		
+		</div>
+		
+		
 	</div>
 	<!-- end survey send -->
 
