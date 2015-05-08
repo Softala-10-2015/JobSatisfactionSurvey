@@ -35,20 +35,20 @@ public class AnswerDAOSpringJdbcImpl implements AnswerDAO{
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
-	public void saveAnswer(Answer answer) {
-		final String sql = "insert into Answer(question_id, answer_text) values (?,?)";
+	public void saveAnswer(Answer answer) {		//Tallentaa vastauksen tietokantaan
+		final String sql = "insert into Answer(question_id, answer_text) values (?,?)"; //SQL-lause tallennusta varten
 		
 		if(answer.getQuestionId() != 0 && answer.getAnswerText() != null){
-			final int questionId = answer.getQuestionId();
-			final String answerText=answer.getAnswerText();
+			final int questionId = answer.getQuestionId(); //Annetaan paikalliselle questionId-muuttujalle answer-taulun question_text-kentän arvo
+			final String answerText=answer.getAnswerText();	//Annetaan paikalliselle answerText-muuttujalle answer-taulun answer_text-kentän arvo
 			KeyHolder idHolder = new GeneratedKeyHolder();
 			jdbcTemplate.update(new PreparedStatementCreator() {
 				public PreparedStatement createPreparedStatement(
 						Connection connection) throws SQLException {
 					PreparedStatement ps = connection.prepareStatement(sql,
 							new String[] { "answer_id" });
-					ps.setInt(1, questionId);
-					ps.setString(2, answerText);
+					ps.setInt(1, questionId); 		//Ensimmäinen parametri SQL-lauseeseen
+					ps.setString(2, answerText);	//Toinen parametri SQL-lauseeseen
 					return ps;
 				}
 			}, idHolder);
@@ -56,27 +56,7 @@ public class AnswerDAOSpringJdbcImpl implements AnswerDAO{
 		}
 	}
 	
-	public Answer getOneAnswer(int answerId) {
-		String sql = "select question_id, answer_text from Answer where answer_id=?";
-		Object[] parameters = new Object[] { answerId };
-		RowMapper<Answer> mapper = new AnswerRowMapper();
-		Answer wanted = new Answer();
-		try {
-			wanted=jdbcTemplate.queryForObject(sql, parameters, mapper);
-		} catch (IncorrectResultSizeDataAccessException e) {
-			
-		}
-		return wanted;
-	}
-	
-	public List<Answer> getAllAnswers() {
-		String sql = "select answer_id, question_id, answer_text from Answer";
-		RowMapper<Answer> mapper = new AnswerRowMapper();
-		List<Answer> allAnswers = jdbcTemplate.query(sql, mapper);
-		return allAnswers;
-	}
-	
-	public List<Answer> getAnswersForSurvey(int surveyId) {
+	public List<Answer> getAnswersForSurvey(int surveyId) {		//Hakee yhden kyselyn kaikki kysymykset ja vastaukset
 		String sql = "SELECT Answer.answer_id, Answer.question_id, Answer.answer_text, "
 				+ "Question.question_text, Question.question_order "
 				+ "FROM Answer "
@@ -90,7 +70,7 @@ public class AnswerDAOSpringJdbcImpl implements AnswerDAO{
 		
 		RowMapper<Answer> mapper = new AnswerRowMapper();
 		
-		List<Answer> answers= jdbcTemplate.query(sql, params, mapper);
+		List<Answer> answers= jdbcTemplate.query(sql, params, mapper);	//Tehdään vastauksista lista
 
 		return answers;
 	}

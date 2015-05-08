@@ -1,5 +1,5 @@
 /**
-* @author Jukka, Samuli
+* @author Jukka, Samuli, pasi, Harri
 */
 
 package fi.softala.dao;

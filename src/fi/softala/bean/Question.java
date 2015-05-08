@@ -17,6 +17,7 @@ public class Question{
 	
 	int surveyId;
 	int questionId; // id
+	int questionType;
 	@NotNull
 	int questionOrder; // question sequence number 
 	@NotNull
@@ -36,9 +37,6 @@ public class Question{
 	public void setQuestionOrderInteger(String questionOrderStr) {
 		this.questionOrder = Integer.parseInt(questionOrderStr);
 	}
-
-	int questionType;
-	List<AChoice> choices = new ArrayList<AChoice>();
 
 	public Question() {
 	}
@@ -92,20 +90,11 @@ public class Question{
 		this.questionType = questionType;
 	}
 
-	public List<AChoice> getChoices() {
-		return choices;
-	}
-
-	public void setChoices(List<AChoice> choices) {
-		this.choices = choices;
-	}
-
 	@Override
 	public String toString() {
 		return "Question [surveyId=" + surveyId + ", questionId=" + questionId
 				+ ", questionOrder=" + questionOrder + ", questionText="
-				+ questionText + ", questionType=" + questionType
-				+ ", choices=" + choices + "]";
+				+ questionText + ", questionType=" + questionType + "]";
 	}
 	
 }

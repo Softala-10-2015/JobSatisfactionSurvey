@@ -40,10 +40,10 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 	}
 
 	
-	public void addSurvey(Survey newSurvey) {
+	public void addSurvey(Survey newSurvey) {	//lisää kyselyn
 		
 		final String sql="INSERT INTO Survey(survey_name) values (?)";
-		final String surveyName=newSurvey.getSurveyName();
+		final String surveyName=newSurvey.getSurveyName();	//tallentaa paikalliseen muuttujaan käyttäjän antaman nimen mukaisen kyselyn nimen
 		
 		KeyHolder idHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator() {
@@ -56,12 +56,12 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 			}
 		}, idHolder);
 	
-		newSurvey.setSurveyId(idHolder.getKey().intValue());
+		newSurvey.setSurveyId(idHolder.getKey().intValue());	
 	}
 	
 	
 	public Survey findSurvey(int i) {
-		//RAW metodi, siistimistä vailla
+		//hakee yhden kyselyn tietokannasta
 		
 		String sql = "SELECT *  FROM Survey WHERE survey_id = ?";
 		Object[] param = new Object[] { i };
@@ -76,7 +76,7 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 	}
 	
 	public List<Survey> findSurveys() throws DataAccessException, RuntimeException {
-		//kaikki kyselyt, vois varmaan siisitiä
+		//hakee kaikki kyselyt tietokannasta
 		
 		String sql = "SELECT * FROM Survey;";
 		
@@ -97,7 +97,7 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 		Object[] param = new Object[] { surveyId};
 		RowMapper<Answer> mapper = new AnswerTextRowMapper();
 		try{
-			List<Answer> answers = jdbcTemplate.query(sql, param, mapper);
+			List<Answer> answers = jdbcTemplate.query(sql, param, mapper);	//tehdään vastauksista lista
 			System.out.println(answers);
 			if(answers.isEmpty()) {
 				hasAnswers=false;
@@ -109,7 +109,7 @@ public class SurveyDAOSpringJdbcImpl implements SurveyDao{
 		return hasAnswers;
 	}
 	
-	public int findLastId(){
+	public int findLastId(){	//haetaan viimeiseksi lisätyn surveyn id
 		int id=0;
 		String sql = "SELECT survey_id FROM Survey WHERE survey_id=(SELECT max(survey_id) FROM Survey);";
 		

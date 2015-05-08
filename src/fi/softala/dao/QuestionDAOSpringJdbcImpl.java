@@ -20,7 +20,6 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import fi.softala.bean.AChoice;
 import fi.softala.bean.Question;
 
 @Repository
@@ -36,34 +35,12 @@ public class QuestionDAOSpringJdbcImpl implements QuestionDAO{
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
-	public void addAnswerChoice(AChoice answerChoice) {
-		final String sql = "insert into AnswerChoice(achoice_id, question_id, achoice_text) values(?, ?, ?)";
-		final int achoiceId=answerChoice.getaChoiceId();
-		final int questionId=answerChoice.getQuestionId();
-		final String answerText=answerChoice.getaChoiceText();
-		
-		KeyHolder idHolder = new GeneratedKeyHolder();
-		jdbcTemplate.update(new PreparedStatementCreator() {
-			public PreparedStatement createPreparedStatement(
-					Connection connection) throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(sql,
-						new String[] { "questionId" }); //Luo uudelle kysymykselle oman id:n
-				ps.setInt(1, achoiceId); //tallennetaan kysymykseen liittyv�t attribuutit
-				ps.setInt(2, questionId);
-				ps.setString(3, answerText);
-				return ps;
-			}
-		}, idHolder);
-		answerChoice.setaChoiceId(idHolder.getKey().intValue());
-		
-	}
-	
-	public void saveQuestion(Question question) {
+	public void saveQuestion(Question question) {	//Tallennetaan kysymys tietokantaan
 		final String sql = "insert into Question(survey_id, question_type, question_text, question_order) values (?,?,?,?)"; //Kysymykseen liittyv�t attribuutit asianmukaiseen tietokantatauluun
-		final int surveyId = question.getSurveyId();
-		final int questionType=question.getQuestionType();
-		final String questionText=question.getQuestionText();
-		final int questionOrder=question.getQuestionOrder();
+		final int surveyId = question.getSurveyId();	//Annetaan paikalliselle surveyId-muuttujalle question-taulun survey_id-kentän arvo
+		final int questionType=question.getQuestionType();	//Annetaan paikalliselle questionType-muuttujalle question-taulun question_type-kentän arvo
+		final String questionText=question.getQuestionText();	//Annetaan paikalliselle questionText-muuttujalle question-taulun question_text-kentän arvo
+		final int questionOrder=question.getQuestionOrder();	////Annetaan paikalliselle questionOrder-muuttujalle question-taulun question_order-kentän arvo
 		
 		KeyHolder idHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator() {
@@ -81,7 +58,7 @@ public class QuestionDAOSpringJdbcImpl implements QuestionDAO{
 		question.setQuestionId(idHolder.getKey().intValue());
 	}
 	
-	public Question getOneQuestion(int questionId) { //Metodi, jolla haetaan yksi kysymys kerrallaan tietokantataulusta
+	public Question getOneQuestion(int questionId) { //Metodi, jolla haetaan yksi kysymys kerrallaan tietokantataulusta. Käytetään kysymysten järjestyksen muokkaamiseen
 		String sql = "select question_id, survey_id, question_type, question_text, question_order from Question where question_id=?";
 		Object[] parameters = new Object[] { questionId };
 		RowMapper<Question> mapper = new QuestionRowMapper();
@@ -97,7 +74,7 @@ public class QuestionDAOSpringJdbcImpl implements QuestionDAO{
 	//Yksittäisen kysymyksen muokkaus
 	public void editQuestion(Question question) {
 		final String sql = "update Question set question_text=?, question_order=?, question_type=? where question_id=?";
-		final String text = question.getQuestionText();
+		final String text = question.getQuestionText();		//annetaan paikallisille muuttujille arvot tietokantataulusta
 		final int order = question.getQuestionOrder();
 		final int type = question.getQuestionType();
 		final int id = question.getQuestionId();
@@ -117,17 +94,10 @@ public class QuestionDAOSpringJdbcImpl implements QuestionDAO{
 		}, idHolder);		
 	}
 	
-	public List<Question> getAllQuestions() { //Metodi, jolla haetaan kaikki kysymykset tietokantataulusta
-		String sql = "select question_id, survey_id, question_type, question_text, question_order from Question";
-		RowMapper<Question> mapper = new QuestionRowMapper();
-		List<Question> allQuestions = jdbcTemplate.query(sql, mapper);
-		return allQuestions;
-	}
-	
 	/* (non-Javadoc) Hakee kysymyksiä kyselyn id:n perusteella
 	 * @see fi.softala.dao.QuestionDAO#getQuestionsForSurvey(int)
 	 */
-	public List<Question> getQuestionsForSurvey(int surveyId) {
+	public List<Question> getQuestionsForSurvey(int surveyId) {		//hakee kaikki kysymykset yhteen kyselyyn
 		String sql = "SELECT question_id, survey_id, question_type, "
 				+ "question_text, question_order "
 				+ "FROM Question "
@@ -138,12 +108,12 @@ public class QuestionDAOSpringJdbcImpl implements QuestionDAO{
 		System.out.println("QuestionDAO: " + params[0]);
 		RowMapper<Question> mapper = new QuestionRowMapper();
 		
-		List<Question> questions= jdbcTemplate.query(sql, params, mapper);
+		List<Question> questions= jdbcTemplate.query(sql, params, mapper);	//tekee listan kysymyksistä
 
 		return questions;
 	}
 	
-	public void deleteQuestion(int questionId) {
+	public void deleteQuestion(int questionId) {	//poistaa kysymyksen
 		String sql = "DELETE FROM Question WHERE question_id = ?";
 		Object[] params = new Object[] { questionId };
 		System.out.println("QuestionDAO: DELETE " + params[0]);

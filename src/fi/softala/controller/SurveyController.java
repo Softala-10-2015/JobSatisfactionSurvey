@@ -18,11 +18,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import fi.softala.bean.AChoice;
 import fi.softala.bean.Answer;
 import fi.softala.bean.AnswerListWrapper;
 import fi.softala.bean.Question;
-import fi.softala.bean.QuestionListWrapper;
+
 import fi.softala.bean.Survey;
 import fi.softala.dao.AnswerDAO;
 import fi.softala.dao.DaoConnectionException;
@@ -122,29 +121,6 @@ public class SurveyController {
 
 	}
 	
-	//Yksittäisen vastauksen hakeminen id:n perusteella
-	@RequestMapping (value="get-single/{id}", method=RequestMethod.GET)
-	public String getAnswer(@PathVariable Integer id, Model model) {
-		Answer answer = aDao.getOneAnswer(id);
-		model.addAttribute(answer);
-		//Tähän path oikeaan jsp-sivuun
-		return "survey";
-	}
-	
-	//Kaikkien vastausten hakeminen
-	@RequestMapping(value="get-all-answers", method=RequestMethod.GET)
-	public String getAllAnswers(Model model) {
-		List<Answer> answers = aDao.getAllAnswers();
-		model.addAttribute("answers", answers);
-		return "summary";
-	}
-	//listaa kysymykset
-	@RequestMapping(value="get-all-questions", method=RequestMethod.GET)
-	public String getAllQuestions(Model model) {
-		List<Question> questions = qDao.getAllQuestions();
-		model.addAttribute("questions", questions);
-		return "summary";
-	}
 	//editoi kyselyn kysymyksiä
 	@RequestMapping(value = "edit", method = RequestMethod.GET)
 	public String editableSurveys(Model model){
@@ -313,21 +289,6 @@ public class SurveyController {
 	}
 	
 	
-	//valintakysymys
-	@RequestMapping(value = "choice", method = RequestMethod.GET)
-	public String addChoiceQuestion(Model model){
-		model.addAttribute("questions", new QuestionListWrapper());
-		return "choice";
-	}
-	//valinnan tallennus
-	@RequestMapping(value = "choice", method = RequestMethod.POST)
-	public String saveChoiceQuestion(@ModelAttribute(value = "questions") QuestionListWrapper q, Model model){
-		
-		for (int i = 0; i < q.getAcList().size(); i++) {
-			System.out.println(q.getAcList().get(i).getaChoiceText());
-		}
-		return "redirect:/survey/choice";
-	}
 	//vastausten listaus
 	@RequestMapping(value = "answers/{id}", method = RequestMethod.GET)
 	public String viewAnswers(@PathVariable Integer id, Model model){
@@ -372,7 +333,7 @@ public class SurveyController {
 	 */
 	@RequestMapping(value = "ajax/addQuestion", method = RequestMethod.POST)
 	public String addQuestionToSurvey(@Valid @ModelAttribute ("question") Question question, BindingResult rs,
-			ModelMap model, HttpSession session) {
+			ModelMap model, HttpSession session) {	//lisää kysymyksen kyselyyn
 	
 		System.out.println("ajax/addQuestion POST");
 		
@@ -458,7 +419,7 @@ public class SurveyController {
 	 */
 	@RequestMapping(value = "ajax/moveQuestion/{direction}/{id}", method = RequestMethod.GET)
 	//@ResponseBody
-	public String moveQuestionUp(@PathVariable Integer id, @PathVariable String direction, ModelMap model, HttpSession session) {
+	public String moveQuestionUp(@PathVariable Integer id, @PathVariable String direction, ModelMap model, HttpSession session) {	//
 		System.out.println("ajax/moveQuestion GET");
 		System.out.println(direction);
 		List<Question> questions = (ArrayList<Question>) session.getAttribute("questions");
@@ -500,35 +461,6 @@ public class SurveyController {
 	
 		model.addAttribute("questions", questions);
 		return "ajax/viewQuestions";
-	}
-	
-	/**
-	 * Ei käytössä vielä, kyselyn luontisivulla valintojen lisääminen monivalintakysymyksiin
-	 */
-	@RequestMapping(value = "ajax/addAnswerChoice/{id}/{choice}", method = RequestMethod.GET)
-	public String addAnswerChoiceAjax(@PathVariable Integer id, @PathVariable String choiceStr, ModelMap model, HttpSession session) {
-		System.out.println("ajax/moveQuestion GET");
-		
-		List<Question> questions = (ArrayList<Question>) session.getAttribute("questions");
-		
-		
-		if(questions != null && !questions.isEmpty()) {
-			if(questions.get(id) != null) {
-				AChoice choice = new AChoice();
-				
-				choice.setaChoiceText(choiceStr);
-				choice.setQuestionId(id);
-				
-				List<AChoice> choices = new ArrayList<AChoice>();
-				if(questions.get(id).getChoices() != null && !questions.get(id).getChoices().isEmpty()) {
-					questions.get(id).getChoices().add(choice);
-				} else {
-					choices.add(choice);
-					questions.get(id).setChoices(choices);
-				}
-			}
-		}
-		return " ";
 	}
 	
 	/**
