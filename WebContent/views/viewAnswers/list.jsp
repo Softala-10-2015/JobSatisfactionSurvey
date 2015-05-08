@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -35,8 +35,6 @@
 	<div class="container">
 		<div class="navbar-header">			
 			<a class="navbar-brand navbar-toggle collapsed" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimgsmall.png"  alt="Navbar-brand kuva">Etusivu</a>
-		</div> 
-			</button>
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 		<!-- navbarlogo -->
@@ -71,7 +69,7 @@
 
       <c:forEach var="survey" items="${surveys}">
       <table class="table table-striped">
-      	<td><a href="answers/${survey.surveyId}"><c:out value="${survey.getSurveyName()}"/></a></td>
+      	<tr><td><a href="answers/${survey.surveyId}"><c:out value="${survey.getSurveyName()}"/></a></td></tr>
       	</table>
       </c:forEach>
       		<a class="btn btn-default" href="/kysely" role="button">Takaisin</a>

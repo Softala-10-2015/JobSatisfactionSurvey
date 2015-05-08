@@ -69,7 +69,11 @@ body {
   margin-left: 10px;
 }
 
-
+.logoimage{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 
 /* RESPONSIVE CSS

@@ -59,11 +59,9 @@
 
 	</div>
 	</nav> <!-- end of navbar -->   
-		<div class="container">
     <div class="container">
       <div class="page-header">
       </div>
-<body>
 <h1>
 		Muokkaa kysymystä
 	</h1>
@@ -85,16 +83,12 @@
 					<p>
 						<form:errors path="questionText"/>
 					</p>
-				</p>
 				<p>	
 					<form:label path="questionOrder">Kysymyksen järjestys</form:label><br/>
 					<form:input path="questionOrder" />
 					<p>
 						<form:errors path="questionOrder"/>
 					</p>
-				</p>
-				
-				
 				<p>	
 					<button type="submit" class="btn btn-primary">Tallenna</button>
 					<a class="btn btn-default" href="${pageContext.request.contextPath}/survey/edit/${question.surveyId}">Takaisin</a>

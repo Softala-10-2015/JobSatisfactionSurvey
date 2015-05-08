@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -54,8 +54,7 @@
       <!-- Displays a list of available surveys. -->
       <c:forEach var="survey" items="${surveys}">
       <table class="table table-striped">
-      	<td><a href="get-survey/${survey.surveyId}"><c:out value="${survey.getSurveyName()}"/></a>
-      	</td>
+      	<tr><td><a href="get-survey/${survey.surveyId}"><c:out value="${survey.getSurveyName()}"/></a></td></tr>
       	</table>
       </c:forEach>
       <div>

@@ -8,7 +8,6 @@ package fi.softala.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -23,7 +22,6 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import fi.softala.bean.Answer;
-import fi.softala.bean.Question;
 import fi.softala.bean.Survey;
 
 @Repository

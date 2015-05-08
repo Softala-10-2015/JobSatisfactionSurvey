@@ -8,7 +8,6 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -24,7 +23,6 @@ import fi.softala.bean.Question;
 
 import fi.softala.bean.Survey;
 import fi.softala.dao.AnswerDAO;
-import fi.softala.dao.DaoConnectionException;
 import fi.softala.dao.QuestionDAO;
 import fi.softala.dao.SurveyDao;
 
@@ -33,6 +31,8 @@ import fi.softala.dao.SurveyDao;
  * @author Aleksi Tilli, Pasi, Jukka, Olli, Samuli, Topi, Juha Palmu, Harri, Erik, Petri, Pipsa, Mikot, Markus
  *
  */
+@SuppressWarnings("unchecked")
+
 @Controller
 @RequestMapping (value="/survey")
 public class SurveyController {
@@ -194,8 +194,7 @@ public class SurveyController {
 	}
 	//kysymyksen poisto
 	@RequestMapping(value = "edit/{sId}/deleteQuestion/{qId}", method = RequestMethod.POST)
-	public String deleteQuestion(@PathVariable Integer sId, @PathVariable Integer qId, Model model) {
-		Question q = new Question();
+	public String deleteQuestion(@PathVariable Integer sId, @PathVariable Integer qId) {
 		qDao.deleteQuestion(qId);
 		return "redirect:/survey/edit/" + sId;
 	}
@@ -210,7 +209,7 @@ public class SurveyController {
 	}
 	//Kysymyksen luonti
 		@RequestMapping(value = "edit/insertQuestion/{id}", method = RequestMethod.POST)
-		public String sendQuestion(@Valid @ModelAttribute(value = "question") Question q, BindingResult rs, Model model) {
+		public String sendQuestion(@Valid @ModelAttribute(value = "question") Question q, BindingResult rs) {
 			if(rs.hasErrors()) {
 				//Question qq = new Question();
 				//qq.setSurveyId(q.getSurveyId());
@@ -245,7 +244,7 @@ public class SurveyController {
 	}
 	//kyselyn luonti
 	@RequestMapping(value = "create", method = RequestMethod.POST)
-	public String sendSurvey(@Valid @ModelAttribute(value = "survey") Survey s, BindingResult result, @ModelAttribute(value = "question") Question q,Model model, HttpSession session) {
+	public String sendSurvey(@Valid @ModelAttribute(value = "survey") Survey s, BindingResult result, @ModelAttribute(value = "question") Question q, HttpSession session) {
 		
 		if (result.hasErrors()) {
 			return "create";
@@ -420,8 +419,6 @@ public class SurveyController {
 	@RequestMapping(value = "ajax/moveQuestion/{direction}/{id}", method = RequestMethod.GET)
 	//@ResponseBody
 	public String moveQuestionUp(@PathVariable Integer id, @PathVariable String direction, ModelMap model, HttpSession session) {	//
-		System.out.println("ajax/moveQuestion GET");
-		System.out.println(direction);
 		List<Question> questions = (ArrayList<Question>) session.getAttribute("questions");
 		
 		
@@ -470,8 +467,6 @@ public class SurveyController {
 	 */
 	@RequestMapping(value = "getSurveys/{id}", method = RequestMethod.GET)
 	public String getSurveyList(@PathVariable Integer id, ModelMap model, HttpSession session) {
-		System.out.println("getSurveys GET");
-		System.out.println(session.getAttributeNames());
 		session.removeAttribute("questions");
 		session.removeAttribute("survey");
 		

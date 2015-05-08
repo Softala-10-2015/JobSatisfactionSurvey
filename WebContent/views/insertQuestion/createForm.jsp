@@ -42,8 +42,7 @@
 		</div>
 
 	</div>
-	</nav> <!-- end of navbar -->   
-		<div class="container">
+	</nav> <!-- end of navbar -->
     <div class="container">
       <div class="page-header">
       </div>
@@ -69,16 +68,12 @@
 					<p>
 						<form:errors path="questionText"/>
 					</p>
-				</p>
 				<p>	
 					<form:label path="questionOrder">Kysymyksen järjestys</form:label><br/>
 					<form:input path="questionOrder" />
 					<p>
 						<form:errors path="questionOrder"/>
 					</p>
-				</p>
-				
-				
 				<p>	
 					<button type="submit" class="btn btn-primary">Lisää</button>
 					<a class="btn btn-default" href="${pageContext.request.contextPath}/survey/edit/${question.surveyId}">Takaisin</a>

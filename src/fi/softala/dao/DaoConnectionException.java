@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
  *
  */
 @ControllerAdvice
-@SuppressWarnings("serial")
 public class DaoConnectionException {
 	
 	public static final String ERROR_VIEW = "error";
