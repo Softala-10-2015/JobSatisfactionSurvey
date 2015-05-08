@@ -20,8 +20,8 @@ public class Question{
 	@NotNull
 	int questionOrder; // question sequence number 
 	@NotNull
-	@Size (min=1, max=100, message="Kyselyn nimessä tulee olla 1-100 merkkiä")
-	@Pattern(regexp = "[a-zöäåA-ZÖÄÅ0-9 §½!\"#¤%&/()=?`´^*¨\'~<>|{}\\+-_.:,;£$€\\[\\]]+", message="Kyselyn nimessä saa olla kirjaimia, numeroita ja vain yleisesti käytettyjä erikoismerkkejä")
+	@Size (min=2, max=100, message="Kyselyn nimessä tulee olla 2-100 merkkiä")
+	@Pattern(regexp = "^[^ ]+[a-zöäåA-ZÖÄÅ0-9 §½!\"#¤%&/()=?`´^*¨\'~<>|{}\\+-_.:,;£$€\\[\\]]+", message="Kysymyksen nimessä saa olla kirjaimia, numeroita ja vain yleisesti käytettyjä erikoismerkkejä, eikä se saa alkaa välilyönnillä")
 	String questionText; // question
 	
 	//int validointia varten
