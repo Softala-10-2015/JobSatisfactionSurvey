@@ -29,10 +29,8 @@
 
 	<nav class="navbar navbar-default navbar-fixed-top custom-navbar">
 	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed">
-				<a class="navbar-brand" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimgsmall.png"  alt="Navbar-brand kuva">Etusivu</a>
-			</button>		
+		<div class="navbar-header">			
+			<a class="navbar-brand navbar-toggle collapsed" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimgsmall.png"  alt="Navbar-brand kuva">Etusivu</a>
 		</div> 
 
 		<div id="navbar" class="collapse navbar-collapse">
