@@ -45,7 +45,14 @@
 	<div class="container">
 	<h1>Poista kysymys</h1>
     <div class="well">
-    	<span>Kysymystyyppi: <c:out value="${question.questionType}"></c:out></span><br />
+    	<span>Kysymystyyppi: <c:choose>
+    	
+    	<c:when test="${question.questionType == 0}">Tekstikenttä</c:when>
+    	<c:otherwise>Väite</c:otherwise>
+    	</c:choose>
+    	</span><br />
+    	
+    	
 		<span>Kysymysteksti: <c:out value="${question.questionText}"></c:out></span><br />
 		<span>Kysymyksen järjestys: <c:out value="${question.questionOrder}"></c:out></span><br />
 		<br />
@@ -54,6 +61,7 @@
 			<button class="btn btn-danger">Poista</button>&nbsp;&nbsp;
 			<a class="btn btn-default" href="${pageContext.request.contextPath}/survey/edit/${surveyId}">Takaisin</a>
 		</form>
+
 </div>
 </div>
     <!-- Bootstrap core JavaScript
