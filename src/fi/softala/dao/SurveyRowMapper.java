@@ -1,3 +1,8 @@
+/**
+ * @author Aleksi Tilli, Pasi, Jukka, Olli, Samuli, Topi, Juha Palmu, Harri, Erik, Petri, Pipsa, Mikot, Markus
+ *
+ */
+
 package fi.softala.dao;
 
 import java.sql.ResultSet;
@@ -15,24 +20,11 @@ public Survey mapRow(ResultSet rs, int rowNum) throws SQLException {
 	Survey s = new Survey();
 	
 	//dao olio
-		s.setSurvey_id(rs.getInt("survey_id"));
-		s.setOwner_id(rs.getInt("owner_id"));
-		s.setEmail(rs.getString("email"));
-		s.setSurvey_name(rs.getString("survey_name"));
-
-	//end of dao olio
+		s.setSurveyId(rs.getInt("survey_id"));
+		s.setOwnerId(rs.getInt("owner_id"));
+		s.setSurveyName(rs.getString("survey_name"));
 	
-	/*
-	//mock
-		s.setSurvey_id(1);
-		s.setOwner_id(21);
-		s.setEmail("a@a.fi");
-		s.setSurvey_name("asd");
-		System.out.println("Mock olio luotu:"+s.toString());
-	//end of mock
-	*/
-		
-		//kommentti
+	
 	return s;
 }
 	

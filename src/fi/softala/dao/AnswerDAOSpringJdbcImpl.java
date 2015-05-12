@@ -1,14 +1,15 @@
+/** @authors Jukka, Pasi, Kytis, Olli, Topi, Pipsa
+*/
+
 package fi.softala.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
@@ -31,42 +32,43 @@ public class AnswerDAOSpringJdbcImpl implements AnswerDAO{
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
-	public void saveAnswer(Answer answer) {
-		final String sql = "insert into Answer(question_id, answer_text) values (?,?)";
-		final int questionId = answer.getQuestionId();
-		final String answerText=answer.getAnswerText();
+	public void saveAnswer(Answer answer) {		//Tallentaa vastauksen tietokantaan
+		final String sql = "insert into Answer(question_id, answer_text) values (?,?)"; //SQL-lause tallennusta varten
 		
-		KeyHolder idHolder = new GeneratedKeyHolder();
-		jdbcTemplate.update(new PreparedStatementCreator() {
-			public PreparedStatement createPreparedStatement(
-					Connection connection) throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(sql,
-						new String[] { "answerId" });
-				ps.setInt(1, questionId);
-				ps.setString(2, answerText);
-				return ps;
-			}
-		}, idHolder);
-		answer.setAnswerId(idHolder.getKey().intValue());
-	}
-	
-	public Answer getOneAnswer(int answerId) {
-		String sql = "select question_id, answer_text from answer where answer_id=?";
-		Object[] parameters = new Object[] { answerId };
-		RowMapper<Answer> mapper = new AnswerRowMapper();
-		Answer wanted = new Answer();
-		try {
-			wanted=jdbcTemplate.queryForObject(sql, parameters, mapper);
-		} catch (IncorrectResultSizeDataAccessException e) {
-			
+		if(answer.getQuestionId() != 0 && answer.getAnswerText() != null){
+			final int questionId = answer.getQuestionId(); //Annetaan paikalliselle questionId-muuttujalle answer-taulun question_text-kentän arvo
+			final String answerText=answer.getAnswerText();	//Annetaan paikalliselle answerText-muuttujalle answer-taulun answer_text-kentän arvo
+			KeyHolder idHolder = new GeneratedKeyHolder();
+			jdbcTemplate.update(new PreparedStatementCreator() {
+				public PreparedStatement createPreparedStatement(
+						Connection connection) throws SQLException {
+					PreparedStatement ps = connection.prepareStatement(sql,
+							new String[] { "answer_id" });
+					ps.setInt(1, questionId); 		//Ensimmäinen parametri SQL-lauseeseen
+					ps.setString(2, answerText);	//Toinen parametri SQL-lauseeseen
+					return ps;
+				}
+			}, idHolder);
+			answer.setAnswerId(idHolder.getKey().intValue());
 		}
-		return wanted;
 	}
 	
-	public List<Answer> getAllAnswers() {
-		String sql = "select answer_id, question_id, answer_text from answer";
+	public List<Answer> getAnswersForSurvey(int surveyId) {		//Hakee yhden kyselyn kaikki kysymykset ja vastaukset
+		String sql = "SELECT Answer.answer_id, Answer.question_id, Answer.answer_text, "
+				+ "Question.question_text, Question.question_order "
+				+ "FROM Answer "
+				+ "LEFT JOIN Question ON Answer.question_id=Question.question_id "
+				+ "LEFT JOIN Survey ON Question.survey_id=Survey.survey_id "
+				+ "WHERE Survey.survey_id=? "
+				+ "ORDER BY Question.question_order";
+		
+		
+		Object[] params = new Object[] { surveyId };
+		
 		RowMapper<Answer> mapper = new AnswerRowMapper();
-		List<Answer> allAnswers = jdbcTemplate.query(sql, mapper);
-		return allAnswers;
+		
+		List<Answer> answers= jdbcTemplate.query(sql, params, mapper);	//Tehdään vastauksista lista
+
+		return answers;
 	}
 }

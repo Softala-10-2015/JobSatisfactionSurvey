@@ -1,6 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<%@ page language="java" contentType="text/html; charset=charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!DOCTYPE htmldtd">
 <html>
 <head>
     <meta charset="utf-8">
@@ -8,74 +11,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="resources/img/kisutopi.ico">
+    <link rel="icon" href="${pageContext.request.contextPath}/resources/img/icon.ico">
 
-    <title>Home</title>
+    <title>Etusivu</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet">
+	
+   
   </head>
 
   <body>
 
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="home.jsp">Kysely</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="home.jsp">Home</a></li>
-            <li><a href="summary.jsp">Tulokset</a></li>
-            <li><a href="login.jsp">Kirjaudu</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+	<!-- Fixed navbar & login -->
 
+	<nav class="navbar navbar-default navbar-fixed-top custom-navbar">
+	<div class="container">
+		<div class="navbar-header">			
+			<a class="navbar-brand navbar-toggle collapsed" href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/resources/img/brandimgsmall.png"  alt="Navbar-brand kuva">Etusivu</a>
+		</div> 
+
+		<div id="navbar" class="collapse navbar-collapse">
+		<!-- navbarlogo -->
+		<a class="navbar-brand" href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png"  alt="Navbar-brand kuva"></a>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="${pageContext.request.contextPath}">Etusivu</a></li> <!-- home tab active -->
+			</ul>
+				
+			
+			
+		</div>
+
+	</div>
+	
+	</nav> <!-- end of navbar -->    
+    
+ 	<div class="logo"> 
+   		<img class="logoimage" src="${pageContext.request.contextPath}/resources/img/logo.png"/>
+	</div>
+    
+    
+      <div class="container marketing" style="text-align:center">
+      <div class="row">
+        <div class="col-lg-3">
+          <img src="${pageContext.request.contextPath}/resources/img/answer.png" alt="kuva" style="width: 140px; height: 140px;">
+          <h2>Vastaa kyselyyn</h2>
+          <p>Vastaa sinulle laadittuun kyselyyn.</p>
+          <p><a class="btn btn-default" href="survey/surveys" role="button">Kyselyyn &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-3">
+          <img src="${pageContext.request.contextPath}/resources/img/answers.png" alt="kuva" style="width: 140px; height: 140px;">
+          <h2>Vastaukset</h2>
+          <p>Tarkastele kyselyiden vastauksia.</p>
+          <p><a class="btn btn-default" href="survey/surveylist" role="button">Vastauksiin &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-3">
+          <img src="${pageContext.request.contextPath}/resources/img/create.png" alt="kuva" style="width: 140px; height: 140px;">
+          <h2>Luo kysely</h2>
+          <p>Luo oma kysely.</p>
+          <p><a class="btn btn-default" href="survey/create" role="button">Luontiin &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-3">
+          <img src="${pageContext.request.contextPath}/resources/img/editing.png" alt="kuva" style="width: 140px; height: 140px;">
+          <h2>Muokkaa kyselyä</h2>
+          <p>Muokkaa olemassa olevaa kyselyä</p>
+          <p><a class="btn btn-default" href="survey/edit" role="button">Muokkaukseen &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+      
+      <!-- Displays a list of available surveys. 
+      <h3>Vastattavat kyselyt</h3>
+      <c:forEach var="survey" items="${surveys}">
+      	<a href="survey/get-survey/${survey.surveyId}"><c:out value="${survey.getSurveyName()}"/></a>
+      	<br>
+      </c:forEach>-->
     <!-- Begin page content -->
     <div class="container">
       <div class="page-header">
-        <h1>Iso kysely</h1>
-      </div>
-      
-<form class="well" method="post">
-<img alt="multikulttuuri" src="resources/img/masthead_generic.png" width=100%>
-  <h3>Mit� teet?</h3>
-		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="survey.jsp">Vastaa kyselyyn</a><br>
-		<a class="btn btn-lg btn-block homeButton2" role="button" href="summary.jsp">Vastaukset</a><br>
-		<a class="btn btn-primary btn-lg btn-block homeButton" role="button" href="create.jsp">Luo lomake</a>
-  
-</form>
-    <footer class="footer">
-      <div class="container">
-        <p class="text-muted">Copiright Make 2015</p>
-      </div>
-    </footer>
 
+      </div>
+  
+    
+
+</div>
 </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="resources/js/bootstrap.min.js"></script>
-    <script src="resources/js/angular.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/angular.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>

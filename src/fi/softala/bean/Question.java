@@ -4,65 +4,94 @@
 
 package fi.softala.bean;
 
+//standardeja jsr303-annotaatioita
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import javax.validation.constraints.NotNull;
+
 public class Question{
-	int survey_id;
-	int question_id; // id
-	int question_order; // question sequence number 
-	/* int total; // total option ? */
-	String question_text; // question
-	/* List options; // question options - answer choices- value pair */
-	int question_type;
+	
+	int surveyId;
+	int questionId; // id
+	int questionType;
+	@NotNull
+	int questionOrder; // question sequence number 
+	@NotNull
+	@Size (min=1, max=100, message="Kyselyn nimessä tulee olla 1-100 merkkiä")
+	@Pattern(regexp = "^[a-zöäåA-ZÖÄÅ0-9§½!\"#¤%&/()=?`´^*¨\'~<>|{}\\+-_.:,;£$€\\[\\]]+[ a-zöäåA-ZÖÄÅ0-9§½!\"#¤%&/()=?`´^*¨\'~<>|{}\\+-_.:,;£$€\\[\\]]*$", message="Kysymyksen nimessä saa olla kirjaimia, numeroita ja vain yleisesti käytettyjä erikoismerkkejä, eikä se saa alkaa välilyönnillä")
+	String questionText; // question
+	
+	//int validointia varten
+/*	@NotNull
+	@Pattern(regexp = "[1-9]*")
+	String questionOrderStr;
+	
+	public String getQuestionOrderStr() {
+		return questionOrderStr;
+	}*/
+
+	public void setQuestionOrderInteger(String questionOrderStr) {
+		this.questionOrder = Integer.parseInt(questionOrderStr);
+	}
 
 	public Question() {
 	}
 
-	public Question(int survey_id, int question_id,
-			int question_order, String question_text, int question_type) {
-		this.survey_id = survey_id;
-		this.question_id = question_id;
-		this.question_order = question_order;
-		this.question_text = question_text;
-		this.question_type = question_type;
+	public Question(int surveyId, int questionId,
+			int questionOrder, String questionText, int questionType) {
+		this.surveyId = surveyId;
+		this.questionId = questionId;
+		this.questionOrder = questionOrder;
+		this.questionText = questionText;
+		this.questionType = questionType;
 	}
 
-	public int getSurvey_id() {
-		return survey_id;
+	public int getSurveyId() {
+		return surveyId;
 	}
 
-	public void setSurvey_id(int survey_id) {
-		this.survey_id = survey_id;
+	public void setSurveyId(int surveyId) {
+		this.surveyId = surveyId;
 	}
 
-	public int getQuestion_id() {
-		return question_id;
+	public int getQuestionId() {
+		return questionId;
 	}
 
-	public void setQuestion_id(int question_id) {
-		this.question_id = question_id;
+	public void setQuestionId(int questionId) {
+		this.questionId = questionId;
 	}
 
-	public int getQuestion_order() {
-		return question_order;
+	public int getQuestionOrder() {
+		return questionOrder;
 	}
 
-	public void setQuestion_order(int question_order) {
-		this.question_order = question_order;
+	public void setQuestionOrder(int questionOrder) {
+		this.questionOrder = questionOrder;
 	}
 
-	public String getQuestion_text() {
-		return question_text;
+	public String getQuestionText() {
+		return questionText;
 	}
 
-	public void setQuestion_text(String question_text) {
-		this.question_text = question_text;
+	public void setQuestionText(String questionText) {
+		this.questionText = questionText;
 	}
 
-	public int getQuestion_type() {
-		return question_type;
+	public int getQuestionType() {
+		return questionType;
 	}
 
-	public void setQuestion_type(int question_type) {
-		this.question_type = question_type;
-	}	
+	public void setQuestionType(int questionType) {
+		this.questionType = questionType;
+	}
+
+	@Override
+	public String toString() {
+		return "Question [surveyId=" + surveyId + ", questionId=" + questionId
+				+ ", questionOrder=" + questionOrder + ", questionText="
+				+ questionText + ", questionType=" + questionType + "]";
+	}
+	
 }
-
