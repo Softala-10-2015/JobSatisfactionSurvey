@@ -1,6 +1,3 @@
-/** @authors Jukka, Pasi, Kytis, Olli, Harri
-*/
-
 package fi.softala.bean;
 
 import java.util.List;

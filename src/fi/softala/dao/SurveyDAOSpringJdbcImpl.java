@@ -1,8 +1,3 @@
-/**
- * @author Aleksi Tilli, Pasi, Jukka, Olli, Samuli, Topi, Juha Palmu, Harri, Erik, Petri, Pipsa, Mikot, Markus
- *
- */
-
 package fi.softala.dao;
 
 import java.sql.Connection;
@@ -23,6 +18,11 @@ import org.springframework.stereotype.Repository;
 
 import fi.softala.bean.Answer;
 import fi.softala.bean.Survey;
+
+/**
+ * @author Aleksi Tilli, Pasi, Jukka, Olli, Samuli, Topi, Juha Palmu, Harri, Erik, Petri, Pipsa, Mikot, Markus
+ *
+ */
 
 @Repository
 public class SurveyDAOSpringJdbcImpl implements SurveyDao{

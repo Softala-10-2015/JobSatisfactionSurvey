@@ -1,6 +1,3 @@
-/** @authors Jukka, Pasi, Kytis, Olli, Topi, Pipsa
-*/
-
 package fi.softala.dao;
 
 import java.sql.Connection;
@@ -19,6 +16,9 @@ import org.springframework.stereotype.Repository;
 
 import fi.softala.bean.Answer;
 
+/** @author Jukka, Pasi, Kytis, Olli, Topi, Pipsa
+*/
+
 @Repository
 public class AnswerDAOSpringJdbcImpl implements AnswerDAO{
 	@Inject
@@ -36,8 +36,8 @@ public class AnswerDAOSpringJdbcImpl implements AnswerDAO{
 		final String sql = "insert into Answer(question_id, answer_text) values (?,?)"; //SQL-lause tallennusta varten
 		
 		if(answer.getQuestionId() != 0 && answer.getAnswerText() != null){
-			final int questionId = answer.getQuestionId(); //Annetaan paikalliselle questionId-muuttujalle answer-taulun question_text-kentän arvo
-			final String answerText=answer.getAnswerText();	//Annetaan paikalliselle answerText-muuttujalle answer-taulun answer_text-kentän arvo
+			final int questionId = answer.getQuestionId(); //annetaan paikallisille muuttujille arvot tietokantataulusta
+			final String answerText=answer.getAnswerText();	
 			KeyHolder idHolder = new GeneratedKeyHolder();
 			jdbcTemplate.update(new PreparedStatementCreator() {
 				public PreparedStatement createPreparedStatement(

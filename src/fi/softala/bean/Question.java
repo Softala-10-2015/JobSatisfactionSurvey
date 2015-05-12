@@ -1,7 +1,3 @@
-/**
-* @author Pasi, Samuli
-*/
-
 package fi.softala.bean;
 
 //standardeja jsr303-annotaatioita
@@ -9,6 +5,10 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import javax.validation.constraints.NotNull;
+
+/**
+* @author Pasi, Samuli
+*/
 
 public class Question{
 	

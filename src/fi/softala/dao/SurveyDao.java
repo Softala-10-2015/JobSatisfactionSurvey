@@ -1,17 +1,15 @@
-/**
- * @author Aleksi Tilli, Pasi, Jukka, Olli, Samuli, Topi, Juha Palmu, Harri, Erik, Petri, Pipsa, Mikot, Markus
- *
- */
-
 package fi.softala.dao;
 
 import java.util.List;
 
 import fi.softala.bean.Survey;
 
+/**
+ * @author Aleksi Tilli, Pasi, Jukka, Olli, Samuli, Topi, Juha Palmu, Harri, Erik, Petri, Pipsa, Mikot, Markus
+ *
+ */
+
 public interface SurveyDao {
-	
-	//interface suunnittelua ja toteutusta vaille valmis
 
 	public abstract Survey findSurvey(int i);
 

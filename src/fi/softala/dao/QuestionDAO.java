@@ -1,12 +1,12 @@
-/**
-* @author Jukka, Samuli, Harri
-*/
-
 package fi.softala.dao;
 
 import java.util.List;
 
 import fi.softala.bean.Question;
+
+/**
+* @author Jukka, Samuli, Harri
+*/
 
 public interface QuestionDAO{
 	

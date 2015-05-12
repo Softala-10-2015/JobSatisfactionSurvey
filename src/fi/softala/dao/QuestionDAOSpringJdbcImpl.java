@@ -1,7 +1,3 @@
-/**
-* @author Jukka, Samuli, pasi, Harri
-*/
-
 package fi.softala.dao;
 
 import java.sql.Connection;
@@ -21,6 +17,10 @@ import org.springframework.stereotype.Repository;
 
 import fi.softala.bean.Question;
 
+/**
+* @author Jukka, Samuli, Pasi, Harri
+*/
+
 @Repository
 public class QuestionDAOSpringJdbcImpl implements QuestionDAO{
 	@Inject
@@ -35,11 +35,11 @@ public class QuestionDAOSpringJdbcImpl implements QuestionDAO{
 	}
 	
 	public void saveQuestion(Question question) {	//Tallennetaan kysymys tietokantaan
-		final String sql = "insert into Question(survey_id, question_type, question_text, question_order) values (?,?,?,?)"; //Kysymykseen liittyv�t attribuutit asianmukaiseen tietokantatauluun
-		final int surveyId = question.getSurveyId();	//Annetaan paikalliselle surveyId-muuttujalle question-taulun survey_id-kentän arvo
-		final int questionType=question.getQuestionType();	//Annetaan paikalliselle questionType-muuttujalle question-taulun question_type-kentän arvo
-		final String questionText=question.getQuestionText();	//Annetaan paikalliselle questionText-muuttujalle question-taulun question_text-kentän arvo
-		final int questionOrder=question.getQuestionOrder();	////Annetaan paikalliselle questionOrder-muuttujalle question-taulun question_order-kentän arvo
+		final String sql = "insert into Question(survey_id, question_type, question_text, question_order) values (?,?,?,?)"; //Kysymykseen liittyvät attribuutit asianmukaiseen tietokantatauluun
+		final int surveyId = question.getSurveyId();	//annetaan paikallisille muuttujille arvot tietokantataulusta
+		final int questionType=question.getQuestionType();	
+		final String questionText=question.getQuestionText();	
+		final int questionOrder=question.getQuestionOrder();	
 		
 		KeyHolder idHolder = new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator() {
@@ -47,7 +47,7 @@ public class QuestionDAOSpringJdbcImpl implements QuestionDAO{
 					Connection connection) throws SQLException {
 				PreparedStatement ps = connection.prepareStatement(sql,
 						new String[] { "question_id" }); //Luo uudelle kysymykselle oman id:n
-				ps.setInt(1, surveyId); //tallennetaan kysymykseen liittyv�t attribuutit
+				ps.setInt(1, surveyId); //tallennetaan kysymykseen liittyvät attribuutit
 				ps.setInt(2, questionType);
 				ps.setString(3, questionText);
 				ps.setInt(4, questionOrder);
@@ -83,7 +83,7 @@ public class QuestionDAOSpringJdbcImpl implements QuestionDAO{
 					Connection connection) throws SQLException {
 				PreparedStatement ps = connection.prepareStatement(sql,
 						new String[] { "question_id" }); //Luo uudelle kysymykselle oman id:n
-				ps.setString(1, text); //tallennetaan kysymykseen liittyv�t attribuutit
+				ps.setString(1, text); //tallennetaan kysymykseen liittyvät attribuutit
 				ps.setInt(2, order);
 				ps.setInt(3, type);
 				ps.setInt(4, id);

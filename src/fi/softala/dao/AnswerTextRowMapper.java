@@ -1,15 +1,12 @@
-/** @authors Jukka, Pasi, Kytis, Olli, Pipsa
-*/
-
 package fi.softala.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import org.springframework.jdbc.core.RowMapper;
-
 import fi.softala.bean.Answer;
 
+/** @author Jukka, Pasi, Kytis, Olli, Pipsa
+*/
 public class AnswerTextRowMapper implements RowMapper<Answer> {
 	public Answer mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Answer answer = new Answer();

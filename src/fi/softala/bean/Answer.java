@@ -1,13 +1,14 @@
-/** @authors Jukka, Pasi, Kytis, Olli, Harri, Pipsa
-*/
 package fi.softala.bean;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/** @authors Jukka, Pasi, Kytis, Olli, Harri, Pipsa
+*/
+
 public class Answer {
 	private int answerId;
-	private int questionId;
+	private int questionId; 
 	
 	@NotNull
 	@Size(min = 1, max = 3000)

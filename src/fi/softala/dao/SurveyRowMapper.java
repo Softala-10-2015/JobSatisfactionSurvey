@@ -1,8 +1,3 @@
-/**
- * @author Aleksi Tilli, Pasi, Jukka, Olli, Samuli, Topi, Juha Palmu, Harri, Erik, Petri, Pipsa, Mikot, Markus
- *
- */
-
 package fi.softala.dao;
 
 import java.sql.ResultSet;
@@ -12,6 +7,11 @@ import org.springframework.jdbc.core.RowMapper;
 
 
 import fi.softala.bean.Survey;
+
+/**
+ * @author Aleksi Tilli, Pasi, Jukka, Olli, Samuli, Topi, Juha Palmu, Harri, Erik, Petri, Pipsa, Mikot, Markus
+ *
+ */
 
 public class SurveyRowMapper implements RowMapper<Survey> {
 	

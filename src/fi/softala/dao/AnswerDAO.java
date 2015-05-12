@@ -1,11 +1,13 @@
-/** @authors Jukka, Pasi, Kytis, Olli, Pipsa
-*/
-
 package fi.softala.dao;
 
 import java.util.List;
-
 import fi.softala.bean.Answer;
+
+
+
+/** @author Jukka, Pasi, Kytis, Olli, Pipsa
+*/
+
 
 public interface AnswerDAO{
 	

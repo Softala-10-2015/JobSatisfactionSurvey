@@ -1,7 +1,3 @@
-/**
-* @author Jukka, Samuli, pasi, Harri
-*/
-
 package fi.softala.dao;
 
 import java.sql.ResultSet;
@@ -10,6 +6,10 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
 import fi.softala.bean.Question;
+
+/**
+* @author Jukka, Samuli, pasi, Harri
+*/
 
 public class QuestionRowMapper implements RowMapper<Question> {
 	public Question mapRow(ResultSet rs, int rowNum) throws SQLException {
