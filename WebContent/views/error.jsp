@@ -44,12 +44,14 @@
     <!-- Begin page content -->
     <div class="container">
       
+      <div class="well">
+      <h1>Virhe</h1>
       <c:forEach items="${errors}" var="error">
       <c:out value="${error}"/><br />
       </c:forEach>
-      
- 
-
+ <br>     
+ <a class="btn btn-default" href="/kysely/survey/edit" role="button">Takaisin</a>
+</div>
 </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
