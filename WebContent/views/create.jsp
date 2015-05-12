@@ -105,7 +105,7 @@
 	<form:form class="form-horizontal" id="survey-form" modelAttribute="survey" method="post" action="create">
 		<fieldset>
 			<div class="row">
-			<div class="col-xs-3">
+			<div class="col-lg-3">
 				<div class="form-group" style="padding-left:0; margin-left:0">
 					<form:label	path="surveyName" value="${survey.getSurveyName()}">Kyselyn nimi *</form:label>
 					<form:input class="col-xs-1 form-control" path="surveyName" /><br/>
