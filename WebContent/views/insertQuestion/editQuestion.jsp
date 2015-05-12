@@ -44,17 +44,6 @@
 			<ul class="nav navbar-nav">
 				<li><a href="/kysely">Etusivu</a></li>
 			</ul>
-			<form class="navbar-form navbar-right" role="search">
-				<div class="form-group">
-					<input type="text" class="form-control" name="username"
-						placeholder="Käyttäjätunnus">
-				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" name="password"
-						placeholder="Salasana">
-				</div>
-				<button type="submit" class="btn btn-primary">Kirjaudu</button>
-			</form>
 		</div>
 
 	</div>
@@ -87,7 +76,11 @@
 					<form:label path="questionOrder">Kysymyksen järjestys</form:label><br/>
 					<form:input path="questionOrder" />
 					<p>
-						<form:errors path="questionOrder"/>
+						<!-- Lazy man's integer validation -->
+						<c:set var="orderErrorMessage"><form:errors path="questionOrder"/></c:set>
+   						<c:if test="${not empty orderErrorMessage}">
+			     			Kysymyksen järjestyksen pitää olla numero.
+   						</c:if>
 					</p>
 				<p>	
 					<button type="submit" class="btn btn-primary">Tallenna</button>
@@ -95,6 +88,9 @@
 				</p>
 			</fieldset>
 		</form:form>
+		
+
+		
 </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
