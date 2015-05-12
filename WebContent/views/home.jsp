@@ -35,12 +35,10 @@
 
 		<div id="navbar" class="collapse navbar-collapse">
 		<!-- navbarlogo -->
-		<a class="navbar-brand" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png"  alt="Navbar-brand kuva"></a>
+		<a class="navbar-brand" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png" alt="Navbar-brand kuva"></a>
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="/kysely">Etusivu</a></li> <!-- home tab active -->
-			</ul>
-				
-			
+			</ul>		
 			
 		</div>
 
@@ -49,7 +47,7 @@
 	</nav> <!-- end of navbar -->    
     
  	<div class="logo"> 
-   		<img class="logoimage" src="${pageContext.request.contextPath}/resources/img/logo.png"/>
+   		<img class="logoimage" src="${pageContext.request.contextPath}/resources/img/logo.png" style="margin-top:10px"/>
 	</div>
     
     
