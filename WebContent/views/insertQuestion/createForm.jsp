@@ -28,13 +28,13 @@
 	<nav class="navbar navbar-default navbar-fixed-top custom-navbar">
 	<div class="container">
 		<div class="navbar-header">			
-			<a class="navbar-brand navbar-toggle collapsed" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimgsmall.png"  alt="Navbar-brand kuva">Etusivu</a>
+			<a class="navbar-brand navbar-toggle collapsed" href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/resources/img/brandimgsmall.png"  alt="Navbar-brand kuva">Etusivu</a>
 		</div> 
 		<div id="navbar" class="collapse navbar-collapse">
 		<!-- navbarlogo -->
-		<a class="navbar-brand" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png" alt=""></a>
+		<a class="navbar-brand" href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png" alt=""></a>
 			<ul class="nav navbar-nav">
-				<li><a href="/kysely">Etusivu</a></li>
+				<li><a href="${pageContext.request.contextPath}">Etusivu</a></li>
 			</ul>
 			
 			
@@ -49,7 +49,7 @@
 	<h1>
 		Lisää kysymys
 	</h1>
-	<h4><a title="" href="/kysely/survey/get-survey/${question.surveyId}">http://${pageContext.request.serverName}:${pageContext.request.localPort}/kysely/survey/get-survey/${question.surveyId}</a></h4>
+	<h4><a title="" href="${pageContext.request.contextPath}/survey/get-survey/${question.surveyId}">http://${pageContext.request.serverName}:${pageContext.request.localPort}${pageContext.request.contextPath}/survey/get-survey/${question.surveyId}</a></h4>
 		<form:form modelAttribute="question" class="well" method="post">
 		  	<fieldset>		
 				<p>

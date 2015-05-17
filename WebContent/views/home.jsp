@@ -30,14 +30,14 @@
 	<nav class="navbar navbar-default navbar-fixed-top custom-navbar">
 	<div class="container">
 		<div class="navbar-header">			
-			<a class="navbar-brand navbar-toggle collapsed" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimgsmall.png"  alt="Navbar-brand kuva">Etusivu</a>
+			<a class="navbar-brand navbar-toggle collapsed" href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/resources/img/brandimgsmall.png"  alt="Navbar-brand kuva">Etusivu</a>
 		</div> 
 
 		<div id="navbar" class="collapse navbar-collapse">
 		<!-- navbarlogo -->
-		<a class="navbar-brand" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png" alt="Navbar-brand kuva"></a>
+		<a class="navbar-brand" href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png" alt="Navbar-brand kuva"></a>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/kysely">Etusivu</a></li> <!-- home tab active -->
+				<li class="active"><a href="${pageContext.request.contextPath}">Etusivu</a></li> <!-- home tab active -->
 			</ul>		
 			
 		</div>

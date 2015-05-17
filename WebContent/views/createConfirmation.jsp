@@ -35,13 +35,13 @@
 	<nav class="navbar navbar-default navbar-fixed-top custom-navbar">
 	<div class="container">
 		<div class="navbar-header">			
-			<a class="navbar-brand navbar-toggle collapsed" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimgsmall.png"  alt="Navbar-brand kuva">Etusivu</a>
+			<a class="navbar-brand navbar-toggle collapsed" href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/resources/img/brandimgsmall.png"  alt="Navbar-brand kuva">Etusivu</a>
 		</div> 
 				<div id="navbar" class="collapse navbar-collapse">
 		<!-- navbarlogo -->
-		<a class="navbar-brand" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png" alt=""></a>
+		<a class="navbar-brand" href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png" alt=""></a>
 			<ul class="nav navbar-nav">
-				<li><a href="/kysely">Etusivu</a></li>
+				<li><a href="${pageContext.request.contextPath}">Etusivu</a></li>
 			</ul>
 			
 		</div>
@@ -67,7 +67,7 @@
 						Voit luoda uuden kyselyn tai palata etusivulle.
 					</p>
 					<p>
-						<a href="/kysely/survey/get-survey/${id}">Klikkaa tästä päästäksesi kyselyysi.</a>
+						<a href="${pageContext.request.contextPath}/survey/get-survey/${id}">Klikkaa tästä päästäksesi kyselyysi.</a>
 						
 					</p>					
 					<br>
@@ -76,10 +76,10 @@
 			
 			<div class="row">
 				<div class="col-lg-2">
-					<a href="/kysely/survey/create"><button class="btn btn-primary" type="button">Uusi kysely</button></a>
+					<a href="${pageContext.request.contextPath}/survey/create"><button class="btn btn-primary" type="button">Uusi kysely</button></a>
 				</div>
 				<div class="col-lg-2">
-					<a href="/kysely"><button class="btn btn-primary" type="button">Etusivulle</button></a>
+					<a href="${pageContext.request.contextPath}"><button class="btn btn-primary" type="button">Etusivulle</button></a>
 				</div>
 			</div>
 			

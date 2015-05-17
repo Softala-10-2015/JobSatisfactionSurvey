@@ -29,13 +29,13 @@
 	<nav class="navbar navbar-default navbar-fixed-top custom-navbar">
 	<div class="container">
 		<div class="navbar-header">			
-			<a class="navbar-brand navbar-toggle collapsed" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimgsmall.png"  alt="Navbar-brand kuva">Etusivu</a>
+			<a class="navbar-brand navbar-toggle collapsed" href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/resources/img/brandimgsmall.png"  alt="Navbar-brand kuva">Etusivu</a>
 		</div> 
 		<div id="navbar" class="collapse navbar-collapse">
 		<!-- navbarlogo -->
-		<a class="navbar-brand" href="/kysely"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png" alt=""></a>
+		<a class="navbar-brand" href="${pageContext.request.contextPath}"><img src="${pageContext.request.contextPath}/resources/img/brandimg.png" alt=""></a>
 			<ul class="nav navbar-nav">
-				<li><a href="/kysely">Etusivu</a></li>
+				<li><a href="${pageContext.request.contextPath}">Etusivu</a></li>
 			</ul>
 			
 			<!-- 
@@ -65,7 +65,7 @@
 		<h3>Kiitos!</h3>
 		<p>Kiitos kyselyyn osallistumisestasi.</p>
 		<br>
-			<a class="btn btn-primary" role="button" href="/kysely">Etusivulle</a>
+			<a class="btn btn-primary" role="button" href="${pageContext.request.contextPath}">Etusivulle</a>
 		</div>
 
 		
